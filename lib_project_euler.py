@@ -60,3 +60,13 @@ def find_product(num):
     for digit in num:
         product = product * int(digit)
     return product
+
+def happy_step(num):
+    """Return product of one incrmental step to determine if num is happy/sad."""
+    num = list(str(num))
+    total = 0
+    for digit in num:
+        digit = int(digit)**2
+        total = total + digit
+    return total
+

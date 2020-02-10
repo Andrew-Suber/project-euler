@@ -139,4 +139,4 @@ def program_body():
 
 if __name__ == "__main__":
     program_body()
-    sys.exit()
+    sys.exit(0)
