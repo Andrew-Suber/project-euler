@@ -62,3 +62,6 @@ def happy_step(num):
         total = total + digit
     return total
 
+def is_pyth_triplet(side_a, side_b, hypotenuse_c):
+    """Return True if a, b, c compose a Pythagorean triplet."""
+    return (side_a**2) + (side_b**2) == (hypotenuse_c**2)

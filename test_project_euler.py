@@ -37,3 +37,9 @@ def test_find_product():
     assert lib_project_euler.find_product('872') == 112
     assert lib_project_euler.find_product('111') == 1
 
+def test_is_pyth_triplet():
+    """Test is_pyth_triplet function."""
+    assert lib_project_euler.is_pyth_triplet(3, 4, 5) is True
+    assert lib_project_euler.is_pyth_triplet(5, 12, 13) is True
+    assert lib_project_euler.is_pyth_triplet(18, 24, 30) is True
+    assert lib_project_euler.is_pyth_triplet(10, 24, 26) is True
