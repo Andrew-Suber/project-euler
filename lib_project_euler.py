@@ -45,14 +45,6 @@ def find_prime_factors(num):
             potential_factor += 1
     return prime_factors
 
-def happy_step(num):
-    """Return product of one incrmental step to determine if num is happy/sad."""
-    num = list(str(num))
-    total = 0
-    for digit in num:
-        total += int(digit) ** 2
-    return total
-
 def find_product(num):
     """Find the product of a string of digits, i.e, 23 produces 6"""
     num = list(num)

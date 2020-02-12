@@ -37,9 +37,3 @@ def test_find_product():
     assert lib_project_euler.find_product('872') == 112
     assert lib_project_euler.find_product('111') == 1
 
-def test_happy_step():
-    """Test happy step function."""
-    assert happy_step(10) == 1
-    assert happy_step(21) == 5
-    assert happy_step(16) == 37
-    assert happy_step(101) == 2
