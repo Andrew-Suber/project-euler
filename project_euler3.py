@@ -33,11 +33,11 @@ def pe_3():
     """ Find the largest prime factor of the test number."""
     test_number = 600851475143
     result = max(lib_project_euler.find_prime_factors(test_number))
-    return f'The answer for Project Euler Problem 3 is {result}'
+    return f'The largest prime factor of 600851475143 is {result}'
 
 def pe_4():
-    """PE 4. Find the largest palindromic product of three
-    digit numbers.
+    """PE 4. Find the largest palindromic product of two three- digit
+    numbers.
     """
     solutions = set()
     for value_a in range(999, 100, -1):
@@ -47,7 +47,7 @@ def pe_4():
             if product_string == product_string[::-1]:
                 solutions.add((product))
     solution = max(solutions)
-    return f'The answer for Project Euler Problem 4 is {solution}.'
+    return f'The largest palindromic product of two three-digit numbers is {solution}.'
 
 def pe_5():
     """Solve PE 5. Find the smallest number divisible by all factors
@@ -67,7 +67,7 @@ def pe_5():
         factors.append(num)
     for num in factors:
         product *= num
-    return f'The solution for Project Euler 5 is {product}.'
+    return f'The smallest number divisible by all factors from 1 to 20 is {product}.'
 
 def pe_6():
     """Solve PE 6. Find the difference between the sum of all squares of all
@@ -86,7 +86,7 @@ def pe_7():
     """Solve PE 7, find the 10,001st prime number."""
     primes = list(lib_project_euler.prime_sieve(200000))
     primes.sort()
-    return f'The solution for Project Euler 7 is {primes[10000]}'
+    return f'the 10,001st prime number is {primes[10000]}'
 
 def pe_8():
     """Solve PE 8, find largest product from multiplication of 13 adjacent
@@ -105,17 +105,42 @@ def pe_8():
 
 def pe_9():
     """Solve PE 9"""
-    #TODO
     pass
 
 def pe_10():
     """Solve PE 10"""
-    #TODO
     pass
 
-def pe_33():
-    """Solve PE 33"""
-    #TODO
+def pe_11():
+    """Solve PE 11"""
+    pass
+
+def pe_12():
+    """Solve PE 12"""
+    pass
+
+def pe_13():
+    """Solve PE 13"""
+    pass
+
+def pe_14():
+    """Solve PE 14"""
+    pass
+
+def pe_15():
+    """Solve PE 15"""
+    pass
+
+def pe_16():
+    """Solve PE 16"""
+    pass
+
+def pe_17():
+    """Solve PE 17"""
+    pass
+
+def pe_18():
+    """Solve PE 18"""
     pass
 
 def program_body():
