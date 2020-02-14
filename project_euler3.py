@@ -104,8 +104,14 @@ def pe_8():
     return f'{best_result} is the answer to Project Euler problem 8.'
 
 def pe_9():
-    """Solve PE 9"""
-    pass
+
+    """Project Euler problem 9. Find pythagorean triplet that sums to 1000."""
+
+    for hypotenuse_c in range(334, 500):
+        for side_a in range(1, (1000- hypotenuse_c)//2):
+            b_side = (1000 -  hypotenuse_c) - side_a
+            if lib_project_euler.is_pyth_triplet(side_a, b_side, hypotenuse_c):
+                print("side a, b_side,  hypotenuse_c =", side_a, b_side, hypotenuse_c)
 
 def pe_10():
     """Solve PE 10"""
