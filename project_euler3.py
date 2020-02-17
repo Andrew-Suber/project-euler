@@ -106,12 +106,12 @@ def pe_8():
 def pe_9():
 
     """Project Euler problem 9. Find pythagorean triplet that sums to 1000."""
-
-    for hypotenuse_c in range(334, 500):
-        for side_a in range(1, (1000- hypotenuse_c)//2):
-            b_side = (1000 -  hypotenuse_c) - side_a
+    limit = 1000
+    for hypotenuse_c in range(334, limit//2):
+        for side_a in range(1, (limit - hypotenuse_c)//2):
+            b_side = (limit -  hypotenuse_c) - side_a
             if lib_project_euler.is_pyth_triplet(side_a, b_side, hypotenuse_c):
-                print("side a, b_side,  hypotenuse_c =", side_a, b_side, hypotenuse_c)
+                return (f'The pythagorean triplet that sums to 1000 is: {side_a, b_side, hypotenuse_c}')
 
 def pe_10():
     """Solve PE 10"""
@@ -154,7 +154,7 @@ def program_body():
     Project Euler problems."""
     solution_functions = {'1':pe_1(), '2':pe_2(), '3':pe_3(),
                           '4':pe_4(), '5':pe_5(), '6':pe_6(),
-                          '7':pe_7(), '8':pe_8(),}
+                          '7':pe_7(), '8':pe_8(), '9':pe_9()}
     answer = ''
 
     while answer != 'q':
