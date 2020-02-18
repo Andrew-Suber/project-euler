@@ -104,18 +104,21 @@ def pe_8():
     return f'{best_result} is the answer to Project Euler problem 8.'
 
 def pe_9():
-
     """Project Euler problem 9. Find pythagorean triplet that sums to 1000."""
     limit = 1000
     for hypotenuse_c in range(334, limit//2):
         for side_a in range(1, (limit - hypotenuse_c)//2):
             b_side = (limit -  hypotenuse_c) - side_a
             if lib_project_euler.is_pyth_triplet(side_a, b_side, hypotenuse_c):
-                return (f'The pythagorean triplet that sums to 1000 is: {side_a, b_side, hypotenuse_c}')
+                return ''.join(['The pythagorean triplet that sums to 1000 is:',
+                                f'{side_a, b_side, hypotenuse_c}'])
+    return 'No triplet was found for sum limit {limit}.'
 
 def pe_10():
-    """Solve PE 10"""
-    pass
+    """Find the sum of all primes below 2,000,000."""
+    primes = set(lib_project_euler.prime_sieve(2000000))
+    result = sum(primes)
+    return f'The sum of all primes below 2,000,000 is {result}.'
 
 def pe_11():
     """Solve PE 11"""
@@ -154,7 +157,8 @@ def program_body():
     Project Euler problems."""
     solution_functions = {'1':pe_1(), '2':pe_2(), '3':pe_3(),
                           '4':pe_4(), '5':pe_5(), '6':pe_6(),
-                          '7':pe_7(), '8':pe_8(), '9':pe_9()}
+                          '7':pe_7(), '8':pe_8(), '9':pe_9(),
+                          '10':pe_10(),}
     answer = ''
 
     while answer != 'q':
