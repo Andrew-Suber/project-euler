@@ -126,7 +126,17 @@ def pe_11():
 
 def pe_12():
     """Solve PE 12"""
-    pass
+    counter = 0
+    triangle = 0
+
+    while True:
+        triangle = triangle + counter
+        factors = len(lib_project_euler.find_factors(triangle))
+        if factors >= 500:
+            break
+        counter = counter + 1
+    result = f'The first triangle number with over 500 divisors is {triangle}'
+    return result
 
 def pe_13():
     """Solve PE 13"""
@@ -158,7 +168,7 @@ def program_body():
     solution_functions = {'1':pe_1(), '2':pe_2(), '3':pe_3(),
                           '4':pe_4(), '5':pe_5(), '6':pe_6(),
                           '7':pe_7(), '8':pe_8(), '9':pe_9(),
-                          '10':pe_10(),}
+                          '10':pe_10(), '12':pe_12(),}
     answer = ''
 
     while answer != 'q':
