@@ -7,7 +7,7 @@ import sys
 import pytest
 import lib_project_euler
 
-pytest.main()
+pytest.main(['-v'])
 
 def pe_1():
     """ Return the sum of mod 5 and mod 3 integers under 1000."""

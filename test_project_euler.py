@@ -43,3 +43,9 @@ def test_is_pyth_triplet():
     assert lib_project_euler.is_pyth_triplet(5, 12, 13) is True
     assert lib_project_euler.is_pyth_triplet(18, 24, 30) is True
     assert lib_project_euler.is_pyth_triplet(10, 24, 26) is True
+
+def test_find_factors():
+    """Test function find_prime_factors."""
+    assert lib_project_euler.find_factors(28) == {1, 2, 4, 7, 14, 28}
+    assert lib_project_euler.find_factors(49) == {1, 7, 49}
+    assert lib_project_euler.find_factors(100) == {1, 2, 4, 5, 10, 20, 25, 50, 100}
