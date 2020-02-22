@@ -49,3 +49,8 @@ def test_find_factors():
     assert lib_project_euler.find_factors(28) == {1, 2, 4, 7, 14, 28}
     assert lib_project_euler.find_factors(49) == {1, 7, 49}
     assert lib_project_euler.find_factors(100) == {1, 2, 4, 5, 10, 20, 25, 50, 100}
+
+def test_add_up_divisors():
+    """Test function add_up_divisors."""
+    assert  lib_project_euler.add_up_divisors(6) == 6
+    assert  lib_project_euler.add_up_divisors(28) == 28

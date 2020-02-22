@@ -132,7 +132,7 @@ def pe_12():
     while True:
         triangle = triangle + counter
         factors = len(lib_project_euler.find_factors(triangle))
-        if factors >= 500:
+        if factors > 500:
             break
         counter = counter + 1
     result = f'The first triangle number with over 500 divisors is {triangle}'

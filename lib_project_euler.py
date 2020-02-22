@@ -67,9 +67,16 @@ def is_pyth_triplet(side_a, side_b, hypotenuse_c):
     return (side_a**2) + (side_b**2) == (hypotenuse_c**2)
 
 def find_factors(num):
+    """Find factors of num, i.e. 6 returns {1, 2, 3, 6}"""
     factors = set()
     for i in range(1, int(num**.5)+ 1):
         if num % i == 0:
             factors.add(i)
             factors.add(int(num/i))
     return factors
+
+def add_up_divisors(num):
+    """Return sum of proper divisors of num, i.e. 6 returns 1+2+3."""
+    divisors = find_factors(num)
+    divisors.remove(num)
+    return sum(divisors)
