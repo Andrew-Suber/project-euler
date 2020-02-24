@@ -54,3 +54,10 @@ def test_add_up_divisors():
     """Test function add_up_divisors."""
     assert  lib_project_euler.add_up_divisors(6) == 6
     assert  lib_project_euler.add_up_divisors(28) == 28
+
+def test_find_collatz_stopping_time():
+    """Test function find_collatz_stopping_time."""
+    assert lib_project_euler.find_collatz_stopping_time(5) == 6
+    assert lib_project_euler.find_collatz_stopping_time(9) == 20
+    assert lib_project_euler.find_collatz_stopping_time(13) == 10
+    assert lib_project_euler.find_collatz_stopping_time(19) == 21

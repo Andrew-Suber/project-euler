@@ -80,3 +80,17 @@ def add_up_divisors(num):
     divisors = find_factors(num)
     divisors.remove(num)
     return sum(divisors)
+
+def find_collatz_stopping_time(num):
+    """Find the length of the Collatz chain for num.
+    12 would return 10 (inclusive of 1).
+    """
+    count = 1
+    while num != 1:
+        if num%2 == 0:
+            num = num//2
+            count += 1
+        else:
+            num = num*3 + 1
+            count += 1
+    return count
