@@ -15,17 +15,17 @@ def pe_1():
     for i in range(1, 1000):
         if i % 3 == 0 or i % 5 == 0:
             result += i
-    return f'Project Euler Problem 1: the sum of mod 5 and mod 3 integers under 1000 is {result}.'
+    return f'Project euler problem 1: the sum of mod 5 and mod 3 integers under 1000 is {result}.'
 
 def pe_2():
-    """ Return the sum of all even Fibonacci numbers under 4,000,000."""
+    """ Return the sum of all even fibonacci numbers under 4,000,000."""
     counter = 1
     result = 0
     while lib_project_euler.fibonacci(counter) < 4000000:
         if lib_project_euler.fibonacci(counter) % 2 == 0:
             result += lib_project_euler.fibonacci(counter)
         counter += 1
-    result = ('project euler Problem 2: the sum of all even Fibonacci',
+    result = ('Project euler problem 2: the sum of all even fibonacci',
               f' numbers under 4,000,000 is {result}')
     return result
 
@@ -36,7 +36,7 @@ def pe_3():
     return f'The largest prime factor of 600851475143 is {result}'
 
 def pe_4():
-    """PE 4. Find the largest palindromic product of two three- digit
+    """Pe 4. Find the largest palindromic product of two three- digit
     numbers.
     """
     solutions = set()
@@ -50,7 +50,7 @@ def pe_4():
     return f'The largest palindromic product of two three-digit numbers is {solution}.'
 
 def pe_5():
-    """Solve PE 5. Find the smallest number divisible by all factors
+    """Solve pe 5. find the smallest number divisible by all factors
     from 1 to limit.
     """
     limit = 20
@@ -70,7 +70,7 @@ def pe_5():
     return f'The smallest number divisible by all factors from 1 to 20 is {product}.'
 
 def pe_6():
-    """Solve PE 6. Find the difference between the sum of all squares of all
+    """Solve pe 6. find the difference between the sum of all squares of all
     numbers from 1 to 100 and the square of the sum of all numbers from 1 to
     100."""
     integers = [i for i in range(1, 101)]
@@ -80,16 +80,16 @@ def pe_6():
     for i in integers:
         sum_of_squares += i**2
     answer = square_of_sum - sum_of_squares
-    return f'The solution for Project Euler 6 is {answer}.'
+    return f'The solution for project euler 6 is {answer}.'
 
 def pe_7():
-    """Solve PE 7, find the 10,001st prime number."""
+    """Solve pe 7, find the 10,001st prime number."""
     primes = list(lib_project_euler.prime_sieve(200000))
     primes.sort()
-    return f'the 10,001st prime number is {primes[10000]}'
+    return f'The 10,001st prime number is {primes[10000]}.'
 
 def pe_8():
-    """Solve PE 8, find largest product from multiplication of 13 adjacent
+    """Solve pe 8, find largest product from multiplication of 13 adjacent
     digits in file."""
     with open('files/pe_8_sample.txt') as pe_8_sample:
         sample = pe_8_sample.read()
@@ -101,10 +101,10 @@ def pe_8():
         if current_product > best_result:
             best_result = current_product
         index += 1
-    return f'{best_result} is the answer to Project Euler problem 8.'
+    return f'{best_result} is the answer to project euler problem 8.'
 
 def pe_9():
-    """Project Euler problem 9. Find pythagorean triplet that sums to 1000."""
+    """Project euler problem 9. find pythagorean triplet that sums to 1000."""
     limit = 1000
     for hypotenuse_c in range(334, limit//2):
         for side_a in range(1, (limit - hypotenuse_c)//2):
@@ -121,11 +121,11 @@ def pe_10():
     return f'The sum of all primes below 2,000,000 is {result}.'
 
 def pe_11():
-    """Solve PE 11"""
+    """Solve pe 11"""
     pass
 
 def pe_12():
-    """Solve PE 12"""
+    """Solve pe 12"""
     counter = 0
     triangle = 0
 
@@ -139,12 +139,22 @@ def pe_12():
     return result
 
 def pe_13():
-    """Solve PE 13"""
+    """Solve pe 13"""
     pass
 
 def pe_14():
-    """Solve PE 14"""
-    pass
+    """Solve pe 14"""
+    limit = 500000
+    best_result = (0, 0)
+
+    for i in range(1, limit):
+        length = lib_project_euler.find_collatz_stopping_time(i)
+        if best_result[1] < length:
+            best_result = (i, length)
+
+    result = ''.join((f'{best_result[0]} is the number with the highest Collatz ',
+                      f'stopping time under {limit}: {best_result[1]} iterations.'))
+    return result
 
 def pe_15():
     """Solve PE 15"""
@@ -168,7 +178,8 @@ def program_body():
     solution_functions = {'1':pe_1(), '2':pe_2(), '3':pe_3(),
                           '4':pe_4(), '5':pe_5(), '6':pe_6(),
                           '7':pe_7(), '8':pe_8(), '9':pe_9(),
-                          '10':pe_10(), '12':pe_12(),}
+                          '10':pe_10(), '12':pe_12(), '14':pe_14(),
+                         }
     answer = ''
 
     while answer != 'q':
