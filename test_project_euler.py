@@ -61,3 +61,12 @@ def test_find_collatz_stopping_time():
     assert lib_project_euler.find_collatz_stopping_time(9) == 20
     assert lib_project_euler.find_collatz_stopping_time(13) == 10
     assert lib_project_euler.find_collatz_stopping_time(19) == 21
+
+def test_is_happy():
+    assert lib_project_euler.is_happy(44) == True
+    assert lib_project_euler.is_happy(1) == True
+    assert lib_project_euler.is_happy(100) == True
+    assert lib_project_euler.is_happy(101) == False
+    assert lib_project_euler.is_happy(129) == True
+    assert lib_project_euler.is_happy(498) == False
+    assert lib_project_euler.is_happy(3973) == False

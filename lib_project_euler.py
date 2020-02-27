@@ -54,7 +54,10 @@ def find_product(num):
     return product
 
 def happy_step(num):
-    """Return product of one incrmental step to determine if num is happy/sad."""
+    """Return product of one incrmental step to determine if num is happy/sad.
+    i. e., returns the perfect digital invariant of base ten numeral.
+    Numeral AB -> A**2 + B**2. 11 -> 2 21 -> 5
+    """
     num = list(str(num))
     total = 0
     for digit in num:
@@ -94,3 +97,13 @@ def find_collatz_stopping_time(num):
             num = num*3 + 1
             count += 1
     return count
+
+def is_happy(num):
+    """Determine if num is happy or sad."""
+    while True:
+        print(num)
+        if num == 1:
+            return True
+        if num == 89:
+            return False
+        num = happy_step(num)
