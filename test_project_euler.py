@@ -70,3 +70,12 @@ def test_is_happy():
     assert lib_project_euler.is_happy(129) == True
     assert lib_project_euler.is_happy(498) == False
     assert lib_project_euler.is_happy(3973) == False
+
+def test_pan_digit_comparison():
+    assert lib_project_euler.is_pan_digital(1) == True
+    assert lib_project_euler.is_pan_digital(123) == True
+    assert lib_project_euler.is_pan_digital(1234) == True
+    assert lib_project_euler.is_pan_digital(54321) == True
+    assert lib_project_euler.is_pan_digital(615243) == True
+    assert lib_project_euler.is_pan_digital(987) == False
+    assert lib_project_euler.is_pan_digital(87654) == False

@@ -107,3 +107,14 @@ def is_happy(num):
         if num == 89:
             return False
         num = happy_step(num)
+
+def is_pan_digital(num):
+    """Return True if num is pan digital, i.e. 123 or 4,123."""
+    comparison = '123456789'
+    num = str(num)
+    if len(num) > len(set(num)):
+        return False
+
+    num = set(num)
+    comparison= set(comparison[0:len(num):1])
+    return num == comparison 
