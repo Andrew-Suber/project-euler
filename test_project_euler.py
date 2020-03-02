@@ -71,7 +71,7 @@ def test_is_happy():
     assert lib_project_euler.is_happy(498) == False
     assert lib_project_euler.is_happy(3973) == False
 
-def test_pan_digit_comparison():
+def test_is_pan_digital():
     assert lib_project_euler.is_pan_digital(1) == True
     assert lib_project_euler.is_pan_digital(123) == True
     assert lib_project_euler.is_pan_digital(1234) == True
