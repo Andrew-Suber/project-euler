@@ -101,7 +101,6 @@ def find_collatz_stopping_time(num):
 def is_happy(num):
     """Determine if num is happy or sad."""
     while True:
-        print(num)
         if num == 1:
             return True
         if num == 89:

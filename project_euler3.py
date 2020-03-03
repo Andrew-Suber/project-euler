@@ -9,6 +9,8 @@ import lib_project_euler
 
 pytest.main(['-v'])
 
+LATCH = False
+
 def pe_1():
     """ Return the sum of mod 5 and mod 3 integers under 1000."""
     result = 0
@@ -172,17 +174,33 @@ def pe_18():
     """Solve PE 18"""
     pass
 
-def program_body():
+def pe_92(LATCH):
+    """Find all the 'sad' numbers under 10,000,000."""
+    if LATCH == False:
+        return
+    limit = 10000000
+    happy_count = 0
+
+    for i in range(1, limit + 1):
+        if lib_project_euler.is_happy(i):
+            happy_count += 1
+            print(f'{i} is happy')
+    sad_count = limit - happy_count
+    return f'There are {sad_count} numbers from 1 to {limit} that are sad.'
+
+def program_body(LATCH):
     """Implement individual functions solving
     Project Euler problems."""
     solution_functions = {'1':pe_1(), '2':pe_2(), '3':pe_3(),
                           '4':pe_4(), '5':pe_5(), '6':pe_6(),
                           '7':pe_7(), '8':pe_8(), '9':pe_9(),
                           '10':pe_10(), '12':pe_12(), '14':pe_14(),
+                          '92':pe_92(LATCH),
                          }
     answer = ''
 
     while answer != 'q':
+        LATCH == True
         answer = input('What problem would you like solved? (q to quit)')
         if answer == 'q':
             return
@@ -192,7 +210,6 @@ def program_body():
         except KeyError:
             print("I don't think that problem has been solved yet.")
 
-
 if __name__ == "__main__":
-    program_body()
+    program_body(LATCH)
     sys.exit(0)
