@@ -66,8 +66,8 @@ def test_is_happy():
     assert lib_project_euler.is_happy(44) == True
     assert lib_project_euler.is_happy(1) == True
     assert lib_project_euler.is_happy(100) == True
-    assert lib_project_euler.is_happy(101) == False
     assert lib_project_euler.is_happy(129) == True
+    assert lib_project_euler.is_happy(101) == False
     assert lib_project_euler.is_happy(498) == False
     assert lib_project_euler.is_happy(3973) == False
 
