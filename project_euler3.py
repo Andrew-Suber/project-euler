@@ -1,9 +1,10 @@
 """Refactoring, organization of completed Project Euler problems.
 Each Project Euler problem uses a function named pe_number.
+To perform a computation, invoke a function from the command line, like so:
+python -c 'import euler_project.py; print(project_euler3.pe_foo())'
 Start date: 6/21/19.
 """
 
-import sys
 import pytest
 import lib_project_euler
 
@@ -186,28 +187,3 @@ def pe_92():
             happy_count += 1
     sad_count = limit - happy_count
     return f'there are {sad_count} numbers from 1 to {limit} that are sad.'
-
-def program_body():
-    """implement individual functions solving
-    project euler problems."""
-    solution_functions = {'1':pe_1(), '2':pe_2(), '3':pe_3(),
-                          '4':pe_4(), '5':pe_5(), '6':pe_6(),
-                          '7':pe_7(), '8':pe_8(), '9':pe_9(),
-                          '10':pe_10(), '12':pe_12(), '14':pe_14(),
-                          '16':pe_16(), '92':pe_92(),
-                         }
-    answer = ''
-
-    while answer != 'q':
-        answer = input('what problem would you like solved? (q to quit)')
-        if answer == 'q':
-            return
-
-        try:
-            print(solution_functions[answer])
-        except KeyError:
-            print("I don't think that problem has been solved yet.")
-
-if __name__ == "__main__":
-    program_body()
-    sys.exit(0)
