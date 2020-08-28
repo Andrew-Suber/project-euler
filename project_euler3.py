@@ -140,8 +140,17 @@ def pe_12():
     return result
 
 def pe_13():
-    """Solve pe 13"""
-    pass
+    """Read file consisting of large numbers. Sum numbers. Return
+    first ten digits of sum.
+    """
+    with open('files/pe_13_sample.txt') as pe_13_sample:
+        sample = pe_13_sample.read()
+    lines = sample.split()
+    total = 0
+    for line in lines:
+        total += int(line)
+    result = str(total)[0:10]
+    return f'{result} is the answer to project euler problem 13.'
 
 def pe_14():
     """Solve pe 14"""
