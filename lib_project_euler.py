@@ -130,5 +130,4 @@ def find_combinations(number, r_items):
     r_fact = math.factorial(r_items)
     n_minus_r_fact = math.factorial(number-r_items)
     result = n_fact/(r_fact*n_minus_r_fact)
-    print(n_fact, r_fact, n_minus_r_fact, result)
     return int(result)

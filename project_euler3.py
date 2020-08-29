@@ -1,5 +1,5 @@
 """Refactoring, organization of completed Project Euler problems.
-Each Project Euler problem uses a function named pe_number.
+Each Project Euler problem uses a function named pe_foo.
 To perform a computation, invoke a function from the command line, like so:
 python -c 'import euler_project.py; print(project_euler3.pe_foo())'
 Start date: 6/21/19.
@@ -167,8 +167,9 @@ def pe_14():
     return result
 
 def pe_15():
-    """Solve PE 15"""
-    pass
+    """Find the number of possible distinct paths in a square lattice 20x20."""
+    result = lib_project_euler.find_combinations(40, 20)
+    return f'The number of possible paths in a lattice 20x20 is {result}.'
 
 def pe_16():
     """Solve PE 16, give the sum of the digits of 2**1000."""
