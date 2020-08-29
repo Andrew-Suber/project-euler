@@ -1,5 +1,7 @@
 """Library of functions used by Project Euler solutions."""
 
+import math
+
 def fibonacci(index, cache=None):
     """ Return the Fibbonacci number of n index. Cache results."""
     if cache is None:
@@ -115,5 +117,18 @@ def is_pan_digital(num):
         return False
 
     num = set(num)
-    comparison= set(comparison[0:len(num):1])
-    return num == comparison 
+    comparison = set(comparison[0:len(num):1])
+    return num == comparison
+
+
+def find_combinations(number, r_items):
+    """To find the number of combinations for n(number of things you are
+    picking from) choose r (number of items you can pick).
+    Combinations = n!/r!*(n-r)!
+    """
+    n_fact = math.factorial(number)
+    r_fact = math.factorial(r_items)
+    n_minus_r_fact = math.factorial(number-r_items)
+    result = n_fact/(r_fact*n_minus_r_fact)
+    print(n_fact, r_fact, n_minus_r_fact, result)
+    return int(result)

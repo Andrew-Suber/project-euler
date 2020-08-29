@@ -63,19 +63,25 @@ def test_find_collatz_stopping_time():
     assert lib_project_euler.find_collatz_stopping_time(19) == 21
 
 def test_is_happy():
-    assert lib_project_euler.is_happy(44) == True
-    assert lib_project_euler.is_happy(1) == True
-    assert lib_project_euler.is_happy(100) == True
-    assert lib_project_euler.is_happy(129) == True
-    assert lib_project_euler.is_happy(101) == False
-    assert lib_project_euler.is_happy(498) == False
-    assert lib_project_euler.is_happy(3973) == False
+    """Test function is_happy."""
+    assert lib_project_euler.is_happy(44) is True
+    assert lib_project_euler.is_happy(1) is True
+    assert lib_project_euler.is_happy(100) is True
+    assert lib_project_euler.is_happy(129) is True
+    assert lib_project_euler.is_happy(101) is False
+    assert lib_project_euler.is_happy(498) is False
+    assert lib_project_euler.is_happy(3973) is False
 
 def test_is_pan_digital():
-    assert lib_project_euler.is_pan_digital(1) == True
-    assert lib_project_euler.is_pan_digital(123) == True
-    assert lib_project_euler.is_pan_digital(1234) == True
-    assert lib_project_euler.is_pan_digital(54321) == True
-    assert lib_project_euler.is_pan_digital(615243) == True
-    assert lib_project_euler.is_pan_digital(987) == False
-    assert lib_project_euler.is_pan_digital(87654) == False
+    """Test function is_pan_digital."""
+    assert lib_project_euler.is_pan_digital(1) is True
+    assert lib_project_euler.is_pan_digital(123) is True
+    assert lib_project_euler.is_pan_digital(1234) is True
+    assert lib_project_euler.is_pan_digital(54321) is True
+    assert lib_project_euler.is_pan_digital(615243) is True
+    assert lib_project_euler.is_pan_digital(987) is False
+    assert lib_project_euler.is_pan_digital(87654) is False
+
+def test_find_combinations():
+    """Test function find_combinations."""
+    assert lib_project_euler.find_combinations(4, 2) == 6

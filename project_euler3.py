@@ -126,7 +126,7 @@ def pe_11():
     pass
 
 def pe_12():
-    """Solve pe 12"""
+    """Find first triangle number with over 500 divisors."""
     counter = 0
     triangle = 0
 
