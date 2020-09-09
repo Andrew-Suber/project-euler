@@ -131,3 +131,34 @@ def find_combinations(number, r_items):
     n_minus_r_fact = math.factorial(number-r_items)
     result = n_fact/(r_fact*n_minus_r_fact)
     return int(result)
+
+def number_to_word(num):
+    """Translate a counting number 1 to 1000.
+    UK English string (uses 'and'), i.e. 1 -> 'one'.
+    Internal whitespace and hypens are present. 152-> one hundred and fifty-two.
+    """
+
+    numeral_to_word = {0:"", 1:"one", 2:"two", 3:"three", 4: "four", 5:"five",
+                       6:"six", 7:"seven", 8:"eight", 9:"nine", 10:"ten", 11:"eleven",
+                       12:"twelve", 13:"thirteen", 14:"fourteen", 15:"fifteen",
+                       16:"sixteen", 17:"seventeen", 18:"eighteen", 19:"nineteen",
+                       20:"twenty", 30:"thirty", 40:"forty", 50:"fifty", 60:"sixty",
+                       70:"seventy", 80:"eighty", 90:"ninety", 1000:"one thousand"
+                      }
+    if not isinstance(num, int):
+        raise KeyError("Sorry. The module only works for integers <= 1000.")
+    if num > 1000:
+        raise KeyError("Sorry. The module only works for integers <= 1000.")
+    if num in numeral_to_word.keys():
+        return numeral_to_word[num]
+    if num < 100:
+        tens = (num//10) * 10
+        ones = num % 10
+        return numeral_to_word[tens] + '-' + numeral_to_word[ones]
+
+    hundreds = numeral_to_word[num//100] +' ' + 'hundred'
+    if num % 100 == 0:
+        return hundreds
+
+    two_digits = number_to_word(num % 100)
+    return hundreds + ' and ' + two_digits

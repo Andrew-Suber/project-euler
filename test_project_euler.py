@@ -1,5 +1,6 @@
 """Basic tests for functions in project euler library."""
 
+import pytest
 import lib_project_euler
 
 
@@ -88,3 +89,14 @@ def test_find_combinations():
     assert lib_project_euler.find_combinations(8, 4) == 70
     assert lib_project_euler.find_combinations(10, 3) == 120
     assert lib_project_euler.find_combinations(17, 11) == 12376
+
+def test_number_to_word():
+    """Test function number_to_word."""
+    pytest.raises(KeyError, lib_project_euler.number_to_word, 1001)
+    pytest.raises(KeyError, lib_project_euler.number_to_word, 'abc')
+    assert lib_project_euler.number_to_word(18) == "eighteen"
+    assert lib_project_euler.number_to_word(52) == "fifty-two"
+    assert lib_project_euler.number_to_word(152) == "one hundred and fifty-two"
+    assert lib_project_euler.number_to_word(952) == "nine hundred and fifty-two"
+    assert lib_project_euler.number_to_word(1000) == "one thousand"
+    assert lib_project_euler.number_to_word(100) == "one hundred"

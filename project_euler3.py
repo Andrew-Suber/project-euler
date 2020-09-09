@@ -180,8 +180,16 @@ def pe_16():
     return f'The sum of the digits of 2 to the thousandth power is {total}.'
 
 def pe_17():
-    """solve pe 17"""
-    pass
+    """Sum the number of characters in the UK words representing the
+    integers from 1 to 1,000."""
+    total = 0
+    for i in range(1, 1001):
+        i = lib_project_euler.number_to_word(i)
+        i = i.replace('-', '')
+        i = i.replace(' ', '')
+        total += len(i)
+    return f'The sum of characters in the number words from 1 to 1,000 is {total}.'
+
 
 def pe_18():
     """solve pe 18"""
