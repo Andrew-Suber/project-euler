@@ -83,5 +83,8 @@ def test_is_pan_digital():
     assert lib_project_euler.is_pan_digital(87654) is False
 
 def test_find_combinations():
-    """Test function find_combinations."""
+    """Test function find_combinations. Source of reference values: calculatorsoup.com"""
     assert lib_project_euler.find_combinations(4, 2) == 6
+    assert lib_project_euler.find_combinations(8, 4) == 70
+    assert lib_project_euler.find_combinations(10, 3) == 120
+    assert lib_project_euler.find_combinations(17, 11) == 12376
