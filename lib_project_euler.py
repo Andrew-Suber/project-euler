@@ -2,6 +2,11 @@
 
 import math
 
+def validate_integers(*nums):
+    for num in nums:
+        if not isinstance(num, int):
+            raise TypeError("Sorry. The module only works for integers.")
+
 def fibonacci(index, cache=None):
     """ Return the Fibbonacci number of n index. Cache results."""
     if cache is None:
@@ -146,7 +151,7 @@ def number_to_word(num):
                        70:"seventy", 80:"eighty", 90:"ninety", 1000:"one thousand"
                       }
     if not isinstance(num, int):
-        raise KeyError("Sorry. The module only works for integers <= 1000.")
+        raise TypeError("Sorry. The module only works for integers.")
     if num > 1000:
         raise KeyError("Sorry. The module only works for integers <= 1000.")
     if num in numeral_to_word.keys():
