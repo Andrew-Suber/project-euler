@@ -4,6 +4,15 @@ import pytest
 import lib_project_euler
 
 
+def test_validate_integers():
+    """Test function validate_integers."""
+    pytest.raises(TypeError, lib_project_euler.validate_integers, 'abc')
+    pytest.raises(TypeError, lib_project_euler.validate_integers, 4.1)
+    pytest.raises(TypeError, lib_project_euler.validate_integers, 'abc', 22)
+    pytest.raises(TypeError, lib_project_euler.validate_integers, 'abc', 'def', 'ghi')
+    assert lib_project_euler.validate_integers(4) is None
+    assert lib_project_euler.validate_integers(8, 2001) is None
+
 def test_fibonacci():
     """Test fibonacci function."""
     assert lib_project_euler.fibonacci(4) == 3
@@ -93,7 +102,6 @@ def test_find_combinations():
 def test_number_to_word():
     """Test function number_to_word."""
     pytest.raises(KeyError, lib_project_euler.number_to_word, 1001)
-    pytest.raises(TypeError, lib_project_euler.number_to_word, 'abc')
     assert lib_project_euler.number_to_word(18) == "eighteen"
     assert lib_project_euler.number_to_word(52) == "fifty-two"
     assert lib_project_euler.number_to_word(152) == "one hundred and fifty-two"
