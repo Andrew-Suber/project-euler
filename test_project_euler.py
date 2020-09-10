@@ -101,7 +101,7 @@ def test_find_combinations():
 
 def test_number_to_word():
     """Test function number_to_word."""
-    pytest.raises(KeyError, lib_project_euler.number_to_word, 1001)
+    pytest.raises(ValueError, lib_project_euler.number_to_word, 1001)
     assert lib_project_euler.number_to_word(18) == "eighteen"
     assert lib_project_euler.number_to_word(52) == "fifty-two"
     assert lib_project_euler.number_to_word(152) == "one hundred and fifty-two"

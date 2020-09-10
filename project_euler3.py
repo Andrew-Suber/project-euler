@@ -16,7 +16,7 @@ def pe_1():
     for i in range(1, 1000):
         if i % 3 == 0 or i % 5 == 0:
             result += i
-    return f'Project euler problem 1: the sum of mod 5 and mod 3 integers under 1000 is {result}.'
+    return f'The sum of mod 5 and mod 3 integers under 1000 is {result}.'
 
 def pe_2():
     """ Return the sum of all even fibonacci numbers under 4,000,000."""
@@ -26,9 +26,7 @@ def pe_2():
         if lib_project_euler.fibonacci(counter) % 2 == 0:
             result += lib_project_euler.fibonacci(counter)
         counter += 1
-    result = ('Project euler problem 2: the sum of all even fibonacci',
-              f' numbers under 4,000,000 is {result}')
-    return result
+    return f'The sum of all even fibonacci numbers under 4,000,000 is {result}'
 
 def pe_3():
     """ Find the largest prime factor of the test number."""
@@ -136,8 +134,7 @@ def pe_12():
         if factors > 500:
             break
         counter = counter + 1
-    result = f'The first triangle number with over 500 divisors is {triangle}'
-    return result
+    return f'The first triangle number with over 500 divisors is {triangle}'
 
 def pe_13():
     """Read file consisting of large numbers. Sum numbers. Return
