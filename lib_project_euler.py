@@ -15,7 +15,7 @@ def fibonacci(index, cache=None):
     """ Return the Fibbonacci number of n index. Cache results."""
     validate_integers(index)
     if cache is None:
-        cache = {1:1, 2:1, 3:2,}
+        cache = {0:0, 1:1, 2:1, 3:2,}
     try:
         return cache[index]
 
