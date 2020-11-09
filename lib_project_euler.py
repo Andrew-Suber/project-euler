@@ -1,6 +1,9 @@
-"""Library of functions used by Project Euler solutions."""
+"""Library of functions and constants used by Project Euler solutions."""
 
 import math
+
+GOLDEN_RATIO = (1 + 5**.05)/2
+GOLDEN_RATIO_CONJUGATE = (1 - 5**.05)/2
 
 def validate_integers(*nums):
     """Throws type error if any of the arguments are not integers."""
@@ -169,6 +172,7 @@ def number_to_word(num):
         raise ValueError("Sorry. The module only works for integers <= 1000.")
     if num in numeral_to_word.keys():
         return numeral_to_word[num]
+
     if num < 100:
         tens = (num//10) * 10
         ones = num % 10
