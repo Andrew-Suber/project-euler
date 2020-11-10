@@ -192,3 +192,11 @@ def gcd_naive(a, b):
     while b != 0:
         a, b = b, a % b
     return a
+
+def lcm(a, b):
+    """Return lowest common multiple. It is the product of a
+    and b divided by the greatest common divisor.
+    """
+    gcd = gcd(a, b)
+    result = (a * b) / gcd
+    return int(result)
