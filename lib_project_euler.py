@@ -184,3 +184,11 @@ def number_to_word(num):
 
     two_digits = number_to_word(num % 100)
     return hundreds + ' and ' + two_digits
+
+def gcd_naive(a, b):
+    """Return greatest common divisor of a and b through Euclidian algorithim."""
+    if b > a:
+        a, b = b, a
+    while b != 0:
+        a, b = b, a % b
+    return a
