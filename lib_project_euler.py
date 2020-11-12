@@ -185,20 +185,20 @@ def number_to_word(num):
     two_digits = number_to_word(num % 100)
     return hundreds + ' and ' + two_digits
 
-def gcd(a, b):
-    """Return greatest common divisor of a and b through Euclidian algorithim."""
-    validate_integers(a, b)
-    if b > a:
-        a, b = b, a
-    while b != 0:
-        a, b = b, a % b
-    return a
+def gcd(num_a, num_b):
+    """Return greatest common divisor of num_a and num_b through Euclidian algorithim."""
+    validate_integers(num_a, num_b)
+    if num_b > num_a:
+        num_a, num_b = num_b, num_a
+    while num_b != 0:
+        num_a, num_b = num_b, num_a % num_b
+    return num_a
 
-def lcm(a, b):
-    """Return lowest common multiple. It is the product of a
-    and b divided by the greatest common divisor.
+def lcm(num_a, num_b):
+    """Return lowest common multiple. It is the product of num_a
+    and num_b divided by the greatest common divisor.
     """
-    validate_integers(a, b)
-    gcd = gcd(a, b)
-    result = (a * b) / gcd
+    validate_integers(num_a, num_b)
+    gcd_result = gcd(num_a, num_b)
+    result = (num_a * num_b) / gcd_result
     return int(result)

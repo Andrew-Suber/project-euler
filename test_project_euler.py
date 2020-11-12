@@ -108,3 +108,10 @@ def test_number_to_word():
     assert lib_project_euler.number_to_word(952) == "nine hundred and fifty-two"
     assert lib_project_euler.number_to_word(1000) == "one thousand"
     assert lib_project_euler.number_to_word(100) == "one hundred"
+
+def test_gcd():
+    """Test function gcd."""
+    assert lib_project_euler.gcd(20, 15) == 5
+    assert lib_project_euler.gcd(4, 0) == 4
+    assert lib_project_euler.gcd(7, 13) == 1
+    assert lib_project_euler.gcd(28851538, 1183019) == 17657
