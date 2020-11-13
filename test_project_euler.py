@@ -115,3 +115,10 @@ def test_gcd():
     assert lib_project_euler.gcd(4, 0) == 4
     assert lib_project_euler.gcd(7, 13) == 1
     assert lib_project_euler.gcd(28851538, 1183019) == 17657
+
+def test_lcm():
+    """Test function lcm."""
+    assert lib_project_euler.lcm(9, 12) == 36
+    assert lib_project_euler.lcm(98, 102) == 4998
+    assert lib_project_euler.lcm(48, 118) == 2832
+    assert lib_project_euler.lcm(35, 95) == 665
