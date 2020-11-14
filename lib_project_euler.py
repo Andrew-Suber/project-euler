@@ -202,3 +202,11 @@ def lcm(num_a, num_b):
     gcd_result = gcd(num_a, num_b)
     result = (num_a * num_b) / gcd_result
     return int(result)
+
+def load_text_file(filename):
+    """ Returns a list of sequences. Words are strings of characters.  """
+    in_file = open(filename, 'r')
+    wordlist = []
+    for line in in_file:
+        wordlist.append(line.strip().lower())
+    return wordlist
