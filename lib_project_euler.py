@@ -210,3 +210,44 @@ def load_text_file(filename):
     for line in in_file:
         wordlist.append(line.strip().lower())
     return wordlist
+
+def horiz_value(x, y, grid):
+    """Return the product of 4 adjacent cells in a dictionary."""
+    try:
+        product = (grid[(x, y)] * grid[(x + 1, y)] *
+                    grid[(x + 2, y)] * grid[(x + 3, y)])
+    except:
+        return 0
+
+    return product
+
+def vertical_value(x, y, grid):
+    """Return the product of 4 vertically adjacent cells in a dictionary."""
+    try:
+        product = (grid[(x, y)] * grid[(x, y + 1)] *
+                    grid[(x, y + 2)] * grid[(x, y + 3)])
+    except:
+        return 0
+        
+    return product
+
+def right_diagonal_value(x, y, grid):
+    """Return the product of 4 right diagonally adjacent cells in a dictionary."""
+    try:
+        product = (grid[(x, y)] * grid[(x + 1, y + 1)] *
+                    grid[(x + 2, y + 2)] * grid[(x + 3, y + 3)])
+    except:
+        return 0
+
+    return product
+
+def left_diagonal_value(x, y, grid):
+    """Return the product of 4 left diagonally adjacent cells in a dictionary."""
+    try:
+        product = (grid[(x, y)] * grid[(x - 1, y + 1)] *
+                    grid[(x - 2, y + 2)] * grid[(x - 3, y + 3)])
+    except:
+        return 0
+
+    return product
+
