@@ -211,43 +211,42 @@ def load_text_file(filename):
         wordlist.append(line.strip().lower())
     return wordlist
 
-def horiz_value(x, y, grid):
+def horiz_value(coord_x, coord_y, grid):
     """Return the product of 4 adjacent cells in a dictionary."""
     try:
-        product = (grid[(x, y)] * grid[(x + 1, y)] *
-                    grid[(x + 2, y)] * grid[(x + 3, y)])
-    except:
+        product = (grid[(coord_x, coord_y)] * grid[(coord_x + 1, coord_y)] *
+                   grid[(coord_x + 2, coord_y)] * grid[(coord_x + 3, coord_y)])
+    except KeyError:
         return 0
 
     return product
 
-def vertical_value(x, y, grid):
+def vertical_value(coord_x, coord_y, grid):
     """Return the product of 4 vertically adjacent cells in a dictionary."""
     try:
-        product = (grid[(x, y)] * grid[(x, y + 1)] *
-                    grid[(x, y + 2)] * grid[(x, y + 3)])
-    except:
+        product = (grid[(coord_x, coord_y)] * grid[(coord_x, coord_y + 1)] *
+                   grid[(coord_x, coord_y + 2)] * grid[(coord_x, coord_y + 3)])
+    except KeyError:
         return 0
-        
+
     return product
 
-def right_diagonal_value(x, y, grid):
+def right_diagonal_value(coord_x, coord_y, grid):
     """Return the product of 4 right diagonally adjacent cells in a dictionary."""
     try:
-        product = (grid[(x, y)] * grid[(x + 1, y + 1)] *
-                    grid[(x + 2, y + 2)] * grid[(x + 3, y + 3)])
-    except:
+        product = (grid[(coord_x, coord_y)] * grid[(coord_x + 1, coord_y + 1)] *
+                   grid[(coord_x + 2, coord_y + 2)] * grid[(coord_x + 3, coord_y + 3)])
+    except KeyError:
         return 0
 
     return product
 
-def left_diagonal_value(x, y, grid):
+def left_diagonal_value(coord_x, coord_y, grid):
     """Return the product of 4 left diagonally adjacent cells in a dictionary."""
     try:
-        product = (grid[(x, y)] * grid[(x - 1, y + 1)] *
-                    grid[(x - 2, y + 2)] * grid[(x - 3, y + 3)])
-    except:
+        product = (grid[(coord_x, coord_y)] * grid[(coord_x - 1, coord_y + 1)] *
+                   grid[(coord_x - 2, coord_y + 2)] * grid[(coord_x - 3, coord_y + 3)])
+    except KeyError:
         return 0
 
     return product
-
