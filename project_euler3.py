@@ -121,51 +121,33 @@ def pe_10():
 
 def pe_11():
     """solve pe 11"""
-    #read a string of integers into a dictionary with a tuple as
-    #(x,y) coordinates. The first element in the list is (0,0), 2nd (1, 0).
-    grid = load_text_file('files/pe_11_grid.txt')
+    grid = lib_project_euler.load_text_file('files/pe_11_grid.txt')
     x, y = 0, 0
     grid_2 = {}
 
-    while grid != []:
+    while grid:
         current_line = grid.pop(0)
         current_line = current_line.split(' ')
         x = 0
-        while current_line != []:
+        while current_line:
             current_word = current_line.pop(0)
             current_word = int(current_word)
             grid_2[(x, y)] = current_word
             x += 1
         y += 1
-
-    x = 0
-    y = 0
     high_value = 0
+    for key in grid_2:
+        x, y = key[0], key[1]
+        value = lib_project_euler.horiz_value(x, y, grid_2)
+        high_value = max(value, high_value)
+        value = lib_project_euler.vertical_value(x, y, grid_2)
+        high_value = max(value, high_value)
+        value = lib_project_euler.left_diagonal_value(x, y, grid_2)
+        high_value = max(value, high_value)
+        value = lib_project_euler.right_diagonal_value(x, y, grid_2)
+        high_value = max(value, high_value)
+    return f'The highest product in the given grid is {high_value}'
 
-    while x < 20:
-        y = 0
-        while y < 20:
-            value = horiz_value(x, y, grid_2)
-            if value > high_value:
-                high_value = value
-                print(x, y, "horizontal", high_value)
-            value = vertical_value(x, y, grid_2)
-            if value > high_value:
-                high_value = value
-                print(x, y, "vertical", high_value)
-            value = left_diagonal_value(x, y, grid_2)
-            if value > high_value:
-                high_value = value
-                print(x, y, "left diagonal", high_value)
-            value = right_diagonal_value(x, y, grid_2)
-            if value > high_value:
-                high_value = value
-                print(x, y, "right diagonal", high_value)
-            print(x, y)
-            y += 1
-        x += 1
-
-    print(high_value)
 
 def pe_12():
     """Find first triangle number with over 500 divisors."""
