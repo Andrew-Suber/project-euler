@@ -103,25 +103,69 @@ def pe_8():
     return f'{best_result} is the answer to project euler problem 8.'
 
 def pe_9():
-    """Project euler problem 9. find pythagorean triplet that sums to 1000."""
+    """project euler problem 9. find pythagorean triplet that sums to 1000."""
     limit = 1000
     for hypotenuse_c in range(334, limit//2):
         for side_a in range(1, (limit - hypotenuse_c)//2):
             b_side = (limit -  hypotenuse_c) - side_a
             if lib_project_euler.is_pyth_triplet(side_a, b_side, hypotenuse_c):
-                return ''.join(['The pythagorean triplet that sums to 1000 is:',
+                return ''.join(['the pythagorean triplet that sums to 1000 is:',
                                 f'{side_a, b_side, hypotenuse_c}'])
-    return 'No triplet was found for sum limit {limit}.'
+    return 'no triplet was found for sum limit {limit}.'
 
 def pe_10():
-    """Find the sum of all primes below 2,000,000."""
+    """find the sum of all primes below 2,000,000."""
     primes = set(lib_project_euler.prime_sieve(2000000))
     result = sum(primes)
-    return f'The sum of all primes below 2,000,000 is {result}.'
+    return f'the sum of all primes below 2,000,000 is {result}.'
 
 def pe_11():
-    """Solve pe 11"""
-    pass
+    """solve pe 11"""
+    #read a string of integers into a dictionary with a tuple as
+    #(x,y) coordinates. The first element in the list is (0,0), 2nd (1, 0).
+    grid = load_text_file('files/pe_11_grid.txt')
+    x, y = 0, 0
+    grid_2 = {}
+
+    while grid != []:
+        current_line = grid.pop(0)
+        current_line = current_line.split(' ')
+        x = 0
+        while current_line != []:
+            current_word = current_line.pop(0)
+            current_word = int(current_word)
+            grid_2[(x, y)] = current_word
+            x += 1
+        y += 1
+
+    x = 0
+    y = 0
+    high_value = 0
+
+    while x < 20:
+        y = 0
+        while y < 20:
+            value = horiz_value(x, y, grid_2)
+            if value > high_value:
+                high_value = value
+                print(x, y, "horizontal", high_value)
+            value = vertical_value(x, y, grid_2)
+            if value > high_value:
+                high_value = value
+                print(x, y, "vertical", high_value)
+            value = left_diagonal_value(x, y, grid_2)
+            if value > high_value:
+                high_value = value
+                print(x, y, "left diagonal", high_value)
+            value = right_diagonal_value(x, y, grid_2)
+            if value > high_value:
+                high_value = value
+                print(x, y, "right diagonal", high_value)
+            print(x, y)
+            y += 1
+        x += 1
+
+    print(high_value)
 
 def pe_12():
     """Find first triangle number with over 500 divisors."""
