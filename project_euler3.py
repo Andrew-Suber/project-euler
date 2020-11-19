@@ -122,29 +122,29 @@ def pe_10():
 def pe_11():
     """solve pe 11"""
     grid = lib_project_euler.load_text_file('files/pe_11_grid.txt')
-    x, y = 0, 0
+    point_x, point_y = 0, 0
     grid_2 = {}
 
     while grid:
         current_line = grid.pop(0)
         current_line = current_line.split(' ')
-        x = 0
+        point_x = 0
         while current_line:
             current_word = current_line.pop(0)
             current_word = int(current_word)
-            grid_2[(x, y)] = current_word
-            x += 1
-        y += 1
+            grid_2[(point_x, point_y)] = current_word
+            point_x += 1
+        point_y += 1
     high_value = 0
     for key in grid_2:
-        x, y = key[0], key[1]
-        value = lib_project_euler.horiz_value(x, y, grid_2)
+        point_x, point_y = key[0], key[1]
+        value = lib_project_euler.horiz_value(point_x, point_y, grid_2)
         high_value = max(value, high_value)
-        value = lib_project_euler.vertical_value(x, y, grid_2)
+        value = lib_project_euler.vertical_value(point_x, point_y, grid_2)
         high_value = max(value, high_value)
-        value = lib_project_euler.left_diagonal_value(x, y, grid_2)
+        value = lib_project_euler.left_diagonal_value(point_x, point_y, grid_2)
         high_value = max(value, high_value)
-        value = lib_project_euler.right_diagonal_value(x, y, grid_2)
+        value = lib_project_euler.right_diagonal_value(point_x, point_y, grid_2)
         high_value = max(value, high_value)
     return f'The highest product in the given grid is {high_value}'
 
