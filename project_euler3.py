@@ -130,9 +130,9 @@ def pe_11():
         current_line = current_line.split(' ')
         point_x = 0
         while current_line:
-            current_word = current_line.pop(0)
-            current_word = int(current_word)
-            grid_2[(point_x, point_y)] = current_word
+            current_value = current_line.pop(0)
+            current_value = int(current_value)
+            grid_2[(point_x, point_y)] = current_value
             point_x += 1
         point_y += 1
     high_value = 0
@@ -180,10 +180,10 @@ def pe_14():
     limit = 500000
     best_result = (0, 0)
 
-    for i in range(1, limit):
-        length = lib_project_euler.find_collatz_stopping_time(i)
+    for integer in range(1, limit):
+        length = lib_project_euler.find_collatz_stopping_time(integer)
         if best_result[1] < length:
-            best_result = (i, length)
+            best_result = (integer, length)
 
     result = ''.join((f'{best_result[0]} is the number with the highest Collatz ',
                       f'stopping time under {limit}: {best_result[1]} iterations.'))
@@ -204,13 +204,13 @@ def pe_16():
 
 def pe_17():
     """Sum the number of characters in the UK words representing the
-    integers from 1 to 1,000."""
+    integers from 1 to 1,000. Exclude dashes and spaces."""
     total = 0
-    for i in range(1, 1001):
-        i = lib_project_euler.number_to_word(i)
-        i = i.replace('-', '')
-        i = i.replace(' ', '')
-        total += len(i)
+    for number_word in range(1, 1001):
+        number_word = lib_project_euler.number_to_word(number_word)
+        number_word = number_word.replace('-', '')
+        number_word = number_word.replace(' ', '')
+        total += len(number_word)
     return f'The sum of characters in the number words from 1 to 1,000 is {total}.'
 
 
@@ -223,8 +223,8 @@ def pe_92():
     limit = 10000000
     happy_count = 0
 
-    for i in range(1, limit + 1):
-        if lib_project_euler.is_happy(i):
+    for integer in range(1, limit + 1):
+        if lib_project_euler.is_happy(integer):
             happy_count += 1
     sad_count = limit - happy_count
     return f'there are {sad_count} numbers from 1 to {limit} that are sad.'
