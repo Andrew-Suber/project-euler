@@ -218,8 +218,21 @@ def pe_18():
     """solve pe 18"""
     pass
 
+def pe_38():
+    """solve pe 38"""
+    pan_digit_primes = []
+    primes = primeSeive(10000000)
+    for prime in primes:
+        numeral = prime
+        x = len(str(prime))
+        prime = set(str(prime))
+        if prime == panDigitComparison(x):
+            pan_digit_primes.append(numeral)
+            print(numeral)
+    print(pan_digit_primes)
+
 def pe_92():
-    """find all the 'sad' numbers under 10,000,000."""
+    """Find all the 'sad' numbers under 10,000,000."""
     limit = 10000000
     happy_count = 0
 
