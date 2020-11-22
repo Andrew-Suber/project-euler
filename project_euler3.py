@@ -218,18 +218,15 @@ def pe_18():
     """solve pe 18"""
     pass
 
-def pe_38():
-    """solve pe 38"""
-    pan_digit_primes = []
-    primes = primeSeive(10000000)
+def pe_41():
+    """PE 41. Find the largest pandigital prime possible."""
+    pan_digit_primes = set()
+    primes = lib_project_euler.prime_sieve(10000000)
     for prime in primes:
-        numeral = prime
-        x = len(str(prime))
-        prime = set(str(prime))
-        if prime == panDigitComparison(x):
-            pan_digit_primes.append(numeral)
-            print(numeral)
-    print(pan_digit_primes)
+        if  lib_project_euler.is_pan_digital(prime):
+            pan_digit_primes.add(prime)
+    result = max(pan_digit_primes)
+    return f'The largest possible pandigital prime is {result}.'
 
 def pe_92():
     """Find all the 'sad' numbers under 10,000,000."""
