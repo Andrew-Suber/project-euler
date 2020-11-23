@@ -218,18 +218,33 @@ def pe_18():
     """solve pe 18"""
     pass
 
+def pe_32():
+    """solve pe 32"""
+    pan_digit_products = set()
+    for i in range(2, 2000):
+        for j in range(2, 2000):
+            product = i * j
+            numeral = str(i) + str(j) + str(product)
+            x = len(str(numeral))
+            if x == 9:
+                numeral = set(str(numeral))
+                if numeral == pandigitcomparison(x):
+                    pan_digit_products.add(product)
+            else:
+                pass
+
 def pe_41():
-    """PE 41. Find the largest pandigital prime possible."""
+    """pe 41. find the largest pandigital prime possible."""
     pan_digit_primes = set()
     primes = lib_project_euler.prime_sieve(10000000)
     for prime in primes:
         if  lib_project_euler.is_pan_digital(prime):
             pan_digit_primes.add(prime)
     result = max(pan_digit_primes)
-    return f'The largest possible pandigital prime is {result}.'
+    return f'the largest possible pandigital prime is {result}.'
 
 def pe_92():
-    """Find all the 'sad' numbers under 10,000,000."""
+    """find all the 'sad' numbers under 10,000,000."""
     limit = 10000000
     happy_count = 0
 
