@@ -131,7 +131,6 @@ def is_happy(num):
 
 def is_pan_digital(num):
     """Return True if num is pan digital, i.e. 123 or 4,123."""
-    validate_integers(num)
     comparison = '123456789'
     num = str(num)
     if len(num) > len(set(num)):
