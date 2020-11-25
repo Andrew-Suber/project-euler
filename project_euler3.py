@@ -219,19 +219,23 @@ def pe_18():
     pass
 
 def pe_32():
-    """solve pe 32.Find multiplicand and product strings that are pandigital
-    i.e 123456789.
+    """solve pe 32.Find multiplicand, multiplier and product strings that are
+    pandigital i.e 123456789.
     """
     pan_digit_products = set()
-    for multiplicand_a in range(2, 2000):
-        for multiplicand_b in range(2, 2000):
-            product = multiplicand_a * multiplicand_b
-            joined_string = str(multiplicand_a) + str(multiplicand_b) + str(product)
+    for multiplicand in range(2, 2000):
+        for multiplier in range(2, 2000):
+            product = multiplicand * multiplier
+            joined_string = str(multiplicand) + str(multiplier) + str(product)
             if len(str(joined_string)) == 9:
                 if lib_project_euler.is_pan_digital(joined_string):
                     pan_digit_products.add(product)
     result = sum(pan_digit_products)
     return f'The sum of possible pandigital products is {result}.'
+
+def pe_32():
+    """Solve PE 38. Find pandigital products."""
+
 
 def pe_41():
     """pe 41. find the largest pandigital prime possible."""

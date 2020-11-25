@@ -122,3 +122,8 @@ def test_lcm():
     assert lib_project_euler.lcm(98, 102) == 4998
     assert lib_project_euler.lcm(48, 118) == 2832
     assert lib_project_euler.lcm(35, 95) == 665
+
+def test_create_nine_digit_product():
+    """Test function create_nine_digit_product."""
+    assert lib_project_euler.create_nine_digit_product(9) == "918273645"
+    assert lib_project_euler.create_nine_digit_product(192) ==  "192384576"
