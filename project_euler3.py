@@ -233,9 +233,15 @@ def pe_32():
     result = sum(pan_digit_products)
     return f'The sum of possible pandigital products is {result}.'
 
-def pe_32():
+def pe_38():
     """Solve PE 38. Find pandigital products."""
-
+    pandigital_products = set()
+    for num in range(2, 9999):
+        concatenated_product = lib_project_euler.create_nine_digit_product(num)
+        if lib_project_euler.is_pan_digital(concatenated_product):
+            pandigital_products.add(int(concatenated_product))
+    result = max(pandigital_products)
+    return f'The solution for Project Euler 38 is {result}.'
 
 def pe_41():
     """pe 41. find the largest pandigital prime possible."""

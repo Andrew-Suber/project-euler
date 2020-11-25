@@ -251,8 +251,8 @@ def left_diagonal_value(coord_x, coord_y, grid):
     return product
 
 def create_nine_digit_product(num):
-    """ Create a nine digit string resulting from the concatenation of 
-    the product from num and  multipliers 1, 2, 3,.... Return 0 if string
+    """ Create a nine digit string resulting from the concatenation of
+    the product from num and  multipliers (1, 2, 3,).... Return 0 if string
     cannot be length 9.
 
     """
