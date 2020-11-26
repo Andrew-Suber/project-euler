@@ -233,6 +233,26 @@ def pe_32():
     result = sum(pan_digit_products)
     return f'The sum of possible pandigital products is {result}.'
 
+def pe_34():
+    integers = list(i for i in range(1,3000000,1))
+    digit_factorials = []
+    factorials = {0:1, 1:1, 2:2, 3:6, 4:24, 5:120,
+                  6:720, 7:5040, 8:40320, 9:362880}
+    for integer in integers:
+        string = str(integer)
+        string = list(string)
+        new_list = []
+        for i in string:
+            x = int(i)
+            x = factorials[x]
+            new_list.append(x)
+        if sum(new_list) == integer:
+            print(sum(new_list), integer)
+            print('Bingo!', integer)
+            digit_factorials.append(integer)
+    digit_factorials.remove(1)
+    digit_factorials.remove(2)
+
 def pe_38():
     """Solve PE 38. Find pandigital products."""
     pandigital_products = set()
