@@ -127,3 +127,8 @@ def test_create_nine_digit_product():
     """Test function create_nine_digit_product."""
     assert lib_project_euler.create_nine_digit_product(9) == "918273645"
     assert lib_project_euler.create_nine_digit_product(192) ==  "192384576"
+
+
+def test_find_sum_of_digit_factorial():
+    """Test function find_sum_of_digit_factorial."""
+    pass

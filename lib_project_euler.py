@@ -264,3 +264,13 @@ def create_nine_digit_product(num):
     if len(result) > 9:
         result = 0
     return result
+
+def find_sum_of_digit_factorial(number):
+    """Return the ~Sum the factorial value of the digits of a number."""
+    factorials = {0:1, 1:1, 2:2, 3:6, 4:24, 5:120,
+                  6:720, 7:5040, 8:40320, 9:362880}
+    number = str(number)
+    result = 0
+    for char in number:
+        result += factorials[int(char)]
+    return result
