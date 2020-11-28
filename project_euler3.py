@@ -241,7 +241,8 @@ def pe_34():
     #It is impossible for for this sum to be equal for a number > 7 * 9!
     result = 0
     for number in range(10, limit):
-        result += lib_project_euler.find_sum_of_digit_factorial(number)
+        if number == int(lib_project_euler.find_sum_of_digit_factorial(number)):
+            result += lib_project_euler.find_sum_of_digit_factorial(number)
     return f'The solution for Project Euler 34 is {result}'
 
 def pe_38():

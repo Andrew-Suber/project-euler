@@ -131,4 +131,5 @@ def test_create_nine_digit_product():
 
 def test_find_sum_of_digit_factorial():
     """Test function find_sum_of_digit_factorial."""
-    pass
+    assert lib_project_euler.find_sum_of_digit_factorial(123) == 9
+    assert lib_project_euler.find_sum_of_digit_factorial(292) == 362884
