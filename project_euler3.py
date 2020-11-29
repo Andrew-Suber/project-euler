@@ -218,6 +218,13 @@ def pe_18():
     """solve pe 18. """
     pass
 
+def pe_34():
+    """Solve PE 34. Find the sum of all numbers that are equal to the sum of 
+    the fifth power of their digits.
+    """
+    #TODO
+    pass
+
 def pe_32():
     """solve pe 32.Find multiplicand, multiplier and product strings that are
     pandigital i.e 123456789.

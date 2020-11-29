@@ -274,3 +274,8 @@ def find_sum_of_digit_factorial(number):
     for char in number:
         result += factorials[int(char)]
     return result
+
+def sum_fifth_power_of_digits(number):
+    "Return the sum of the fifth power of each digit of number."""
+    #TODO
+    pass
