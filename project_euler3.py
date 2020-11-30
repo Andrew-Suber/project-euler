@@ -1,3 +1,4 @@
+
 """Refactoring, organization of completed Project Euler problems.
 Each Project Euler problem uses a function named pe_foo.
 To perform a computation, invoke a function from the command line, like so:
@@ -222,8 +223,6 @@ def pe_34():
     """Solve PE 34. Find the sum of all numbers that are equal to the sum of 
     the fifth power of their digits.
     """
-    #TODO
-    pass
 
 def pe_32():
     """solve pe 32.Find multiplicand, multiplier and product strings that are
