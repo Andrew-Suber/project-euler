@@ -7,7 +7,7 @@ Start date: 6/21/19.
 """
 
 import pytest
-import lib_project_euler
+import lib_project_euler as lpe
 
 pytest.main(['-v'])
 
@@ -23,16 +23,16 @@ def pe_2():
     """ Return the sum of all even fibonacci numbers under 4,000,000."""
     counter = 1
     result = 0
-    while lib_project_euler.fibonacci(counter) < 4000000:
-        if lib_project_euler.fibonacci(counter) % 2 == 0:
-            result += lib_project_euler.fibonacci(counter)
+    while lpe.fibonacci(counter) < 4000000:
+        if lpe.fibonacci(counter) % 2 == 0:
+            result += lpe.fibonacci(counter)
         counter += 1
     return f'The sum of all even fibonacci numbers under 4,000,000 is {result}'
 
 def pe_3():
     """ Find the largest prime factor of the test number."""
     test_number = 600851475143
-    result = max(lib_project_euler.find_prime_factors(test_number))
+    result = max(lpe.find_prime_factors(test_number))
     return f'The largest prime factor of 600851475143 is {result}'
 
 def pe_4():
@@ -54,7 +54,7 @@ def pe_5():
     from 1 to limit.
     """
     limit = 20
-    potential_factors = lib_project_euler.prime_sieve(limit)
+    potential_factors = lpe.prime_sieve(limit)
     factors = []
     product = 1
 
@@ -84,7 +84,7 @@ def pe_6():
 
 def pe_7():
     """Solve pe 7, find the 10,001st prime number."""
-    primes = list(lib_project_euler.prime_sieve(200000))
+    primes = list(lpe.prime_sieve(200000))
     primes.sort()
     return f'The 10,001st prime number is {primes[10000]}.'
 
@@ -97,7 +97,7 @@ def pe_8():
     best_result = 0
     index = 0
     while index < len(sample) - 12:
-        current_product = lib_project_euler.find_product(sample[index:index + 13])
+        current_product = lpe.find_product(sample[index:index + 13])
         if current_product > best_result:
             best_result = current_product
         index += 1
@@ -109,20 +109,20 @@ def pe_9():
     for hypotenuse_c in range(334, limit//2):
         for side_a in range(1, (limit - hypotenuse_c)//2):
             b_side = (limit -  hypotenuse_c) - side_a
-            if lib_project_euler.is_pyth_triplet(side_a, b_side, hypotenuse_c):
+            if lpe.is_pyth_triplet(side_a, b_side, hypotenuse_c):
                 return ''.join(['the pythagorean triplet that sums to 1000 is:',
                                 f'{side_a, b_side, hypotenuse_c}'])
     return 'no triplet was found for sum limit {limit}.'
 
 def pe_10():
     """find the sum of all primes below 2,000,000."""
-    primes = set(lib_project_euler.prime_sieve(2000000))
+    primes = set(lpe.prime_sieve(2000000))
     result = sum(primes)
     return f'the sum of all primes below 2,000,000 is {result}.'
 
 def pe_11():
     """solve pe 11"""
-    grid = lib_project_euler.load_text_file('files/pe_11_grid.txt')
+    grid = lpe.load_text_file('files/pe_11_grid.txt')
     point_x, point_y = 0, 0
     grid_2 = {}
 
@@ -139,13 +139,13 @@ def pe_11():
     high_value = 0
     for key in grid_2:
         point_x, point_y = key[0], key[1]
-        value = lib_project_euler.horiz_value(point_x, point_y, grid_2)
+        value = lpe.horiz_value(point_x, point_y, grid_2)
         high_value = max(value, high_value)
-        value = lib_project_euler.vertical_value(point_x, point_y, grid_2)
+        value = lpe.vertical_value(point_x, point_y, grid_2)
         high_value = max(value, high_value)
-        value = lib_project_euler.left_diagonal_value(point_x, point_y, grid_2)
+        value = lpe.left_diagonal_value(point_x, point_y, grid_2)
         high_value = max(value, high_value)
-        value = lib_project_euler.right_diagonal_value(point_x, point_y, grid_2)
+        value = lpe.right_diagonal_value(point_x, point_y, grid_2)
         high_value = max(value, high_value)
     return f'The highest product in the given grid is {high_value}'
 
@@ -157,7 +157,7 @@ def pe_12():
 
     while True:
         triangle = triangle + counter
-        factors = len(lib_project_euler.find_factors(triangle))
+        factors = len(lpe.find_factors(triangle))
         if factors > 500:
             break
         counter = counter + 1
@@ -182,7 +182,7 @@ def pe_14():
     best_result = (0, 0)
 
     for integer in range(1, limit):
-        length = lib_project_euler.find_collatz_stopping_time(integer)
+        length = lpe.find_collatz_stopping_time(integer)
         if best_result[1] < length:
             best_result = (integer, length)
 
@@ -192,7 +192,7 @@ def pe_14():
 
 def pe_15():
     """Find the number of possible distinct paths in a square lattice 20x20."""
-    result = lib_project_euler.find_combinations(40, 20)
+    result = lpe.find_combinations(40, 20)
     return f'The number of possible paths in a lattice 20x20 is {result}.'
 
 def pe_16():
@@ -208,7 +208,7 @@ def pe_17():
     integers from 1 to 1,000. Exclude dashes and spaces."""
     total = 0
     for number_word in range(1, 1001):
-        number_word = lib_project_euler.number_to_word(number_word)
+        number_word = lpe.number_to_word(number_word)
         number_word = number_word.replace('-', '')
         number_word = number_word.replace(' ', '')
         total += len(number_word)
@@ -219,10 +219,11 @@ def pe_18():
     """solve pe 18. """
     pass
 
-def pe_34():
-    """Solve PE 34. Find the sum of all numbers that are equal to the sum of 
+def pe_30():
+    """Solve PE 30. Find the sum of all numbers that are equal to the sum of
     the fifth power of their digits.
     """
+    pass
 
 def pe_32():
     """solve pe 32.Find multiplicand, multiplier and product strings that are
@@ -234,7 +235,7 @@ def pe_32():
             product = multiplicand * multiplier
             joined_string = str(multiplicand) + str(multiplier) + str(product)
             if len(str(joined_string)) == 9:
-                if lib_project_euler.is_pan_digital(joined_string):
+                if lpe.is_pan_digital(joined_string):
                     pan_digit_products.add(product)
     result = sum(pan_digit_products)
     return f'The sum of possible pandigital products is {result}.'
@@ -247,16 +248,16 @@ def pe_34():
     #It is impossible for for this sum to be equal for a number > 7 * 9!
     result = 0
     for number in range(10, limit):
-        if number == int(lib_project_euler.find_sum_of_digit_factorial(number)):
-            result += lib_project_euler.find_sum_of_digit_factorial(number)
+        if number == int(lpe.find_sum_of_digit_factorial(number)):
+            result += lpe.find_sum_of_digit_factorial(number)
     return f'The solution for Project Euler 34 is {result}'
 
 def pe_38():
     """Solve PE 38. Find pandigital products."""
     pandigital_products = set()
     for num in range(2, 9999):
-        concatenated_product = lib_project_euler.create_nine_digit_product(num)
-        if lib_project_euler.is_pan_digital(concatenated_product):
+        concatenated_product = lpe.create_nine_digit_product(num)
+        if lpe.is_pan_digital(concatenated_product):
             pandigital_products.add(int(concatenated_product))
     result = max(pandigital_products)
     return f'The solution for Project Euler 38 is {result}.'
@@ -264,9 +265,9 @@ def pe_38():
 def pe_41():
     """pe 41. find the largest pandigital prime possible."""
     pan_digit_primes = set()
-    primes = lib_project_euler.prime_sieve(10000000)
+    primes = lpe.prime_sieve(10000000)
     for prime in primes:
-        if  lib_project_euler.is_pan_digital(prime):
+        if  lpe.is_pan_digital(prime):
             pan_digit_primes.add(prime)
     result = max(pan_digit_primes)
     return f'the largest possible pandigital prime is {result}.'
@@ -277,7 +278,7 @@ def pe_92():
     happy_count = 0
 
     for integer in range(1, limit + 1):
-        if lib_project_euler.is_happy(integer):
+        if lpe.is_happy(integer):
             happy_count += 1
     sad_count = limit - happy_count
     return f'there are {sad_count} numbers from 1 to {limit} that are sad.'
