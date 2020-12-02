@@ -223,7 +223,14 @@ def pe_30():
     """Solve PE 30. Find the sum of all numbers that are equal to the sum of
     the fifth power of their digits.
     """
-    pass
+    limit = 99999
+    #It is impossible for this sum > limit. 292245 < 999999
+    result = 0
+    for number in range(10, limit):
+        if number == lpe.sum_fifth_power_of_digits(number):
+            result += number
+    return ''.join(('The sum of all numbers equal to the sum',
+                    f' of the fifth power of their digits is {result}.'))
 
 def pe_32():
     """solve pe 32.Find multiplicand, multiplier and product strings that are
@@ -249,7 +256,7 @@ def pe_34():
     result = 0
     for number in range(10, limit):
         if number == int(lpe.find_sum_of_digit_factorial(number)):
-            result += lpe.find_sum_of_digit_factorial(number)
+            result += number
     return f'The solution for Project Euler 34 is {result}'
 
 def pe_38():

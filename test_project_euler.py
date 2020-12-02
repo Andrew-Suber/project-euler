@@ -136,4 +136,6 @@ def test_find_sum_of_digit_factorial():
 
 def test_sum_fifth_power_of_digits():
     """Test function sum_fifth_power_of_digits."""
-    pass
+    assert lpe.sum_fifth_power_of_digits(456) == 11925
+    assert lpe.sum_fifth_power_of_digits(789) == 108624
+    assert lpe.sum_fifth_power_of_digits(123) == 276
