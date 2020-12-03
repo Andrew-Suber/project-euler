@@ -223,8 +223,8 @@ def pe_30():
     """Solve PE 30. Find the sum of all numbers that are equal to the sum of
     the fifth power of their digits.
     """
-    limit = 99999
-    #It is impossible for this sum > limit. 292245 < 999999
+    limit = 999999
+    #It is impossible for this sum > limit. 354294 < 999999
     result = 0
     for number in range(10, limit):
         if number == lpe.sum_fifth_power_of_digits(number):
