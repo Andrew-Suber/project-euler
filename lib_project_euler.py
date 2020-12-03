@@ -277,9 +277,24 @@ def find_sum_of_digit_factorial(number):
 
 def sum_fifth_power_of_digits(number):
     """Return the sum of the fifth power of each digit of number."""
-    powers_of_five = {0:0, 1: 1, 2: 32, 3: 243, 4: 1024, 5: 3125, 6: 7776,
-                      7: 16807, 8: 32768, 9: 59049}
+    fifth_powers = {0:0, 1: 1, 2: 32, 3: 243, 4: 1024, 5: 3125, 6: 7776,
+                    7: 16807, 8: 32768, 9: 59049}
     result = 0
     for char in str(number):
-        result += powers_of_five[int(char)]
+        result += fifth_powers[int(char)]
     return result
+
+def find_proper_divisors(number):
+    """Return a set of proper divisors for number."""
+    validate_integers(number)
+    if number == 0:
+        raise ValueError("Zero is a special case.")
+    limit = number ** .5 + 1
+    results = {1}
+    potential_divisor = 2
+    while potential_divisor <= limit:
+        if number % potential_divisor == 0:
+            results.add(potential_divisor)
+            results.add(number/potential_divisor)
+        potential_divisor += 1
+    return results

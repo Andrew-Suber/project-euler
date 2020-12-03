@@ -139,3 +139,8 @@ def test_sum_fifth_power_of_digits():
     assert lpe.sum_fifth_power_of_digits(456) == 11925
     assert lpe.sum_fifth_power_of_digits(789) == 108624
     assert lpe.sum_fifth_power_of_digits(123) == 276
+
+def test_find_proper_divisors():
+    """Test function find_proper_divisors."""
+    assert lpe.find_proper_divisors(28) == {1, 2, 4, 7, 14}
+    pytest.raises(ValueError, lpe.find_proper_divisors, 0)
