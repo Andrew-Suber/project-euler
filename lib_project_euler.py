@@ -1,6 +1,7 @@
 """Library of functions and constants used by Project Euler solutions."""
 
 import math
+import pytest
 
 GOLDEN_RATIO = (1 + 5**.05)/2
 GOLDEN_RATIO_CONJUGATE = (1 - 5**.05)/2
@@ -49,6 +50,8 @@ def prime_sieve(limit):
 def find_prime_factors(num):
     """Find prime factors of num."""
     validate_integers(num)
+    if num == 0:
+        raise ValueError("Zero is a special case.")
     potential_factor = 2
     prime_factors = set()
     while potential_factor <= num:
@@ -88,18 +91,30 @@ def is_pyth_triplet(side_a, side_b, hypotenuse_c):
 def find_factors(num):
     """Find factors of num, i.e. 6 returns {1, 2, 3, 6}"""
     validate_integers(num)
+    if num == 0:
+        raise ValueError("Zero is a special case.")
     factors = set()
-    for i in range(1, int(num**.5)+ 1):
-        if num % i == 0:
-            factors.add(i)
-            factors.add(int(num/i))
+    for potential_factor in range(1, int(num**.5)+ 1):
+        if num % potential_factor == 0:
+            factors.add(potential_factor)
+            factors.add(int(num/potential_factor))
     return factors
+
+def find_proper_divisors(number):
+    """Return a set of proper divisors for number."""
+    validate_integers(number)
+    if number == 0:
+        raise ValueError("Zero is a special case.")
+    results = find_factors(number)
+    results.discard(number)
+    return results
 
 def add_up_divisors(num):
     """Return sum of proper divisors of num, i.e. 6 returns 1+2+3."""
     validate_integers(num)
-    divisors = find_factors(num)
-    divisors.remove(num)
+    if num == 0:
+        raise ValueError("Zero is a special case.")
+    divisors = find_proper_divisors(num)
     return sum(divisors)
 
 def find_collatz_stopping_time(num):
@@ -266,7 +281,7 @@ def create_nine_digit_product(num):
     return result
 
 def find_sum_of_digit_factorial(number):
-    """Return the ~Sum the factorial value of the digits of a number."""
+    """Return the sum of the factorial value of the digits of a number."""
     factorials = {0:1, 1:1, 2:2, 3:6, 4:24, 5:120,
                   6:720, 7:5040, 8:40320, 9:362880}
     number = str(number)
@@ -284,17 +299,4 @@ def sum_fifth_power_of_digits(number):
         result += fifth_powers[int(char)]
     return result
 
-def find_proper_divisors(number):
-    """Return a set of proper divisors for number."""
-    validate_integers(number)
-    if number == 0:
-        raise ValueError("Zero is a special case.")
-    limit = number ** .5 + 1
-    results = {1}
-    potential_divisor = 2
-    while potential_divisor <= limit:
-        if number % potential_divisor == 0:
-            results.add(potential_divisor)
-            results.add(number/potential_divisor)
-        potential_divisor += 1
-    return results
+pytest.main(['-v'])

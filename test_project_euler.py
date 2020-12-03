@@ -27,6 +27,7 @@ def test_prime_sieve():
 def test_find_prime_factors():
     """Test function find_prime_factors."""
     assert lpe.find_prime_factors(28) == {2, 7}
+    assert lpe.find_prime_factors(24) == {2, 3}
     assert lpe.find_prime_factors(49) == {7}
     assert lpe.find_prime_factors(100) == {2, 5}
     assert lpe.find_prime_factors(600851475143) == {1471, 6857, 839, 71}
@@ -126,10 +127,9 @@ def test_lcm():
 def test_create_nine_digit_product():
     """Test function create_nine_digit_product."""
     assert lpe.create_nine_digit_product(9) == "918273645"
-    assert lpe.create_nine_digit_product(192) ==  "192384576"
+    assert lpe.create_nine_digit_product(192) == "192384576"
 
-
-def test_find_sum_of_digit_factorial():
+def test_sum_of_digit_factorial():
     """Test function find_sum_of_digit_factorial."""
     assert lpe.find_sum_of_digit_factorial(123) == 9
     assert lpe.find_sum_of_digit_factorial(292) == 362884
@@ -144,3 +144,5 @@ def test_find_proper_divisors():
     """Test function find_proper_divisors."""
     assert lpe.find_proper_divisors(28) == {1, 2, 4, 7, 14}
     pytest.raises(ValueError, lpe.find_proper_divisors, 0)
+
+pytest.main(['-v'])
