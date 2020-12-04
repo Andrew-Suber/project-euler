@@ -200,7 +200,9 @@ def number_to_word(num):
     return hundreds + ' and ' + two_digits
 
 def gcd(num_a, num_b):
-    """Return greatest common divisor of num_a and num_b through Euclidian algorithim."""
+    """Return greatest common divisor of num_a 
+    and num_b through Euclidian algorithim.
+    """
     validate_integers(num_a, num_b)
     if num_b > num_a:
         num_a, num_b = num_b, num_a

@@ -9,8 +9,6 @@ Start date: 6/21/19.
 import pytest
 import lib_project_euler as lpe
 
-pytest.main(['-v'])
-
 def pe_1():
     """ Return the sum of mod 5 and mod 3 integers under 1000."""
     result = 0
@@ -57,7 +55,6 @@ def pe_5():
     potential_factors = lpe.prime_sieve(limit)
     factors = []
     product = 1
-
     for num in potential_factors:
         root = num
         while True:
@@ -76,7 +73,6 @@ def pe_6():
     integers = [i for i in range(1, 101)]
     sum_of_squares = 0
     square_of_sum = (sum(integers))**2
-
     for i in integers:
         sum_of_squares += i**2
     answer = square_of_sum - sum_of_squares
@@ -93,7 +89,6 @@ def pe_8():
     digits in file."""
     with open('files/pe_8_sample.txt') as pe_8_sample:
         sample = pe_8_sample.read()
-
     best_result = 0
     index = 0
     while index < len(sample) - 12:
@@ -125,7 +120,6 @@ def pe_11():
     grid = lpe.load_text_file('files/pe_11_grid.txt')
     point_x, point_y = 0, 0
     grid_2 = {}
-
     while grid:
         current_line = grid.pop(0)
         current_line = current_line.split(' ')
@@ -149,12 +143,10 @@ def pe_11():
         high_value = max(value, high_value)
     return f'The highest product in the given grid is {high_value}'
 
-
 def pe_12():
     """Find first triangle number with over 500 divisors."""
     counter = 0
     triangle = 0
-
     while True:
         triangle = triangle + counter
         factors = len(lpe.find_factors(triangle))
@@ -180,12 +172,10 @@ def pe_14():
     """Solve pe 14"""
     limit = 500000
     best_result = (0, 0)
-
     for integer in range(1, limit):
         length = lpe.find_collatz_stopping_time(integer)
         if best_result[1] < length:
             best_result = (integer, length)
-
     result = ''.join((f'{best_result[0]} is the number with the highest Collatz ',
                       f'stopping time under {limit}: {best_result[1]} iterations.'))
     return result
@@ -213,7 +203,6 @@ def pe_17():
         number_word = number_word.replace(' ', '')
         total += len(number_word)
     return f'The sum of characters in the number words from 1 to 1,000 is {total}.'
-
 
 def pe_18():
     """solve pe 18. """
@@ -289,3 +278,5 @@ def pe_92():
             happy_count += 1
     sad_count = limit - happy_count
     return f'there are {sad_count} numbers from 1 to {limit} that are sad.'
+
+pytest.main(['-v'])
