@@ -143,6 +143,22 @@ def test_sum_fifth_power_of_digits():
 def test_find_proper_divisors():
     """Test function find_proper_divisors."""
     assert lpe.find_proper_divisors(28) == {1, 2, 4, 7, 14}
+    assert lpe.find_proper_divisors(1) == set()
     pytest.raises(ValueError, lpe.find_proper_divisors, 0)
+
+
+def test_return_num_and_sum_of_div():
+    """Test function return_num_and_sum_of_div."""
+    assert lpe.return_num_and_sum_of_div(220) == {220, 284}
+    assert lpe.return_num_and_sum_of_div(220) == {220, 284}
+
+def test_is_amicable():
+    """Test function is_amicable."""
+    assert lpe.is_amicable(220) is True
+    assert lpe.is_amicable(284) is True
+    assert lpe.is_amicable(1184) is True
+    assert lpe.is_amicable(1210) is True
+    assert lpe.is_amicable(123) is False
+    assert lpe.is_amicable(456) is False
 
 pytest.main(['-v'])

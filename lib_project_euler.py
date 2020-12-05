@@ -117,6 +117,27 @@ def add_up_divisors(num):
     divisors = find_proper_divisors(num)
     return sum(divisors)
 
+def return_num_and_sum_of_div(number):
+    """Return a set consisting of the number and the sum of its
+    proper divisors.
+    """
+    result = {number}
+    result.add(add_up_divisors(number))
+    return result
+
+def is_amicable(number):
+    """Return True if number is in an amicable pair, i.e. sum of proper
+    divisors of a is equal to b, whose sum of proper divisors is equal to a.
+    A perfect number returns False.
+    """
+    if len(return_num_and_sum_of_div(number)) == 1:
+        return False
+
+    potential_friend = add_up_divisors(number)
+    set_a = return_num_and_sum_of_div(number)
+    set_b = return_num_and_sum_of_div(potential_friend)
+    return set_a == set_b
+
 def find_collatz_stopping_time(num):
     """Find the length of the Collatz chain for num.
     12 would return 10 (inclusive of 1).
@@ -200,7 +221,7 @@ def number_to_word(num):
     return hundreds + ' and ' + two_digits
 
 def gcd(num_a, num_b):
-    """Return greatest common divisor of num_a 
+    """Return greatest common divisor of num_a
     and num_b through Euclidian algorithim.
     """
     validate_integers(num_a, num_b)
