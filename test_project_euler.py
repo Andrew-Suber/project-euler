@@ -1,5 +1,6 @@
 """Basic tests for functions in project euler library."""
 
+
 import pytest
 import lib_project_euler as lpe
 
@@ -15,6 +16,7 @@ def test_validate_integers():
 
 def test_fibonacci():
     """Test fibonacci function."""
+    assert lpe.fibonacci(0) == 0
     assert lpe.fibonacci(4) == 3
     assert lpe.fibonacci(5) == 5
     assert lpe.fibonacci(6) == 8
@@ -31,6 +33,7 @@ def test_find_prime_factors():
     assert lpe.find_prime_factors(49) == {7}
     assert lpe.find_prime_factors(100) == {2, 5}
     assert lpe.find_prime_factors(600851475143) == {1471, 6857, 839, 71}
+    pytest.raises(ValueError, lpe.find_prime_factors, 0)
 
 def test_happy_step():
     """Test function happy_step."""
@@ -146,11 +149,19 @@ def test_find_proper_divisors():
     assert lpe.find_proper_divisors(1) == set()
     pytest.raises(ValueError, lpe.find_proper_divisors, 0)
 
+def test_num_and_sum_of_div():
+    """Test function num_and_sum_of_div."""
+    assert lpe.num_and_sum_of_div(220) == {220, 284}
+    assert lpe.num_and_sum_of_div(220) == {220, 284}
+    pytest.raises(ValueError, lpe.num_and_sum_of_div, 0)
 
-def test_return_num_and_sum_of_div():
-    """Test function return_num_and_sum_of_div."""
-    assert lpe.return_num_and_sum_of_div(220) == {220, 284}
-    assert lpe.return_num_and_sum_of_div(220) == {220, 284}
+def test_is_perfect():
+    """Test function is_perfect."""
+    assert lpe.is_perfect(28) is True
+    assert lpe.is_perfect(496) is True
+    assert lpe.is_perfect(234) is False
+    assert lpe.is_perfect(567) is  False
+    assert lpe.is_perfect(0) is  False
 
 def test_is_amicable():
     """Test function is_amicable."""
@@ -160,5 +171,7 @@ def test_is_amicable():
     assert lpe.is_amicable(1210) is True
     assert lpe.is_amicable(123) is False
     assert lpe.is_amicable(456) is False
+    pytest.raises(ValueError, lpe.is_amicable, 0)
+
 
 pytest.main(['-v'])

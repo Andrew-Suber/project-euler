@@ -1,16 +1,24 @@
 """Library of functions and constants used by Project Euler solutions."""
 
+
 import math
 import pytest
 
+
 GOLDEN_RATIO = (1 + 5**.05)/2
 GOLDEN_RATIO_CONJUGATE = (1 - 5**.05)/2
+
 
 def validate_integers(*nums):
     """Throws type error if any of the arguments are not integers."""
     for num in nums:
         if not isinstance(num, int):
             raise TypeError("Sorry. The function only works with integers.")
+
+def zero_divisors_error(number):
+    """Zero has all numbers as proper divisors, so it is a special case."""
+    if number == 0:
+        raise ValueError("Zero is a special case.")
 
 def fibonacci(index, cache=None):
     """ Return the Fibbonacci number of n index. Cache results."""
@@ -50,8 +58,7 @@ def prime_sieve(limit):
 def find_prime_factors(num):
     """Find prime factors of num."""
     validate_integers(num)
-    if num == 0:
-        raise ValueError("Zero is a special case.")
+    zero_divisors_error(num)
     potential_factor = 2
     prime_factors = set()
     while potential_factor <= num:
@@ -91,8 +98,7 @@ def is_pyth_triplet(side_a, side_b, hypotenuse_c):
 def find_factors(num):
     """Find factors of num, i.e. 6 returns {1, 2, 3, 6}"""
     validate_integers(num)
-    if num == 0:
-        raise ValueError("Zero is a special case.")
+    zero_divisors_error(num)
     factors = set()
     for potential_factor in range(1, int(num**.5)+ 1):
         if num % potential_factor == 0:
@@ -103,8 +109,6 @@ def find_factors(num):
 def find_proper_divisors(number):
     """Return a set of proper divisors for number."""
     validate_integers(number)
-    if number == 0:
-        raise ValueError("Zero is a special case.")
     results = find_factors(number)
     results.discard(number)
     return results
@@ -112,30 +116,40 @@ def find_proper_divisors(number):
 def add_up_divisors(num):
     """Return sum of proper divisors of num, i.e. 6 returns 1+2+3."""
     validate_integers(num)
-    if num == 0:
-        raise ValueError("Zero is a special case.")
     divisors = find_proper_divisors(num)
     return sum(divisors)
 
-def return_num_and_sum_of_div(number):
+def num_and_sum_of_div(number):
     """Return a set consisting of the number and the sum of its
     proper divisors.
     """
+    validate_integers(number)
     result = {number}
     result.add(add_up_divisors(number))
     return result
+
+def is_perfect(number):
+    """Return true if number is a perfect number i.e. sum of proper
+    divisors is equal to number.
+    """
+    validate_integers(number)
+    if number < 1:
+        return False
+
+    return len(num_and_sum_of_div(number)) == 1
 
 def is_amicable(number):
     """Return True if number is in an amicable pair, i.e. sum of proper
     divisors of a is equal to b, whose sum of proper divisors is equal to a.
     A perfect number returns False.
     """
-    if len(return_num_and_sum_of_div(number)) == 1:
+    validate_integers(number)
+    if len(num_and_sum_of_div(number)) == 1:
         return False
 
     potential_friend = add_up_divisors(number)
-    set_a = return_num_and_sum_of_div(number)
-    set_b = return_num_and_sum_of_div(potential_friend)
+    set_a = num_and_sum_of_div(number)
+    set_b = num_and_sum_of_div(potential_friend)
     return set_a == set_b
 
 def find_collatz_stopping_time(num):
@@ -175,7 +189,6 @@ def is_pan_digital(num):
     num = set(num)
     comparison = set(comparison[0:len(num):1])
     return num == comparison
-
 
 def find_combinations(number, r_items):
     """To find the number of combinations for n(number of things you are
@@ -321,5 +334,6 @@ def sum_fifth_power_of_digits(number):
     for char in str(number):
         result += fifth_powers[int(char)]
     return result
+
 
 pytest.main(['-v'])

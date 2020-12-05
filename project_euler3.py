@@ -6,8 +6,10 @@ python -c 'import euler_project.py; print(project_euler3.pe_foo())'
 Start date: 6/21/19.
 """
 
+
 import pytest
 import lib_project_euler as lpe
+
 
 def pe_1():
     """ Return the sum of mod 5 and mod 3 integers under 1000."""
@@ -278,5 +280,6 @@ def pe_92():
             happy_count += 1
     sad_count = limit - happy_count
     return f'there are {sad_count} numbers from 1 to {limit} that are sad.'
+
 
 pytest.main(['-v'])
