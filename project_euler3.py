@@ -210,6 +210,16 @@ def pe_18():
     """solve pe 18. """
     pass
 
+def pe_21():
+    """Find the sum of all amicable number pairs up to 10,000."""
+    amicable_pairs = set()
+    for number in range(2, 10000):
+        if lpe.is_amicable(number):
+            amicable_pairs.add(number)
+            amicable_pairs.add(lpe.add_up_divisors(number))
+    result = sum(amicable_pairs)
+    return f'The sum of amicable pairs under 10,000 is {result}.'
+
 def pe_30():
     """Solve PE 30. Find the sum of all numbers that are equal to the sum of
     the fifth power of their digits.
