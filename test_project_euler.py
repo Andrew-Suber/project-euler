@@ -173,5 +173,14 @@ def test_is_amicable():
     assert lpe.is_amicable(456) is False
     pytest.raises(ValueError, lpe.is_amicable, 0)
 
+def test_is_abundant():
+    """Test function is_abundant."""
+    assert lpe.is_abundant(24) is True
+    assert lpe.is_abundant(30) is True
+    assert lpe.is_abundant(40) is True
+    assert lpe.is_abundant(25) is False
+    assert lpe.is_abundant(35) is False
+    assert lpe.is_abundant(45) is False
+    pytest.raises(ValueError, lpe.is_abundant, 0)
 
 pytest.main(['-v'])

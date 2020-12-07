@@ -220,6 +220,27 @@ def pe_21():
     result = sum(amicable_pairs)
     return f'The sum of amicable pairs under 10,000 is {result}.'
 
+def pe_23():
+    """Find the sum of all numbers that are not the sum of two abundant numbers
+    under the mathematically proven limit 28,123.
+    """
+    abundant_numbers_a = []
+    abundant_sums = set()
+    limit = 100
+    for number in range(1, limit + 1):
+        if lpe.is_abundant(number):
+            abundant_numbers_a.append(number)
+    abundant_numbers_b = abundant_numbers_a[:]
+    for num_a in abundant_numbers_a:
+        for num_b in abundant_numbers_b:
+            abundant_sum = num_a + num_b
+            if abundant_sum < limit:
+                abundant_sums.add(abundant_sum)
+    integers = {number for number in range(1, limit + 1)}
+    non_abundant_sums = integers.difference(abundant_sums)
+    print(abundant_numbers_a)
+    print(non_abundant_sums)
+
 def pe_30():
     """Solve PE 30. Find the sum of all numbers that are equal to the sum of
     the fifth power of their digits.

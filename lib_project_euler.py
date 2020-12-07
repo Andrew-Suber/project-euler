@@ -152,20 +152,26 @@ def is_amicable(number):
     set_b = num_and_sum_of_div(potential_friend)
     return set_a == set_b
 
+def is_abundant(number):
+    """Return True if the sum of proper divisors is greater than number. I.e,
+    24 < 1 + 2 + 3 + 4 + 6 + 8 + 12.
+    """
+    return number < add_up_divisors(number)
+
 def find_collatz_stopping_time(num):
     """Find the length of the Collatz chain for num.
     12 would return 10 (inclusive of 1).
     """
     validate_integers(num)
-    count = 1
+    chain_length = 1
     while num != 1:
         if num%2 == 0:
             num = num//2
-            count += 1
+            chain_length += 1
         else:
             num = num*3 + 1
-            count += 1
-    return count
+            chain_length += 1
+    return chain_length
 
 def is_happy(num):
     """Determine if num is happy or sad."""
