@@ -106,6 +106,7 @@ def test_find_combinations():
 def test_number_to_word():
     """Test function number_to_word."""
     pytest.raises(ValueError, lpe.number_to_word, 1001)
+    pytest.raises(ValueError, lpe.number_to_word, 0)
     assert lpe.number_to_word(18) == "eighteen"
     assert lpe.number_to_word(52) == "fifty-two"
     assert lpe.number_to_word(152) == "one hundred and fifty-two"
@@ -162,6 +163,7 @@ def test_is_perfect():
     assert lpe.is_perfect(234) is False
     assert lpe.is_perfect(567) is  False
     assert lpe.is_perfect(0) is  False
+    assert lpe.is_perfect(1) is  False
 
 def test_is_amicable():
     """Test function is_amicable."""

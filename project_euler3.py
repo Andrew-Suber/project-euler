@@ -36,7 +36,7 @@ def pe_3():
     return f'The largest prime factor of 600851475143 is {result}'
 
 def pe_4():
-    """Pe 4. Find the largest palindromic product of two three- digit
+    """Find the largest palindromic product of two three- digit
     numbers.
     """
     solutions = set()
@@ -50,9 +50,7 @@ def pe_4():
     return f'The largest palindromic product of two three-digit numbers is {solution}.'
 
 def pe_5():
-    """Solve pe 5. find the smallest number divisible by all factors
-    from 1 to limit.
-    """
+    """Find the smallest number divisible by all factors from 1 to limit."""
     limit = 20
     potential_factors = lpe.prime_sieve(limit)
     factors = []
@@ -69,7 +67,7 @@ def pe_5():
     return f'The smallest number divisible by all factors from 1 to 20 is {product}.'
 
 def pe_6():
-    """Solve pe 6. find the difference between the sum of all squares of all
+    """Find the difference between the sum of all squares of all
     numbers from 1 to 100 and the square of the sum of all numbers from 1 to
     100."""
     integers = [i for i in range(1, 101)]
@@ -81,13 +79,13 @@ def pe_6():
     return f'The solution for project euler 6 is {answer}.'
 
 def pe_7():
-    """Solve pe 7, find the 10,001st prime number."""
+    """Find the 10,001st prime number."""
     primes = list(lpe.prime_sieve(200000))
     primes.sort()
     return f'The 10,001st prime number is {primes[10000]}.'
 
 def pe_8():
-    """Solve pe 8, find largest product from multiplication of 13 adjacent
+    """Find largest product from multiplication of 13 adjacent
     digits in file."""
     with open('files/pe_8_sample.txt') as pe_8_sample:
         sample = pe_8_sample.read()
@@ -101,7 +99,7 @@ def pe_8():
     return f'{best_result} is the answer to project euler problem 8.'
 
 def pe_9():
-    """project euler problem 9. find pythagorean triplet that sums to 1000."""
+    """Find pythagorean triplet that sums to 1000."""
     limit = 1000
     for hypotenuse_c in range(334, limit//2):
         for side_a in range(1, (limit - hypotenuse_c)//2):
@@ -112,13 +110,13 @@ def pe_9():
     return 'no triplet was found for sum limit {limit}.'
 
 def pe_10():
-    """find the sum of all primes below 2,000,000."""
+    """Find the sum of all primes below 2,000,000."""
     primes = set(lpe.prime_sieve(2000000))
     result = sum(primes)
     return f'the sum of all primes below 2,000,000 is {result}.'
 
 def pe_11():
-    """solve pe 11"""
+    """Find largest product in adjacent cells of a grid."""
     grid = lpe.load_text_file('files/pe_11_grid.txt')
     point_x, point_y = 0, 0
     grid_2 = {}
@@ -171,7 +169,7 @@ def pe_13():
     return f'{result} is the answer to project euler problem 13.'
 
 def pe_14():
-    """Solve pe 14"""
+    """Find the number with the largest collatz stopping time."""
     limit = 500000
     best_result = (0, 0)
     for integer in range(1, limit):
@@ -188,7 +186,7 @@ def pe_15():
     return f'The number of possible paths in a lattice 20x20 is {result}.'
 
 def pe_16():
-    """Solve PE 16, give the sum of the digits of 2**1000."""
+    """Give the sum of the digits of 2**1000."""
     num = str(2**1000)
     total = 0
     for char in num:
@@ -242,7 +240,7 @@ def pe_23():
     print(non_abundant_sums)
 
 def pe_30():
-    """Solve PE 30. Find the sum of all numbers that are equal to the sum of
+    """Find the sum of all numbers that are equal to the sum of
     the fifth power of their digits.
     """
     limit = 999999
@@ -255,7 +253,7 @@ def pe_30():
                     f' of the fifth power of their digits is {result}.'))
 
 def pe_32():
-    """solve pe 32.Find multiplicand, multiplier and product strings that are
+    """Find multiplicand, multiplier and product strings that are
     pandigital i.e 123456789.
     """
     pan_digit_products = set()
@@ -282,7 +280,7 @@ def pe_34():
     return f'The solution for Project Euler 34 is {result}'
 
 def pe_38():
-    """Solve PE 38. Find pandigital products."""
+    """ Find pandigital products."""
     pandigital_products = set()
     for num in range(2, 9999):
         concatenated_product = lpe.create_nine_digit_product(num)
@@ -292,17 +290,17 @@ def pe_38():
     return f'The solution for Project Euler 38 is {result}.'
 
 def pe_41():
-    """pe 41. find the largest pandigital prime possible."""
+    """Find the largest pandigital prime possible."""
     pan_digit_primes = set()
     primes = lpe.prime_sieve(10000000)
     for prime in primes:
         if  lpe.is_pan_digital(prime):
             pan_digit_primes.add(prime)
     result = max(pan_digit_primes)
-    return f'the largest possible pandigital prime is {result}.'
+    return f'The largest possible pandigital prime is {result}.'
 
 def pe_92():
-    """find all the 'sad' numbers under 10,000,000."""
+    """Find all the 'sad' numbers under 10,000,000."""
     limit = 10000000
     happy_count = 0
 
@@ -310,7 +308,7 @@ def pe_92():
         if lpe.is_happy(integer):
             happy_count += 1
     sad_count = limit - happy_count
-    return f'there are {sad_count} numbers from 1 to {limit} that are sad.'
+    return f'There are {sad_count} numbers from 1 to {limit} that are sad.'
 
 
 pytest.main(['-v'])

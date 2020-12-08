@@ -144,7 +144,7 @@ def is_amicable(number):
     A perfect number returns False.
     """
     validate_integers(number)
-    if len(num_and_sum_of_div(number)) == 1:
+    if is_perfect(number):
         return False
 
     potential_friend = add_up_divisors(number)
@@ -224,6 +224,8 @@ def number_to_word(num):
     validate_integers(num)
     if num > 1000:
         raise ValueError("Sorry. The module only works for integers <= 1000.")
+    if num < 1:
+        raise ValueError("Sorry. The module only works for integers >= 1.")
     if num in numeral_to_word.keys():
         return numeral_to_word[num]
 
