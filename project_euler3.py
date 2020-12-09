@@ -105,15 +105,15 @@ def pe_9():
         for side_a in range(1, (limit - hypotenuse_c)//2):
             b_side = (limit -  hypotenuse_c) - side_a
             if lpe.is_pyth_triplet(side_a, b_side, hypotenuse_c):
-                return ''.join(['the pythagorean triplet that sums to 1000 is:',
+                return ''.join(['The pythagorean triplet that sums to 1000 is:',
                                 f'{side_a, b_side, hypotenuse_c}'])
-    return 'no triplet was found for sum limit {limit}.'
+    return 'No triplet was found for sum limit {limit}.'
 
 def pe_10():
     """Find the sum of all primes below 2,000,000."""
     primes = set(lpe.prime_sieve(2000000))
     result = sum(primes)
-    return f'the sum of all primes below 2,000,000 is {result}.'
+    return f'The sum of all primes below 2,000,000 is {result}.'
 
 def pe_11():
     """Find largest product in adjacent cells of a grid."""
@@ -220,11 +220,11 @@ def pe_21():
 
 def pe_23():
     """Find the sum of all numbers that are not the sum of two abundant numbers
-    under the mathematically proven limit 28,123.
+     at the mathematically proven limit 28,123.
     """
     abundant_numbers_a = []
     abundant_sums = set()
-    limit = 100
+    limit = 28123
     for number in range(1, limit + 1):
         if lpe.is_abundant(number):
             abundant_numbers_a.append(number)
@@ -232,12 +232,13 @@ def pe_23():
     for num_a in abundant_numbers_a:
         for num_b in abundant_numbers_b:
             abundant_sum = num_a + num_b
-            if abundant_sum < limit:
+            if abundant_sum <= limit:
                 abundant_sums.add(abundant_sum)
     integers = {number for number in range(1, limit + 1)}
     non_abundant_sums = integers.difference(abundant_sums)
-    print(abundant_numbers_a)
-    print(non_abundant_sums)
+    result = sum(non_abundant_sums)
+    return f'The sum of all numbers that are not the sum of two abundant numbers is {result}.'
+
 
 def pe_30():
     """Find the sum of all numbers that are equal to the sum of
@@ -254,7 +255,7 @@ def pe_30():
 
 def pe_32():
     """Find multiplicand, multiplier and product strings that are
-    pandigital i.e 123456789.
+    pandigital e.g. 123456789.
     """
     pan_digit_products = set()
     for multiplicand in range(2, 2000):
