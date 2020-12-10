@@ -10,13 +10,15 @@ GOLDEN_RATIO_CONJUGATE = (1 - 5**.05)/2
 
 
 def validate_integers(*nums):
-    """Throws type error if any of the arguments are not integers."""
+    """Throw type error if any of the arguments are not integers."""
     for num in nums:
         if not isinstance(num, int):
             raise TypeError("Sorry. The function only works with integers.")
 
 def zero_divisors_error(number):
-    """Zero has all numbers as proper divisors, so it is a special case."""
+    """Throw value error when listing divisors of zero. Zero has all numbers
+    as proper divisors, so it is a special case.
+    """
     if number == 0:
         raise ValueError("Zero is a special case.")
 
@@ -76,19 +78,6 @@ def find_product(num):
     for digit in num:
         product = product * int(digit)
     return product
-
-def happy_step(num):
-    """Return product of one incrmental step to determine if num is happy/sad.
-    i. e., returns the perfect digital invariant of base ten numeral.
-    Numeral AB -> A**2 + B**2. 11 -> 2 21 -> 5
-    """
-    validate_integers(num)
-    num = list(str(num))
-    total = 0
-    for digit in num:
-        digit = int(digit)**2
-        total = total + digit
-    return total
 
 def is_pyth_triplet(side_a, side_b, hypotenuse_c):
     """Return True if a, b, c compose a Pythagorean triplet."""
@@ -173,6 +162,19 @@ def find_collatz_stopping_time(num):
             chain_length += 1
     return chain_length
 
+def happy_step(num):
+    """Return product of one incrmental step to determine if num is happy/sad.
+    i. e., returns the perfect digital invariant of base ten numeral.
+    Numeral AB -> A**2 + B**2. 11 -> 2 21 -> 5
+    """
+    validate_integers(num)
+    num = list(str(num))
+    total = 0
+    for digit in num:
+        digit = int(digit)**2
+        total = total + digit
+    return total
+
 def is_happy(num):
     """Determine if num is happy or sad."""
     validate_integers(num)
@@ -241,7 +243,7 @@ def number_to_word(num):
     two_digits = number_to_word(num % 100)
     return hundreds + ' and ' + two_digits
 
-def gcd(num_a, num_b):
+def greatest_common_divisor(num_a, num_b):
     """Return greatest common divisor of num_a
     and num_b through Euclidian algorithim.
     """
@@ -252,12 +254,12 @@ def gcd(num_a, num_b):
         num_a, num_b = num_b, num_a % num_b
     return num_a
 
-def lcm(num_a, num_b):
+def lowest_common_multiple(num_a, num_b):
     """Return lowest common multiple. It is the product of num_a
     and num_b divided by the greatest common divisor.
     """
     validate_integers(num_a, num_b)
-    gcd_result = gcd(num_a, num_b)
+    gcd_result = greatest_common_divisor(num_a, num_b)
     result = (num_a * num_b) / gcd_result
     return int(result)
 

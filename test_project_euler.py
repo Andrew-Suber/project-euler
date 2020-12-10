@@ -114,19 +114,19 @@ def test_number_to_word():
     assert lpe.number_to_word(1000) == "one thousand"
     assert lpe.number_to_word(100) == "one hundred"
 
-def test_gcd():
-    """Test function gcd."""
-    assert lpe.gcd(20, 15) == 5
-    assert lpe.gcd(4, 0) == 4
-    assert lpe.gcd(7, 13) == 1
-    assert lpe.gcd(28851538, 1183019) == 17657
+def test_greatest_common_divisor():
+    """Test function greatest_common_divisor."""
+    assert lpe.greatest_common_divisor(20, 15) == 5
+    assert lpe.greatest_common_divisor(4, 0) == 4
+    assert lpe.greatest_common_divisor(7, 13) == 1
+    assert lpe.greatest_common_divisor(28851538, 1183019) == 17657
 
-def test_lcm():
-    """Test function lcm."""
-    assert lpe.lcm(9, 12) == 36
-    assert lpe.lcm(98, 102) == 4998
-    assert lpe.lcm(48, 118) == 2832
-    assert lpe.lcm(35, 95) == 665
+def test_lowest_common_multiple():
+    """Test function lowest_common_multiple."""
+    assert lpe.lowest_common_multiple(9, 12) == 36
+    assert lpe.lowest_common_multiple(98, 102) == 4998
+    assert lpe.lowest_common_multiple(48, 118) == 2832
+    assert lpe.lowest_common_multiple(35, 95) == 665
 
 def test_create_nine_digit_product():
     """Test function create_nine_digit_product."""
