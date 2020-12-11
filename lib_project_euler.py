@@ -345,5 +345,11 @@ def sum_fifth_power_of_digits(number):
         result += fifth_powers[int(char)]
     return result
 
+def create_pentagon_numbers(limit):
+    """Return a set of pentagon numbers up to P[limit]."""
+    integers = [i for i in range(1, limit + 1)]
+    pentagons = set(((3 * (i ** 2)) - i)//2 for i in integers)
+    return pentagons
+
 
 pytest.main(['-v'])

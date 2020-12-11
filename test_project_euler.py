@@ -185,4 +185,9 @@ def test_is_abundant():
     assert lpe.is_abundant(45) is False
     pytest.raises(ValueError, lpe.is_abundant, 0)
 
+def test_create_pentagon_numbers():
+    """Test function create_pentagon_numbers."""
+    assert lpe.create_pentagon_numbers(10) == {1, 35, 5, 70, 12, 145,
+                                               51, 117, 22, 92}
+
 pytest.main(['-v'])

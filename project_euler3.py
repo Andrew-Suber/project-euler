@@ -300,6 +300,21 @@ def pe_41():
     result = max(pan_digit_primes)
     return f'The largest possible pandigital prime is {result}.'
 
+def pe_44():
+    """Find two pentagonal numbers that have a difference and sum equal to
+    another pentagonal number, specifically, the pair with the smallest
+    possible difference.
+    """
+    pentagons_a = lpe.create_pentagon_numbers(4000)
+    pentagons_b = pentagons_a.copy()
+    for pent_a in pentagons_a:
+        for pent_b in pentagons_b:
+            difference = abs(pent_a - pent_b)
+            total = pent_a + pent_b
+            if difference in pentagons_a and total in pentagons_a:
+                result = difference
+    return f'The result for Project Euler problem 44 is {result}.'
+
 def pe_92():
     """Find all the 'sad' numbers under 10,000,000."""
     limit = 10000000
