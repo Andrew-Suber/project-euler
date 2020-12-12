@@ -315,6 +315,16 @@ def pe_44():
                 result = difference
     return f'The result for Project Euler problem 44 is {result}.'
 
+def pe_48():
+    """Find the last ten digits of the sum of the 'self powers', i.e. n ** n
+    from 1 to 1000.
+    """
+    result = 0
+    for number in range(1, 1001):
+        result += number ** number
+    result = str(result)[-10::]
+    return f'The last ten digits of the sum of the self powers is {result}.'
+
 def pe_92():
     """Find all the 'sad' numbers under 10,000,000."""
     limit = 10000000
