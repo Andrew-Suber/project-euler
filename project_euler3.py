@@ -208,6 +208,23 @@ def pe_18():
     """solve pe 18. """
     pass
 
+def pe_20():
+    """Find the sum of all the digits in 100 factorial."""
+    integers = list(range(1,101))
+    print(integers)
+    product =1
+    result = 0
+    for i in integers:
+        product = product * i
+    print(product)
+
+    product = str(product)
+    for c in product:
+        x = int(c)
+        result = result + x
+    print('product:',product)
+    print('sum',result)
+
 def pe_21():
     """Find the sum of all amicable number pairs up to 10,000."""
     amicable_pairs = set()
@@ -245,7 +262,7 @@ def pe_30():
     the fifth power of their digits.
     """
     limit = 999999
-    #It is impossible for this sum > limit. 354294 < 999999
+    #It is impossible for this sum > limit because 354294 < 999999
     result = 0
     for number in range(10, limit):
         if number == lpe.sum_fifth_power_of_digits(number):
@@ -320,7 +337,8 @@ def pe_48():
     from 1 to 1000.
     """
     result = 0
-    for number in range(1, 1001):
+    limit = 1000
+    for number in range(1, limit + 1):
         result += number ** number
     result = str(result)[-10::]
     return f'The last ten digits of the sum of the self powers is {result}.'
