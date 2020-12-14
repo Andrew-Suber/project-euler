@@ -210,20 +210,11 @@ def pe_18():
 
 def pe_20():
     """Find the sum of all the digits in 100 factorial."""
-    integers = list(range(1,101))
-    print(integers)
-    product =1
-    result = 0
-    for i in integers:
-        product = product * i
-    print(product)
-
-    product = str(product)
-    for c in product:
-        x = int(c)
-        result = result + x
-    print('product:',product)
-    print('sum',result)
+    product = 1
+    for integer in range(1, 101):
+        product = product * integer
+    result = lpe.add_digits(product)
+    return f'The sum of all the digits in 100 factorial is {result}.'
 
 def pe_21():
     """Find the sum of all amicable number pairs up to 10,000."""

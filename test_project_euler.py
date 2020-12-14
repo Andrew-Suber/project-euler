@@ -190,4 +190,7 @@ def test_create_pentagon_numbers():
     assert lpe.create_pentagon_numbers(10) == {1, 35, 5, 70, 12, 145,
                                                51, 117, 22, 92}
 
+def test_add_digits():
+    """Test function add_digits."""
+    assert lpe.add_digits(123) == 6
 pytest.main(['-v'])

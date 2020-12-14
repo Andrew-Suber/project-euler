@@ -351,5 +351,13 @@ def create_pentagon_numbers(limit):
     pentagons = set(((3 * (i ** 2)) - i)//2 for i in integers)
     return pentagons
 
+def add_digits(number):
+    """Return the sum of digits in a numeral."""
+    result = 0
+    number = str(number)
+    for char in number:
+        result += int(char)
+    return result
+
 
 pytest.main(['-v'])
