@@ -254,7 +254,7 @@ def pe_30():
     the fifth power of their digits.
     """
     limit = 999999
-    #It is impossible for this condition to be met > limit because 354294 < 999999
+    # It is impossible for this condition to be met > limit because 354294 < 999999
     result = 0
     for number in range(10, limit):
         if number == lpe.sum_fifth_power_of_digits(number):
@@ -282,12 +282,31 @@ def pe_34():
     digits.
     """
     limit = 2540160
-    #It is impossible for for this sum to be equal for a number > 7 * 9!
+    # It is impossible for for this sum to be equal for a number > 7 * 9!
     result = 0
     for number in range(10, limit):
         if number == int(lpe.find_sum_of_digit_factorial(number)):
             result += number
     return f'The solution for Project Euler 34 is {result}'
+
+def pe_37():
+    """Find all two-sided primes i.e. primes that are truncatable both left
+    and right and result in primes at each truncation.
+    """
+    two_sided_primes = set()
+    primes = lpe.prime_sieve(1000000)
+    # The highest such prime is 739397. Adding any digit to it will not result
+    # in another truncatable prime, ergo, it is the highest one possible.
+    for prime in primes:
+        if prime < 10:
+            continue
+        right_truncs = lpe.create_right_truncations(prime)
+        left_truncs = lpe.create_left_truncations(prime)
+        total_truncs = right_truncs.union(left_truncs)
+        if total_truncs.issubset(primes):
+            two_sided_primes.add(prime)
+    result = sum(two_sided_primes)
+    return f'The sum of all two-sided primes is {result}.'
 
 def pe_38():
     """ Find pandigital products."""
