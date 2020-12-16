@@ -195,7 +195,8 @@ def pe_16():
 
 def pe_17():
     """Sum the number of characters in the UK words representing the
-    integers from 1 to 1,000. Exclude dashes and spaces."""
+    integers from 1 to 1,000. Exclude dashes and spaces.
+    """
     total = 0
     for number_word in range(1, 1001):
         number_word = lpe.number_to_word(number_word)
@@ -253,7 +254,7 @@ def pe_30():
     the fifth power of their digits.
     """
     limit = 999999
-    #It is impossible for this sum > limit because 354294 < 999999
+    #It is impossible for this condition to be met > limit because 354294 < 999999
     result = 0
     for number in range(10, limit):
         if number == lpe.sum_fifth_power_of_digits(number):

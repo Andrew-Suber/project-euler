@@ -192,5 +192,25 @@ def test_create_pentagon_numbers():
 
 def test_add_digits():
     """Test function add_digits."""
+    pytest.raises(TypeError, lpe.add_digits, 'abc')
     assert lpe.add_digits(123) == 6
+    assert lpe.add_digits(0) == 0
+
+def test_create_right_truncations():
+    """Test function create_right_truncations."""
+    pytest.raises(TypeError, lpe.create_right_truncations, 'abc')
+    assert lpe.create_right_truncations(123) == {123, 12, 1}
+    assert lpe.create_right_truncations(0) == {0}
+    assert lpe.create_right_truncations(54321) == {54321, 5432, 543, 54, 5}
+    assert lpe.create_right_truncations(9) == {9}
+
+def test_create_left_truncations():
+    """Test function create_left_truncations."""
+    pytest.raises(TypeError, lpe.create_left_truncations, 'abc')
+    assert lpe.create_left_truncations(123) == {123, 23, 3}
+    assert lpe.create_left_truncations(0) == {0}
+    assert lpe.create_left_truncations(54321) == {54321, 4321, 321, 21, 1}
+    assert lpe.create_left_truncations(9) == {9}
+
+
 pytest.main(['-v'])

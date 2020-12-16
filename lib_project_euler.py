@@ -353,10 +353,35 @@ def create_pentagon_numbers(limit):
 
 def add_digits(number):
     """Return the sum of digits in a numeral."""
+    validate_integers(number)
     result = 0
     number = str(number)
     for char in number:
         result += int(char)
+    return result
+
+def create_right_truncations(number):
+    """Return a set of right truncations of a number: 123 -> {123, 12, 1}"""
+    validate_integers(number)
+    result = {number}
+    number = str(number)
+    while True:
+        number = number[:-1:]
+        if number == '':
+            break
+        result.add(int(number))
+    return result
+
+def create_left_truncations(number):
+    """Return a set of left truncations of a number: 123 -> {123, 23, 3}"""
+    validate_integers(number)
+    result = {number}
+    number = str(number)
+    while True:
+        number = number[1::]
+        if number == '':
+            break
+        result.add(int(number))
     return result
 
 
