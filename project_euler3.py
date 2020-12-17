@@ -248,7 +248,6 @@ def pe_23():
     result = sum(non_abundant_sums)
     return f'The sum of all numbers that are not the sum of two abundant numbers is {result}.'
 
-
 def pe_30():
     """Find the sum of all numbers that are equal to the sum of
     the fifth power of their digits.

@@ -154,12 +154,11 @@ def find_collatz_stopping_time(num):
     validate_integers(num)
     chain_length = 1
     while num != 1:
-        if num%2 == 0:
-            num = num//2
-            chain_length += 1
+        if num % 2 == 0:
+            num = num // 2
         else:
             num = num*3 + 1
-            chain_length += 1
+        chain_length += 1
     return chain_length
 
 def happy_step(num):
@@ -211,9 +210,9 @@ def find_combinations(number, r_items):
     return int(result)
 
 def number_to_word(num):
-    """Translate a counting number 1 to 1000.
+    """Translate a counting number 1 to 1000 to
     UK English string (uses 'and'), i.e. 1 -> 'one'.
-    Internal whitespace and hypens are present. 152-> one hundred and fifty-two.
+    Internal whitespace and hyphens are present. 152-> one hundred and fifty-two.
     """
 
     numeral_to_word = {0:"", 1:"one", 2:"two", 3:"three", 4: "four", 5:"five",
@@ -345,9 +344,9 @@ def sum_fifth_power_of_digits(number):
         result += fifth_powers[int(char)]
     return result
 
-def create_pentagon_numbers(limit):
-    """Return a set of pentagon numbers up to P[limit]."""
-    integers = [i for i in range(1, limit + 1)]
+def create_pentagon_numbers(index):
+    """Return a set of pentagon numbers up to P[index]."""
+    integers = [i for i in range(1, index + 1)]
     pentagons = set(((3 * (i ** 2)) - i)//2 for i in integers)
     return pentagons
 
@@ -383,6 +382,27 @@ def create_left_truncations(number):
             break
         result.add(int(number))
     return result
+
+def get_permutations(input_string):
+    """Return all permutations of a given string."""
+    perms = []
+    if len(input_string) < 2:
+        perms.append(input_string)
+        return perms
+
+    last_char = input_string[-1]
+    input_string = input_string[0:-1]
+    working_list = get_permutations(input_string)
+
+    for sequence in working_list:
+        counter_1 = 0
+        for character in sequence:
+            new_permutation = sequence[:counter_1] + last_char + sequence[counter_1:]
+            perms.append(new_permutation)
+            counter_1 += 1
+        new_permutation = sequence + last_char
+        perms.append(new_permutation)
+    return perms
 
 
 pytest.main(['-v'])

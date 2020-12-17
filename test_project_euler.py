@@ -212,5 +212,11 @@ def test_create_left_truncations():
     assert lpe.create_left_truncations(54321) == {54321, 4321, 321, 21, 1}
     assert lpe.create_left_truncations(9) == {9}
 
+def test_get_permutations():
+    """Test function get_permutations."""
+    assert lpe.get_permutations('abc') == ['cba', 'bca', 'bac', 'cab', 'acb', 'abc']
+    assert lpe.get_permutations('') == ['']
+
+
 
 pytest.main(['-v'])
