@@ -248,6 +248,13 @@ def pe_23():
     result = sum(non_abundant_sums)
     return f'The sum of all numbers that are not the sum of two abundant numbers is {result}.'
 
+def pe_24():
+    """Find the millionth lexicographically sorted permutation of 0123456789"""
+    permutations = lpe.get_permutations("0123456789")
+    permutations = sorted(permutations)
+    result = permutations[999999]
+    return f'The millionth sorted permutation of 0123456789 is {result}.'
+
 def pe_30():
     """Find the sum of all numbers that are equal to the sum of
     the fifth power of their digits.

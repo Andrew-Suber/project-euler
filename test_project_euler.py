@@ -216,7 +216,11 @@ def test_get_permutations():
     """Test function get_permutations."""
     assert lpe.get_permutations('abc') == ['cba', 'bca', 'bac', 'cab', 'acb', 'abc']
     assert lpe.get_permutations('') == ['']
-
-
+    assert lpe.get_permutations('abcd') == ['dcba', 'cdba', 'cbda', 'cbad', 'dbca',
+                                            'bdca', 'bcda', 'bcad', 'dbac', 'bdac',
+                                            'badc', 'bacd', 'dcab', 'cdab', 'cadb',
+                                            'cabd', 'dacb', 'adcb', 'acdb', 'acbd',
+                                            'dabc', 'adbc', 'abdc', 'abcd'
+                                           ]
 
 pytest.main(['-v'])
