@@ -3,10 +3,12 @@
 
 import math
 import pytest
+import string
 
 
 GOLDEN_RATIO = (1 + 5**.05)/2
 GOLDEN_RATIO_CONJUGATE = (1 - 5**.05)/2
+ABC = string.ascii_lowercase
 
 
 def validate_integers(*nums):
@@ -403,6 +405,16 @@ def get_permutations(input_string):
         new_permutation = sequence + last_char
         perms.append(new_permutation)
     return perms
+
+def word_score(word):
+    """Return an integer corresponding to the sum of the
+        ordinal value of each letter in a word. PE 22.
+    """
+    result = 0
+    for char in word:
+        result = result + ABC.index(char) +1
+
+    return result
 
 
 pytest.main(['-v'])

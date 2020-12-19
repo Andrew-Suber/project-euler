@@ -117,7 +117,8 @@ def pe_10():
 
 def pe_11():
     """Find largest product in adjacent cells of a grid."""
-    grid = lpe.load_text_file('files/pe_11_grid.txt')
+    current_file = 'files/pe_11_grid.txt'
+    grid = lpe.load_text_file(current_file)
     point_x, point_y = 0, 0
     grid_2 = {}
     while grid:
@@ -226,6 +227,26 @@ def pe_21():
             amicable_pairs.add(lpe.add_up_divisors(number))
     result = sum(amicable_pairs)
     return f'The sum of amicable pairs under 10,000 is {result}.'
+
+def pe_22():
+    """Give a word score for each word in a list. The word score is the sum of
+    the index of the letters multiplied by the number in the list.
+    """
+    new_names = []
+    result = 0
+    names = lpe.load_text_file('files/pe_22_name_list.txt')
+    names = names[0]
+    names = names.split(",")
+    for word in names:
+        new_word = word.replace('"', '') #replace double quote with no character
+        new_names.append(new_word)
+    new_names = sorted(new_names)
+    for word in new_names:
+        product = lpe.word_score(word) * (new_names.index(word) + 1)
+        result += product
+        print(word,'product:', product, 'result:', result)
+    return f'The sum of word scores is {result}.'
+
 
 def pe_23():
     """Find the sum of all numbers that are not the sum of two abundant numbers
