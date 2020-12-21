@@ -370,6 +370,33 @@ def pe_44():
                 result = difference
     return f'The result for Project Euler problem 44 is {result}.'
 
+def pe_46():
+    """Find a Goldbach number that is an odd composite."""
+    limit = 100
+    primes = prime_seive(limit)
+    integers = [i for i in range(1, limit + 1)]
+    odd_composites = []
+    for i in integers:
+        if i not in primes:
+            if i%2 != 0:
+                odd_composites.append(i)
+
+    odd_composites = odd_composites[1:]
+    squares = [i**2 for i in range(1, int(limit**.5))]
+#print("primes",primes, '\n', "integers", integers, '\n', "odd composites", odd_composites,'\n', "squares",squares)
+    goldbach_numbers = set()
+    for x in primes:
+        for y in squares:
+            n = x + 2*y
+            if n < limit:
+                goldbach_numbers.add(n)
+    print("goldbach numbers:", goldbach_numbers)
+    for n in odd_composites:
+        if n in goldbach_numbers:
+            print(n, "is an odd composite and a Goldbach number.")
+        else:
+            print("Bingo!", n, "is an odd composite that is not a Goldbach number.")
+
 def pe_48():
     """Find the last ten digits of the sum of the 'self powers', i.e. n ** n
     from 1 to 1000.
