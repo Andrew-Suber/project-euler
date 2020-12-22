@@ -223,4 +223,13 @@ def test_get_permutations():
                                             'dabc', 'adbc', 'abdc', 'abcd'
                                            ]
 
+def test_find_composites():
+    """Test function find_composites."""
+    assert lpe.find_composites(20) == {4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20}
+
+def test_find_goldbach_numbers():
+    """Test function find_goldbach_numbers."""
+    assert lpe.find_goldbach_numbers(20) == {4, 5, 7, 9, 10, 11, 13, 15, 19}
+
+
 pytest.main(['-v'])

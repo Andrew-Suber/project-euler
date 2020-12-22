@@ -244,7 +244,7 @@ def pe_22():
     for word in new_names:
         product = lpe.word_score(word) * (new_names.index(word) + 1)
         result += product
-        print(word,'product:', product, 'result:', result)
+        print(word, 'product:', product, 'result:', result)
     return f'The sum of word scores is {result}.'
 
 
@@ -371,31 +371,20 @@ def pe_44():
     return f'The result for Project Euler problem 44 is {result}.'
 
 def pe_46():
-    """Find a Goldbach number that is an odd composite."""
-    limit = 100
-    primes = prime_seive(limit)
-    integers = [i for i in range(1, limit + 1)]
-    odd_composites = []
-    for i in integers:
-        if i not in primes:
-            if i%2 != 0:
-                odd_composites.append(i)
+    """ Goldbach proposed that each odd composite is a sum of a square times
+    two and a prime.
 
-    odd_composites = odd_composites[1:]
-    squares = [i**2 for i in range(1, int(limit**.5))]
-#print("primes",primes, '\n', "integers", integers, '\n', "odd composites", odd_composites,'\n', "squares",squares)
-    goldbach_numbers = set()
-    for x in primes:
-        for y in squares:
-            n = x + 2*y
-            if n < limit:
-                goldbach_numbers.add(n)
-    print("goldbach numbers:", goldbach_numbers)
-    for n in odd_composites:
-        if n in goldbach_numbers:
-            print(n, "is an odd composite and a Goldbach number.")
-        else:
-            print("Bingo!", n, "is an odd composite that is not a Goldbach number.")
+    Return the first integer that disproves this proposal.
+    """
+    limit = 10000
+    # The limit was found empirically by running the function with larger limits
+    composites = lpe.find_composites(limit)
+    odd_composites = set(filter(lambda x: x % 2 != 0, composites))
+    goldbach_numbers = lpe.find_goldbach_numbers(limit)
+    result = min(odd_composites.difference(goldbach_numbers))
+    result_string = ''.join(['The first odd composite that is not the sum of',
+                             f' a doubled square and a prime is {result}.'])
+    return result_string
 
 def pe_48():
     """Find the last ten digits of the sum of the 'self powers', i.e. n ** n

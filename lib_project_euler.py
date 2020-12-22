@@ -2,13 +2,13 @@
 
 
 import math
-import pytest
 import string
+import pytest
 
 
 GOLDEN_RATIO = (1 + 5**.05)/2
 GOLDEN_RATIO_CONJUGATE = (1 - 5**.05)/2
-ABC = string.ascii_lowercase
+LOWERCASE_ALPHABET = string.ascii_lowercase
 
 
 def validate_integers(*nums):
@@ -47,7 +47,7 @@ def prime_sieve(limit):
     integers = set(range(2, limit))
     potential_factors = set(range(2, square_root))
 
-    while potential_factors != set():
+    while potential_factors:
         factor = min(potential_factors)
         product = 0
         counter = factor
@@ -58,6 +58,27 @@ def prime_sieve(limit):
             counter += 1
         potential_factors.discard(factor)
     return integers
+
+def find_composites(limit):
+    """Return the set of composite numbers to the limit."""
+    validate_integers(limit)
+    square_root = int(limit**.5) + 1
+    potential_factors = set(range(2, square_root))
+    composites = set()
+
+    while potential_factors:
+        factor = min(potential_factors)
+        product = 0
+        counter = factor
+        while True:
+            product = factor * counter
+            if product > limit:
+                break
+            composites.add(product)
+            potential_factors.discard(product)
+            counter += 1
+        potential_factors.discard(factor)
+    return composites
 
 def find_prime_factors(num):
     """Find prime factors of num."""
@@ -200,7 +221,8 @@ def is_pan_digital(num):
     return num == comparison
 
 def find_combinations(number, r_items):
-    """To find the number of combinations for n(number of things you are
+    """Return total combinations of n choose r.
+    To find the number of combinations for n(number of things you are
     picking from) choose r (number of items you can pick).
     Combinations = n!/r!*(n-r)!
     """
@@ -398,7 +420,7 @@ def get_permutations(input_string):
 
     for sequence in working_list:
         counter_1 = 0
-        for character in sequence:
+        while counter_1 < len(sequence):
             new_permutation = sequence[:counter_1] + last_char + sequence[counter_1:]
             perms.append(new_permutation)
             counter_1 += 1
@@ -408,13 +430,27 @@ def get_permutations(input_string):
 
 def word_score(word):
     """Return an integer corresponding to the sum of the
-        ordinal value of each letter in a word. PE 22.
+        ordinal value of each letter in a word.
     """
     result = 0
     for char in word:
-        result = result + ABC.index(char) +1
-
+        result = result + LOWERCASE_ALPHABET.index(char) +1
     return result
+
+def find_goldbach_numbers(limit):
+    """Return set of Goldbach numbers to limit. Goldbach proposed each odd
+    composite is the sum of a square doubled and a prime number. Function
+    returns numbers meeting second definition, including primes and even numbers.
+    """
+    goldbach_numbers = set()
+    primes = prime_sieve(limit)
+    doubled_squares = {i**2 * 2 for i in range(1, int(limit**.5))}
+    for prime in primes:
+        for doubled_square in doubled_squares:
+            goldbach_number = doubled_square + prime
+            if goldbach_number < limit:
+                goldbach_numbers.add(goldbach_number)
+    return goldbach_numbers
 
 
 pytest.main(['-v'])
