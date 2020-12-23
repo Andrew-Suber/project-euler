@@ -6,7 +6,7 @@ python -c 'import euler_project.py; print(project_euler3.pe_foo())'
 Start date: 6/21/19.
 """
 
-
+import datetime
 import pytest
 import lib_project_euler as lpe
 
@@ -209,6 +209,17 @@ def pe_17():
 def pe_18():
     """solve pe 18. """
     pass
+
+def pe_19():
+    """Find how many times the first of the month was also a Sunday for the
+    20th century."""
+    number_of_sundays = 0
+    for year in range(1901, 2001):
+        for month in range(1, 13):
+            if datetime.datetime(year, month, 1).weekday() == 6:
+                number_of_sundays += 1
+    return f'{number_of_sundays} Sundays fell on the 1st in the 20th century.'
+
 
 def pe_20():
     """Find the sum of all the digits in 100 factorial."""
