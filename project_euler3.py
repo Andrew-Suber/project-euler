@@ -220,7 +220,6 @@ def pe_19():
                 number_of_sundays += 1
     return f'{number_of_sundays} Sundays fell on the 1st in the 20th century.'
 
-
 def pe_20():
     """Find the sum of all the digits in 100 factorial."""
     product = 1
@@ -286,6 +285,15 @@ def pe_24():
     permutations = sorted(permutations)
     result = permutations[999999]
     return f'The millionth sorted permutation of 0123456789 is {result}.'
+
+def pe_25():
+    """Find the index of the first fibonacci number with 1000 digits."""
+    fib_index = 0
+    current_fib = lpe.fibonacci(fib_index)
+    while len(str(current_fib)) < 1000:
+        fib_index += 1
+        current_fib = lpe.fibonacci(fib_index)
+    return f'The index of the first fibonacci number with 1000 digits is {fib_index}.'
 
 def pe_30():
     """Find the sum of all numbers that are equal to the sum of
