@@ -287,13 +287,13 @@ def pe_24():
     return f'The millionth sorted permutation of 0123456789 is {result}.'
 
 def pe_25():
-    """Find the index of the first fibonacci number with 1000 digits."""
+    """Find the index of the first Fibonacci number with 1000 digits."""
     fib_index = 0
     current_fib = lpe.fibonacci(fib_index)
     while len(str(current_fib)) < 1000:
         fib_index += 1
         current_fib = lpe.fibonacci(fib_index)
-    return f'The index of the first fibonacci number with 1000 digits is {fib_index}.'
+    return f'The index of the first Fibonacci number with 1000 digits is {fib_index}.'
 
 def pe_30():
     """Find the sum of all numbers that are equal to the sum of
@@ -401,9 +401,8 @@ def pe_46():
     odd_composites = set(filter(lambda x: x % 2 != 0, composites))
     goldbach_numbers = lpe.find_goldbach_numbers(limit)
     result = min(odd_composites.difference(goldbach_numbers))
-    result_string = ''.join(['The first odd composite that is not the sum of',
-                             f' a doubled square and a prime is {result}.'])
-    return result_string
+    return ''.join(['The first odd composite that is not the sum of',
+                    f' a doubled square and a prime is {result}.'])
 
 def pe_48():
     """Find the last ten digits of the sum of the 'self powers', i.e. n ** n

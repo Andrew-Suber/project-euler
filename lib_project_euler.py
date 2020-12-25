@@ -452,5 +452,40 @@ def find_goldbach_numbers(limit):
                 goldbach_numbers.add(goldbach_number)
     return goldbach_numbers
 
+def equal_division(input_string, length_of_division):
+    """ Divide a string up into a list of strings, each string as long
+        as the specified length of division. Discard remainder.
+    """
+    divisions = []
+    if len(input_string) < 2:
+        raise ValueError('A single character cannot be divided')
+    while input_string:
+        s = input_string[0:length_of_division]
+        if len(s) == length_of_division:
+            divisions.append(s)
+        input_string = input_string[length_of_division:]
+    return divisions
+
+def check_for_pattern(input_string):
+    """ Check a string for a recurring pattern. If no pattern,
+        return 0. If pattern present, return largest integer
+        length of pattern.
+    """
+    if len(input_string) < 2:
+        return 0
+
+    length_of_division = 1
+    limit = len(input_string)//2
+
+    while length_of_division < limit + 1:
+        divisions = equal_division(input_string, length_of_division)
+        divisions = list(set(divisions))
+        if len(divisions) == 1:
+            return length_of_division
+
+        else:
+            length_of_division += 1
+    return 0
+
 
 pytest.main(['-v'])

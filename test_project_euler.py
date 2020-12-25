@@ -231,5 +231,20 @@ def test_find_goldbach_numbers():
     """Test function find_goldbach_numbers."""
     assert lpe.find_goldbach_numbers(20) == {4, 5, 7, 9, 10, 11, 13, 15, 19}
 
+def test_equal_division():
+    x = 'abcdefghijklmnopqrstuvwxyz'
+    print(equal_division(x, 1))
+    print(equal_division(x, 2))
+    print(equal_division(x, 3))
+    print(equal_division(x, 4))
+    print(equal_division(x, 5))
+
+def test_check_for_pattern():
+    print(check_for_pattern("33333"))
+    print(check_for_pattern("12121"))
+    print(check_for_pattern("123123"))
+    print(check_for_pattern("12345"))
+    print(check_for_pattern("123456789"))
+
 
 pytest.main(['-v'])
