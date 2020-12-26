@@ -7,6 +7,7 @@ Start date: 6/21/19.
 """
 
 import datetime
+import decimal
 import pytest
 import lib_project_euler as lpe
 
@@ -294,6 +295,22 @@ def pe_25():
         fib_index += 1
         current_fib = lpe.fibonacci(fib_index)
     return f'The index of the first Fibonacci number with 1000 digits is {fib_index}.'
+
+def pe_26():
+    """Find the 1/x fraction where x < 1000 that leads to the fraction with
+    the longest repeating recurring cycle in the decimal portion.
+    """
+    decimal.getcontext().prec = 5000
+    numerator = decimal.Decimal(1)
+    best_result = 0
+    for denominator in range(1, 1001):
+        denominator = decimal.Decimal(denominator)
+        fraction = decimal.Decimal(numerator/denominator)
+        pattern_length = lpe.check_for_pattern(str(fraction)[10:-5])
+        if pattern_length > best_result:
+            best_result = denominator
+    return ''.join(('The denominator under 1000 that produces the longest ',
+                    f'recurring cycle in the decimal portion is {best_result}.'))
 
 def pe_30():
     """Find the sum of all numbers that are equal to the sum of

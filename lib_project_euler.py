@@ -460,32 +460,36 @@ def equal_division(input_string, length_of_division):
     if len(input_string) < 2:
         raise ValueError('A single character cannot be divided')
     while input_string:
-        s = input_string[0:length_of_division]
-        if len(s) == length_of_division:
-            divisions.append(s)
+        new_division = input_string[0:length_of_division]
+        if len(new_division) == length_of_division:
+            divisions.append(new_division)
         input_string = input_string[length_of_division:]
     return divisions
 
 def check_for_pattern(input_string):
     """ Check a string for a recurring pattern. If no pattern,
-        return 0. If pattern present, return largest integer
+        return False. If pattern present, return smallest integer
         length of pattern.
+        Warning: equal_divisions discards the remainder, so if it doesn't
+        fit the pattern, you will get a false postive.
+        The specific use is to check recurring decimal patterns, so it doesn't matter
+        for that use.
     """
     if len(input_string) < 2:
-        return 0
+        return False
 
     length_of_division = 1
     limit = len(input_string)//2
 
     while length_of_division < limit + 1:
         divisions = equal_division(input_string, length_of_division)
-        divisions = list(set(divisions))
+        divisions = set(divisions)
         if len(divisions) == 1:
             return length_of_division
 
         else:
             length_of_division += 1
-    return 0
+    return False
 
 
 pytest.main(['-v'])
