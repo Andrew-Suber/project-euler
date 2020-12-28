@@ -311,6 +311,31 @@ def pe_26():
             best_result = denominator
     return ''.join(('The denominator under 1000 that produces the longest ',
                     f'recurring cycle in the decimal portion is {best_result}.'))
+def pe_27():
+    """Find the terms that generate the most prime numbers in the equation of 
+    the form X**2 + N*X + Y where N is a range of values.
+    """
+primes = set(prime_seive(1_000_000)) #A lot of searching variables against this container.
+
+integers = [i for i in range(-1001, 1001)]
+results = {}
+integers.remove(0)
+file = open("results_1.txt", 'w')
+
+
+integers = list(filter(lambda x: abs(x) in primes, integers))
+
+potential_values_a = integers[:]
+potential_values_b = integers[:]
+
+for a in potential_values_a:
+    for b in potential_values_b:
+        if check_equations_for_primes(a, b, primes) > 30:
+            results[a,b] = check_equations_for_primes(a, b, primes)
+            file.write(f' n**2 * {a}n + {b} produces {results[a, b]} primes.'
+                       + '\n')
+
+file.close()
 
 def pe_30():
     """Find the sum of all numbers that are equal to the sum of

@@ -491,14 +491,14 @@ def check_for_pattern(input_string):
             length_of_division += 1
     return False
 
-def check_equations_for_primes(var_a, var_b, list_of_primes):
+def check_equations_for_primes(var_a, var_b, primes):
     """Return the number of primes that result for variable a and b for the formula:
         n**2 + an + b."""
     counter = 0
     temp = 0
     for i in range(1, 1000):
         temp = (i**2) + (i * var_a) + var_b
-        if temp in list_of_primes:
+        if temp in primes:
             counter += 1
     return counter
 
