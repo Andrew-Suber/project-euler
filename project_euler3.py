@@ -312,30 +312,33 @@ def pe_26():
     return ''.join(('The denominator under 1000 that produces the longest ',
                     f'recurring cycle in the decimal portion is {best_result}.'))
 def pe_27():
-    """Find the terms that generate the most prime numbers in the equation of 
-    the form X**2 + N*X + Y where N is a range of values.
+    """Find the values that generate the most consecutive prime numbers in the
+    equation of the form n**2 + n*a + b where n is a range of values starting
+    at 0. a and b can be subtracted as well as added.
     """
-primes = set(prime_seive(1_000_000)) #A lot of searching variables against this container.
+    best_result = 0
+    primes = set(lpe.prime_sieve(2001000))
+    # According to the problem statement, 1000**2 + 1000*1000 + 1000
+    # is the largest number that could have to be checked.
 
-integers = [i for i in range(-1001, 1001)]
-results = {}
-integers.remove(0)
-file = open("results_1.txt", 'w')
+    integers = {i for i in range(-1001, 1001)}
+    potential_values_a = integers.copy()
+    potential_values_a.discard(0)
 
+    integers = set(filter(lambda x: abs(x) in primes, integers))
+    # B must have a prime value. Otherwise when N is 0, the result wouldn't be prime.
+    potential_values_b = integers.copy()
+    potential_values_b.discard(0)
 
-integers = list(filter(lambda x: abs(x) in primes, integers))
-
-potential_values_a = integers[:]
-potential_values_b = integers[:]
-
-for a in potential_values_a:
-    for b in potential_values_b:
-        if check_equations_for_primes(a, b, primes) > 30:
-            results[a,b] = check_equations_for_primes(a, b, primes)
-            file.write(f' n**2 * {a}n + {b} produces {results[a, b]} primes.'
-                       + '\n')
-
-file.close()
+    for term_a in potential_values_a:
+        for term_b in potential_values_b:
+            primes_count = lpe.check_equations_for_primes(term_a, term_b, primes)
+            if primes_count > best_result:
+                best_result = primes_count
+                result = term_a * term_b
+                print('n**2 + na + b: a=', term_a, 'b=', term_b,
+                      ': Number of consecutive primes produced:', primes_count)
+    return f'The solution for PE 27 is {result}.'
 
 def pe_30():
     """Find the sum of all numbers that are equal to the sum of

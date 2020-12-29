@@ -492,14 +492,14 @@ def check_for_pattern(input_string):
     return False
 
 def check_equations_for_primes(var_a, var_b, primes):
-    """Return the number of primes that result for variable a and b for the formula:
-        n**2 + an + b."""
+    """Return the number of consecutive primes that result for variable a and b for the formula:
+        n**2 + an + b. Starting with zero"""
     counter = 0
-    temp = 0
-    for i in range(1, 1000):
+    for i in range(0, 1000):
         temp = (i**2) + (i * var_a) + var_b
-        if temp in primes:
-            counter += 1
+        if temp not in primes:
+            break
+        counter += 1
     return counter
 
 
