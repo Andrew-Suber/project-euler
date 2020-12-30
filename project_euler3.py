@@ -340,6 +340,27 @@ def pe_27():
                       ': Number of consecutive primes produced:', primes_count)
     return f'The solution for PE 27 is {result}.'
 
+def pe_28():
+    """Return the sum of the diagonals of a spiral of integers. If you arrange
+    the integers in a square, find the diagonals from the center. I.e the first
+    layer would have 3,5,7,9 at the corners.
+    """
+    addition_increment = 2
+    corner_numbers = [1]
+    limit = 1001
+    current_position = 1
+
+    while addition_increment < limit:
+        counter = 0
+        while counter < 4:
+            current_position += addition_increment
+            corner_numbers.append(current_position)
+            counter += 1
+        addition_increment += 2
+    result = sum(corner_numbers)
+    return f'The sum of the diagonals in an integer square 1001 * 1001 = {result}.'
+
+
 def pe_30():
     """Find the sum of all numbers that are equal to the sum of
     the fifth power of their digits.
