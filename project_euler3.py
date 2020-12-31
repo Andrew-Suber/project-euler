@@ -8,7 +8,6 @@ Start date: 6/21/19.
 
 import datetime
 import decimal
-import pytest
 import lib_project_euler as lpe
 
 
@@ -360,6 +359,17 @@ def pe_28():
     result = sum(corner_numbers)
     return f'The sum of the diagonals in an integer square 1001 * 1001 = {result}.'
 
+def pe_29():
+    """Return the number of distinct powers for the form a**b for 1 <= a <= 100
+    and 1 <= b <= 100.
+    """
+    distinct_powers = set()
+    for term_a in range(2, 101):
+        for term_b in range(2, 101):
+            result = term_a**term_b
+            distinct_powers.add(result)
+    return ''.join([f'There are {len(distinct_powers)} distinct powers for a**b ',
+                    'where 2 <= a <= 100 and 2 <= b <= 100.'])
 
 def pe_30():
     """Find the sum of all numbers that are equal to the sum of
@@ -491,6 +501,3 @@ def pe_92():
             happy_count += 1
     sad_count = limit - happy_count
     return f'There are {sad_count} numbers from 1 to {limit} that are sad.'
-
-
-pytest.main(['-v'])
