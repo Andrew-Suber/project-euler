@@ -251,5 +251,11 @@ def test_check_for_pattern():
     assert lpe.check_for_pattern("12345") is False
     assert lpe.check_for_pattern("123456789") is False
 
+def test_get_rotations():
+    "Test function rotations."""
+    assert lpe.get_rotations("1") == {1}
+    assert lpe.get_rotations("12") == {21, 12}
+    assert lpe.get_rotations("123") == {123, 231, 312}
+
 
 pytest.main(['-v'])

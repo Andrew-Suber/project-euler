@@ -412,40 +412,16 @@ def pe_34():
     return f'The solution for Project Euler 34 is {result}'
 
 def pe_35():
-
-    rotational_primes = {2,3,5,7,}
-
-    primes = primeSeive(1000000)
-
-    print(time.perf_counter())
-
-
-    step_counter = 0
-
+    """Find circular primes under a million. These are primes where each
+    rotation is a prime.
+    """
+    rotational_primes = set()
+    primes = lpe.prime_sieve(1000000)
     for prime in primes:
-        step_counter += 1
-        if step_counter%1000 == 0:
-            print(prime, step_counter)
-        counter = 1
-        temp = set()
-        flag = 0
-        while counter <= len(str(prime)) + 1 and flag == 0:
-            temp.add(prime)
-            prime = int(rotation(prime))
-            if prime in primes:
-                pass
-            else:
-                flag += 1
-            counter += 1
-            if counter == len(str(prime)) + 1 and flag == 0:
-                for i in temp:
-                    rotational_primes.add(i)
-                    
-    print(rotational_primes)
-
-    print(time.perf_counter())
-
-    print(len(rotational_primes))
+        rotations = lpe.get_rotations(str(prime))
+        if rotations.issubset(primes):
+            rotational_primes.add(prime)
+    return f'There are {(len(rotational_primes))} rotational primes under 1000000.'
 
 def pe_37():
     """Find all two-sided primes i.e. primes that are truncatable both left

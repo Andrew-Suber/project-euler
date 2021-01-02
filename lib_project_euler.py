@@ -502,15 +502,17 @@ def check_equations_for_primes(var_a, var_b, primes):
         counter += 1
     return counter
 
-
-def rotation(string):
-    string = str(string)
+def get_rotations(string):
+    """Return set of rotations of a string. 123 --> 312, 231, 123."""
+    rotations = set()
+    rotations.add(int(string))
     if len(string) == 1:
-        rotation = string
-    else:
-        rotation = string[len(string)-1] + string[0:len(string)-1]
-    rotation = int(rotation)
-    return rotation
+        return rotations
+
+    for i in range(1, len(string)):
+        new_rotation = string[i:] + string[:i]
+        rotations.add(int(new_rotation))
+    return rotations
 
 
 pytest.main(['-v'])
