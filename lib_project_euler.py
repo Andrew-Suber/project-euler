@@ -503,4 +503,14 @@ def check_equations_for_primes(var_a, var_b, primes):
     return counter
 
 
+def rotation(string):
+    string = str(string)
+    if len(string) == 1:
+        rotation = string
+    else:
+        rotation = string[len(string)-1] + string[0:len(string)-1]
+    rotation = int(rotation)
+    return rotation
+
+
 pytest.main(['-v'])
