@@ -502,17 +502,34 @@ def check_equations_for_primes(var_a, var_b, primes):
         counter += 1
     return counter
 
-def get_rotations(string):
-    """Return set of rotations of a string. 123 --> 312, 231, 123."""
+def get_rotations(num):
+    """Return set of rotations of a number. Output is an integer.
+    123 --> 312, 231, 123.
+    """
+    validate_integers(num)
+    num = str(num)
     rotations = set()
-    rotations.add(int(string))
-    if len(string) == 1:
+    rotations.add(int(num))
+    if len(num) == 1:
         return rotations
 
-    for i in range(1, len(string)):
-        new_rotation = string[i:] + string[:i]
+    for i in range(1, len(num)):
+        new_rotation = num[i:] + num[:i]
         rotations.add(int(new_rotation))
     return rotations
 
+def is_palindrome(num):
+    """Return True if num is palindromic."""
+    num = str(num)
+    if num == '':
+        return False
+
+    return num == num[::-1]
+
+def is_binary_palindrome(num):
+    """Return True if num is binary palindromic."""
+    num = bin(num)
+    num = num[2:]
+    return num == num[::-1]
 
 pytest.main(['-v'])

@@ -423,6 +423,17 @@ def pe_35():
             rotational_primes.add(prime)
     return f'There are {(len(rotational_primes))} rotational primes under 1000000.'
 
+def pe_36():
+    """Find the sum of all numbers under 1000000 that are palindromic in
+    decimal and binary representation.
+    """
+    result = 0
+    for num in range(1, 1000000):
+        if lpe.is_palindrome(num):
+            if lpe.is_binary_palindrome(num):
+                result += num
+    return f'The sum of n < 1000000 both palindromic in decimal and binary is {result}.'
+
 def pe_37():
     """Find all two-sided primes i.e. primes that are truncatable both left
     and right and result in primes at each truncation.

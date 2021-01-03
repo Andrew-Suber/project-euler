@@ -252,10 +252,24 @@ def test_check_for_pattern():
     assert lpe.check_for_pattern("123456789") is False
 
 def test_get_rotations():
-    "Test function rotations."""
-    assert lpe.get_rotations("1") == {1}
-    assert lpe.get_rotations("12") == {21, 12}
-    assert lpe.get_rotations("123") == {123, 231, 312}
+    """Test function get_rotations."""
+    assert lpe.get_rotations(1) == {1}
+    assert lpe.get_rotations(12) == {21, 12}
+    assert lpe.get_rotations(123) == {123, 231, 312}
+
+def test_is_palindrome():
+    """Test function is_palindrome."""
+    assert lpe.is_palindrome('') is False
+    assert lpe.is_palindrome(123) is False
+    assert lpe.is_palindrome(232) is True
+    assert lpe.is_palindrome(99) is True
+
+def test_is_binary_palindrome():
+    """Test function is_binary_palindrome."""
+    assert lpe.is_binary_palindrome(3) is True
+    assert lpe.is_binary_palindrome(5) is True
+    assert lpe.is_binary_palindrome(232) is False
+    assert lpe.is_binary_palindrome(99) is True
 
 
 pytest.main(['-v'])
