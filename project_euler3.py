@@ -463,6 +463,18 @@ def pe_38():
     result = max(pandigital_products)
     return f'The solution for Project Euler 38 is {result}.'
 
+def pe_40():
+
+    digit_string = ''
+    counter = 1
+    limit = 1000000
+    while counter <= limit:
+        digit_string = digit_string + str(counter)
+        counter += 1
+    result = (int(digit_string[0]) * int(digit_string[9]) * int(digit_string[99]) * int(digit_string[999]) *
+              int(digit_string[9999]) * int(digit_string[99999]) * int(digit_string[999999]))
+    print(result)
+
 def pe_41():
     """Find the largest pandigital prime possible."""
     pan_digit_primes = set()
