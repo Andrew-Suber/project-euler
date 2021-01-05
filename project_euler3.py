@@ -464,16 +464,20 @@ def pe_38():
     return f'The solution for Project Euler 38 is {result}.'
 
 def pe_40():
-
+    """Find the product of the 1, 10th, 100th, etc. digit of Champernowe's
+    Constant.
+    """
     digit_string = ''
     counter = 1
     limit = 1000000
     while counter <= limit:
         digit_string = digit_string + str(counter)
         counter += 1
-    result = (int(digit_string[0]) * int(digit_string[9]) * int(digit_string[99]) * int(digit_string[999]) *
-              int(digit_string[9999]) * int(digit_string[99999]) * int(digit_string[999999]))
-    print(result)
+    indices = [0, 9, 99, 999, 9999, 99999, 999999]
+    result = 1
+    for index in indices:
+        result *= int(digit_string[index])
+    return f'The solution for Project Euler 40 is {result}.'
 
 def pe_41():
     """Find the largest pandigital prime possible."""
