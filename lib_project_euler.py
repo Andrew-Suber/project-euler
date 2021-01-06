@@ -532,4 +532,17 @@ def is_binary_palindrome(num):
     num = num[2:]
     return num == num[::-1]
 
+def find_triangles(limit):
+    """Return set of triangle numbers below limit."""
+    triangles = {0}
+    increment = 1
+    value = 0
+    while True:
+        value += increment
+        increment += 1
+        if value > limit:
+            break
+        triangles.add(value)
+    return triangles
+
 pytest.main(['-v'])

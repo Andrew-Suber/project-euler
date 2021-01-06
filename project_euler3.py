@@ -489,6 +489,14 @@ def pe_41():
     result = max(pan_digit_primes)
     return f'The largest possible pandigital prime is {result}.'
 
+def pe_42():
+    current_file = 'files/pe_42_words.txt'
+    word_list = lpe.load_text_file(current_file)
+    word_list = word_list[0]
+    word_list = word_list.replace('"', '')
+    word_list = word_list.split(',')
+    print(word_list)
+
 def pe_44():
     """Find two pentagonal numbers that have a difference and sum equal to
     another pentagonal number, specifically, the pair with the smallest
