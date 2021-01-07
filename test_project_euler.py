@@ -271,5 +271,9 @@ def test_is_binary_palindrome():
     assert lpe.is_binary_palindrome(232) is False
     assert lpe.is_binary_palindrome(99) is True
 
+def test_find_triangles():
+    """Test function find_triangles."""
+    assert lpe.find_triangles(100) == {0, 1, 66, 3, 36, 6, 10, 45, 78, 15, 21, 55, 91, 28}
+
 
 pytest.main(['-v'])

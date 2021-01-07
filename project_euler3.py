@@ -490,12 +490,21 @@ def pe_41():
     return f'The largest possible pandigital prime is {result}.'
 
 def pe_42():
+    """Find each word with a word value equal to a triangle number in
+    the relevant file.
+    """
     current_file = 'files/pe_42_words.txt'
     word_list = lpe.load_text_file(current_file)
     word_list = word_list[0]
-    word_list = word_list.replace('"', '')
+    word_list = word_list.replace('"', '') #replace double quote with no character
     word_list = word_list.split(',')
-    print(word_list)
+    triangles = lpe.find_triangles(1000) #equivalent to a word with 40 Zs
+    triangle_word_counter = 0
+    for word in word_list:
+        word_value = lpe.word_score(word)
+        if word_value in triangles:
+            triangle_word_counter += 1
+    return f'The number of triangle words in the file is {triangle_word_counter}.'
 
 def pe_44():
     """Find two pentagonal numbers that have a difference and sum equal to
