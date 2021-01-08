@@ -368,11 +368,44 @@ def sum_fifth_power_of_digits(number):
         result += fifth_powers[int(char)]
     return result
 
-def create_pentagon_numbers(index):
-    """Return a set of pentagon numbers up to P[index]."""
-    integers = [i for i in range(1, index + 1)]
-    pentagons = set(((3 * (i ** 2)) - i)//2 for i in integers)
+def create_triangle_numbers(limit):
+    """Return set of triangle numbers below limit."""
+    triangles = {0}
+    increment = 1
+    value = 0
+    while True:
+        value += increment
+        increment += 1
+        if value > limit:
+            break
+        triangles.add(value)
+    return triangles
+
+def create_pentagon_numbers(limit):
+    """Return a set of pentagon numbers up to limit."""
+    pentagons = {0}
+    increment = 1
+    value = 0
+    while True:
+        value += increment
+        increment += 3
+        if value > limit:
+            break
+        pentagons.add(value)
     return pentagons
+
+def create_hexagon_numbers(limit):
+    """Return a set of hexagon numbers up to limit."""
+    hexagons = {0}
+    increment = 1
+    value = 0
+    while True:
+        value += increment
+        increment += 4
+        if value > limit:
+            break
+        hexagons.add(value)
+    return hexagons
 
 def add_digits(number):
     """Return the sum of digits in a numeral."""
@@ -532,17 +565,5 @@ def is_binary_palindrome(num):
     num = num[2:]
     return num == num[::-1]
 
-def find_triangles(limit):
-    """Return set of triangle numbers below limit."""
-    triangles = {0}
-    increment = 1
-    value = 0
-    while True:
-        value += increment
-        increment += 1
-        if value > limit:
-            break
-        triangles.add(value)
-    return triangles
 
 pytest.main(['-v'])

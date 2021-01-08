@@ -498,12 +498,13 @@ def pe_42():
     word_list = word_list[0]
     word_list = word_list.replace('"', '') #replace double quote with no character
     word_list = word_list.split(',')
-    triangles = lpe.find_triangles(1000) #equivalent to a word with 40 Zs
+    triangles = lpe.create_triangle_numbers(1000) #equivalent to a word with 38 Zs
     triangle_word_counter = 0
     for word in word_list:
         word_value = lpe.word_score(word)
         if word_value in triangles:
             triangle_word_counter += 1
+            print(f'{word} has a triangle number for its word value.')
     return f'The number of triangle words in the file is {triangle_word_counter}.'
 
 def pe_44():
@@ -520,6 +521,20 @@ def pe_44():
             if difference in pentagons_a and total in pentagons_a:
                 result = difference
     return f'The result for Project Euler problem 44 is {result}.'
+
+def pe_45():
+    """Find the second triangle number that is also a pentagon number and a
+    hexagon number.
+    """
+    limit = 1600000000
+    triangles = lpe.create_triangle_numbers(limit)
+    pentagons = lpe.create_pentagon_numbers(limit)
+    hexagons = lpe.create_hexagon_numbers(limit)
+    results = set()
+    for number in triangles:
+        if number in pentagons and number in hexagons:
+            results.add(number)
+    return f'The numbers that are triagonal, hexagonal and pentgonal below 2 billion are {results}.'
 
 def pe_46():
     """ Goldbach proposed that each odd composite is a sum of a square times

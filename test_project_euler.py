@@ -185,10 +185,18 @@ def test_is_abundant():
     assert lpe.is_abundant(45) is False
     pytest.raises(ValueError, lpe.is_abundant, 0)
 
+def test_create_triangle_numbers():
+    """Test function create_triangle_numbers."""
+    assert lpe.create_triangle_numbers(100) == {0, 1, 66, 3, 36, 6, 10, 45,
+                                                78, 15, 21, 55, 91, 28}
+
 def test_create_pentagon_numbers():
     """Test function create_pentagon_numbers."""
-    assert lpe.create_pentagon_numbers(10) == {1, 35, 5, 70, 12, 145,
-                                               51, 117, 22, 92}
+    assert lpe.create_pentagon_numbers(100) == {0, 1, 35, 5, 70, 12, 51, 22, 92}
+
+def test_create_hexagon_numbers():
+    """Test function create_hexagon_numbers."""
+    assert lpe.create_hexagon_numbers(100) == {0, 1, 66, 6, 45, 15, 91, 28}
 
 def test_add_digits():
     """Test function add_digits."""
@@ -270,10 +278,5 @@ def test_is_binary_palindrome():
     assert lpe.is_binary_palindrome(5) is True
     assert lpe.is_binary_palindrome(232) is False
     assert lpe.is_binary_palindrome(99) is True
-
-def test_find_triangles():
-    """Test function find_triangles."""
-    assert lpe.find_triangles(100) == {0, 1, 66, 3, 36, 6, 10, 45, 78, 15, 21, 55, 91, 28}
-
 
 pytest.main(['-v'])
