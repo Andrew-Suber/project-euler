@@ -81,7 +81,7 @@ def find_composites(limit):
     return composites
 
 def find_prime_factors(num):
-    """Find prime factors of num."""
+    """Return prime factors of num."""
     validate_integers(num)
     zero_divisors_error(num)
     potential_factor = 2
@@ -95,7 +95,7 @@ def find_prime_factors(num):
     return prime_factors
 
 def find_product(num):
-    """Find the product of a string of digit characters, i.e, '23' produces 6"""
+    """Return the product of a string of digit characters, i.e, '23' produces 6"""
     num = list(num)
     product = 1
     for digit in num:
@@ -108,7 +108,7 @@ def is_pyth_triplet(side_a, side_b, hypotenuse_c):
     return (side_a**2) + (side_b**2) == (hypotenuse_c**2)
 
 def find_factors(num):
-    """Find factors of num, i.e. 6 returns {1, 2, 3, 6}"""
+    """Return factors of num, i.e. 6 returns {1, 2, 3, 6}"""
     validate_integers(num)
     zero_divisors_error(num)
     factors = set()
@@ -171,7 +171,7 @@ def is_abundant(number):
     return number < add_up_divisors(number)
 
 def find_collatz_stopping_time(num):
-    """Find the length of the Collatz chain for num.
+    """Return the length of the Collatz chain for num.
     12 would return 10 (inclusive of 1).
     """
     validate_integers(num)
@@ -287,7 +287,9 @@ def lowest_common_multiple(num_a, num_b):
     return int(result)
 
 def load_text_file(filename):
-    """ Returns a list of sequences. Words are strings of characters.  """
+    """ Returns a list of sequences separated by carriage returns in the file.
+    Words are strings of characters. Whitespace is stripped. Capital letters removed.
+    """
     in_file = open(filename, 'r')
     wordlist = []
     for line in in_file:

@@ -2,8 +2,9 @@
 """Refactoring, organization of completed Project Euler problems.
 Each Project Euler problem uses a function named pe_foo.
 To perform a computation, invoke a function from the command line, like so:
-python -c 'import euler_project.py; print(project_euler3.pe_foo())'
+python3 -c 'import euler_project.py; print(project_euler3.pe_foo())'
 Start date: 6/21/19.
+These modules use Python 3.
 """
 
 import datetime
@@ -12,7 +13,7 @@ import lib_project_euler as lpe
 
 
 def pe_1():
-    """ Return the sum of mod 5 and mod 3 integers under 1000."""
+    """Return the sum of mod 5 and mod 3 integers under 1000."""
     result = 0
     for i in range(1, 1000):
         if i % 3 == 0 or i % 5 == 0:
@@ -20,7 +21,7 @@ def pe_1():
     return f'The sum of mod 5 and mod 3 integers under 1000 is {result}.'
 
 def pe_2():
-    """ Return the sum of all even fibonacci numbers under 4,000,000."""
+    """Return the sum of all even fibonacci numbers under 4,000,000."""
     counter = 1
     result = 0
     while lpe.fibonacci(counter) < 4000000:
@@ -30,13 +31,13 @@ def pe_2():
     return f'The sum of all even fibonacci numbers under 4,000,000 is {result}'
 
 def pe_3():
-    """ Find the largest prime factor of the test number."""
+    """Return the largest prime factor of the test number."""
     test_number = 600851475143
     result = max(lpe.find_prime_factors(test_number))
     return f'The largest prime factor of 600851475143 is {result}'
 
 def pe_4():
-    """Find the largest palindromic product of two three- digit
+    """Return the largest palindromic product of two three- digit
     numbers.
     """
     solutions = set()
@@ -50,7 +51,7 @@ def pe_4():
     return f'The largest palindromic product of two three-digit numbers is {solution}.'
 
 def pe_5():
-    """Find the smallest number divisible by all factors from 1 to limit."""
+    """Return the smallest number divisible by all factors from 1 to limit."""
     limit = 20
     potential_factors = lpe.prime_sieve(limit)
     factors = []
@@ -67,7 +68,7 @@ def pe_5():
     return f'The smallest number divisible by all factors from 1 to 20 is {product}.'
 
 def pe_6():
-    """Find the difference between the sum of all squares of all
+    """Return the difference between the sum of all squares of all
     numbers from 1 to 100 and the square of the sum of all numbers from 1 to
     100."""
     integers = [i for i in range(1, 101)]
@@ -79,13 +80,13 @@ def pe_6():
     return f'The solution for project euler 6 is {answer}.'
 
 def pe_7():
-    """Find the 10,001st prime number."""
+    """Return the 10,001st prime number."""
     primes = list(lpe.prime_sieve(200000))
     primes.sort()
     return f'The 10,001st prime number is {primes[10000]}.'
 
 def pe_8():
-    """Find largest product from multiplication of 13 adjacent
+    """Return largest product from multiplication of 13 adjacent
     digits in file."""
     with open('files/pe_8_sample.txt') as pe_8_sample:
         sample = pe_8_sample.read()
@@ -99,7 +100,7 @@ def pe_8():
     return f'{best_result} is the answer to project euler problem 8.'
 
 def pe_9():
-    """Find pythagorean triplet that sums to 1000."""
+    """Return pythagorean triplet that sums to 1000."""
     limit = 1000
     for hypotenuse_c in range(334, limit//2):
         for side_a in range(1, (limit - hypotenuse_c)//2):
@@ -110,13 +111,13 @@ def pe_9():
     return 'No triplet was found for sum limit {limit}.'
 
 def pe_10():
-    """Find the sum of all primes below 2,000,000."""
+    """Return the sum of all primes below 2,000,000."""
     primes = set(lpe.prime_sieve(2000000))
     result = sum(primes)
     return f'The sum of all primes below 2,000,000 is {result}.'
 
 def pe_11():
-    """Find largest product in adjacent cells of a grid."""
+    """Return largest product in adjacent cells of a grid."""
     current_file = 'files/pe_11_grid.txt'
     grid = lpe.load_text_file(current_file)
     point_x, point_y = 0, 0
@@ -145,7 +146,7 @@ def pe_11():
     return f'The highest product in the given grid is {high_value}'
 
 def pe_12():
-    """Find first triangle number with over 500 divisors."""
+    """Return first triangle number with over 500 divisors."""
     counter = 0
     triangle = 0
     while True:
@@ -170,7 +171,7 @@ def pe_13():
     return f'{result} is the answer to project euler problem 13.'
 
 def pe_14():
-    """Find the number with the largest collatz stopping time."""
+    """Return the number with the largest collatz stopping time."""
     limit = 500000
     best_result = (0, 0)
     for integer in range(1, limit):
@@ -182,7 +183,7 @@ def pe_14():
     return result
 
 def pe_15():
-    """Find the number of possible distinct paths in a square lattice 20x20."""
+    """Return the number of possible distinct paths in a square lattice 20x20."""
     result = lpe.find_combinations(40, 20)
     return f'The number of possible paths in a lattice 20x20 is {result}.'
 
@@ -211,7 +212,7 @@ def pe_18():
     pass
 
 def pe_19():
-    """Find how many times the first of the month was also a Sunday for the
+    """Return how many times the first of the month was also a Sunday for the
     20th century."""
     number_of_sundays = 0
     for year in range(1901, 2001):
@@ -221,7 +222,7 @@ def pe_19():
     return f'{number_of_sundays} Sundays fell on the 1st in the 20th century.'
 
 def pe_20():
-    """Find the sum of all the digits in 100 factorial."""
+    """Return the sum of all the digits in 100 factorial."""
     product = 1
     for integer in range(1, 101):
         product = product * integer
@@ -229,7 +230,7 @@ def pe_20():
     return f'The sum of all the digits in 100 factorial is {result}.'
 
 def pe_21():
-    """Find the sum of all amicable number pairs up to 10,000."""
+    """Return the sum of all amicable number pairs up to 10,000."""
     amicable_pairs = set()
     for number in range(2, 10000):
         if lpe.is_amicable(number):
@@ -259,7 +260,7 @@ def pe_22():
 
 
 def pe_23():
-    """Find the sum of all numbers that are not the sum of two abundant numbers
+    """Return the sum of all numbers that are not the sum of two abundant numbers
      at the mathematically proven limit 28,123.
     """
     abundant_numbers_a = []
@@ -280,14 +281,14 @@ def pe_23():
     return f'The sum of all numbers that are not the sum of two abundant numbers is {result}.'
 
 def pe_24():
-    """Find the millionth lexicographically sorted permutation of 0123456789"""
+    """Return the millionth lexicographically sorted permutation of 0123456789"""
     permutations = lpe.get_permutations("0123456789")
     permutations = sorted(permutations)
     result = permutations[999999]
     return f'The millionth sorted permutation of 0123456789 is {result}.'
 
 def pe_25():
-    """Find the index of the first Fibonacci number with 1000 digits."""
+    """Return the index of the first Fibonacci number with 1000 digits."""
     fib_index = 0
     current_fib = lpe.fibonacci(fib_index)
     while len(str(current_fib)) < 1000:
@@ -296,7 +297,7 @@ def pe_25():
     return f'The index of the first Fibonacci number with 1000 digits is {fib_index}.'
 
 def pe_26():
-    """Find the 1/x fraction where x < 1000 that leads to the fraction with
+    """Return the 1/x fraction where x < 1000 that leads to the fraction with
     the longest repeating recurring cycle in the decimal portion.
     """
     decimal.getcontext().prec = 5000
@@ -311,7 +312,7 @@ def pe_26():
     return ''.join(('The denominator under 1000 that produces the longest ',
                     f'recurring cycle in the decimal portion is {best_result}.'))
 def pe_27():
-    """Find the values that generate the most consecutive prime numbers in the
+    """Return the values that generate the most consecutive prime numbers in the
     equation of the form n**2 + n*a + b where n is a range of values starting
     at 0. a and b can be subtracted as well as added.
     """
@@ -372,7 +373,7 @@ def pe_29():
                     'where 2 <= a <= 100 and 2 <= b <= 100.'])
 
 def pe_30():
-    """Find the sum of all numbers that are equal to the sum of
+    """Return the sum of all numbers that are equal to the sum of
     the fifth power of their digits.
     """
     limit = 999999
@@ -385,7 +386,7 @@ def pe_30():
                     f' of the fifth power of their digits is {result}.'))
 
 def pe_32():
-    """Find multiplicand, multiplier and product strings that are
+    """Return multiplicand, multiplier and product strings that are
     pandigital e.g. 123456789.
     """
     pan_digit_products = set()
@@ -399,8 +400,11 @@ def pe_32():
     result = sum(pan_digit_products)
     return f'The sum of possible pandigital products is {result}.'
 
+def pe_33():
+    pass
+
 def pe_34():
-    """Find all numbers that are equal to the sum of the factorial of their
+    """Return all numbers that are equal to the sum of the factorial of their
     digits.
     """
     limit = 2540160
@@ -412,7 +416,7 @@ def pe_34():
     return f'The solution for Project Euler 34 is {result}'
 
 def pe_35():
-    """Find circular primes under a million. These are primes where each
+    """Return circular primes under a million. These are primes where each
     rotation is a prime.
     """
     rotational_primes = set()
@@ -424,7 +428,7 @@ def pe_35():
     return f'There are {(len(rotational_primes))} rotational primes under 1000000.'
 
 def pe_36():
-    """Find the sum of all numbers under 1000000 that are palindromic in
+    """Return the sum of all numbers under 1000000 that are palindromic in
     decimal and binary representation.
     """
     result = 0
@@ -435,7 +439,7 @@ def pe_36():
     return f'The sum of n < 1000000 both palindromic in decimal and binary is {result}.'
 
 def pe_37():
-    """Find all two-sided primes i.e. primes that are truncatable both left
+    """Return all two-sided primes i.e. primes that are truncatable both left
     and right and result in primes at each truncation.
     """
     two_sided_primes = set()
@@ -454,7 +458,7 @@ def pe_37():
     return f'The sum of all two-sided primes is {result}.'
 
 def pe_38():
-    """ Find pandigital products."""
+    """ Return pandigital products."""
     pandigital_products = set()
     for num in range(2, 9999):
         concatenated_product = lpe.create_nine_digit_product(num)
@@ -464,7 +468,7 @@ def pe_38():
     return f'The solution for Project Euler 38 is {result}.'
 
 def pe_40():
-    """Find the product of the 1, 10th, 100th, etc. digit of Champernowe's
+    """Return the product of the 1, 10th, 100th, etc. digit of Champernowe's
     Constant.
     """
     digit_string = ''
@@ -480,7 +484,7 @@ def pe_40():
     return f'The solution for Project Euler 40 is {result}.'
 
 def pe_41():
-    """Find the largest pandigital prime possible."""
+    """Return the largest pandigital prime possible."""
     pan_digit_primes = set()
     primes = lpe.prime_sieve(10000000)
     for prime in primes:
@@ -490,7 +494,7 @@ def pe_41():
     return f'The largest possible pandigital prime is {result}.'
 
 def pe_42():
-    """Find each word with a word value equal to a triangle number in
+    """Return each word with a word value equal to a triangle number in
     the relevant file.
     """
     current_file = 'files/pe_42_words.txt'
@@ -508,7 +512,7 @@ def pe_42():
     return f'The number of triangle words in the file is {triangle_word_counter}.'
 
 def pe_44():
-    """Find two pentagonal numbers that have a difference and sum equal to
+    """Return two pentagonal numbers that have a difference and sum equal to
     another pentagonal number, specifically, the pair with the smallest
     possible difference.
     """
@@ -523,7 +527,7 @@ def pe_44():
     return f'The result for Project Euler problem 44 is {result}.'
 
 def pe_45():
-    """Find the second triangle number that is also a pentagon number and a
+    """Return the second triangle number that is also a pentagon number and a
     hexagon number.
     """
     limit = 1600000000
@@ -552,7 +556,7 @@ def pe_46():
                     f' a doubled square and a prime is {result}.'])
 
 def pe_48():
-    """Find the last ten digits of the sum of the 'self powers', i.e. n ** n
+    """Return the last ten digits of the sum of the 'self powers', i.e. n ** n
     from 1 to 1000.
     """
     result = 0
@@ -563,7 +567,7 @@ def pe_48():
     return f'The last ten digits of the sum of the self powers is {result}.'
 
 def pe_92():
-    """Find all the 'sad' numbers under 10,000,000."""
+    """Return all the 'sad' numbers under 10,000,000."""
     limit = 10000000
     happy_count = 0
 
