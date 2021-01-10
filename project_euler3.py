@@ -377,7 +377,8 @@ def pe_30():
     the fifth power of their digits.
     """
     limit = 999999
-    # It is impossible for this condition to be met > limit because 354294 < 999999
+    # It is impossible for this condition to be met below this  limit because
+    # 354294 < 999999
     result = 0
     for number in range(10, limit):
         if number == lpe.sum_fifth_power_of_digits(number):

@@ -279,32 +279,6 @@ def test_is_binary_palindrome():
     assert lpe.is_binary_palindrome(232) is False
     assert lpe.is_binary_palindrome(99) is True
 
-def create_fraction_list():
-    """ Create a list of numerators and denominators. x/y < 0.
-    No zeros.
-    """
-    output = []
-    for numerator in range(10, 101):
-        for denominator in range(10, 101):
-            temp = set(str(numerator) +str(denominator))
-            if len(temp) == 4:
-                continue
-            if '0' in temp:
-                continue
-            if numerator < denominator:
-                output.append((numerator, denominator))
-    return output
-
-def apply_false_cancel(numerator, denominator):
-    """Cancel the matching numeral in (numerator, denominator )"""
-    numerator = str(numerator)
-    denominator = str(denominator)
-    for char_1 in numerator:
-        for char_2 in denominator:
-            if numerator == denominator:
-                numerator.remove(char_1)
-                denominator.remove(char_2)
-                return
 
 
 pytest.main(['-v'])
