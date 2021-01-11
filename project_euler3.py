@@ -404,11 +404,29 @@ def pe_32():
 def pe_33():
     """Return the denominator of the lowest common termed product all false
     cancelling fractions of form xx/yy."""
-    fractions = lpe.create_fraction_list()
-    for (numerator, denominator) in fractions:
-        fraction = numerator/denominator
-        cancelled_fraction = lpe.apply_false_cancel(numerator, denominator)
-        print(fraction, cancelled_fraction)
+    limit = .001
+    results_list = []
+    fraction_list = lpe.create_fraction_list()
+
+    for fraction in fraction_list:
+        first_ratio = fraction[0]/fraction[1]
+        result = lpe.apply_false_cancel(fraction[0], fraction[1])
+        second_ratio = result[0]/result[1]
+        if abs(first_ratio - second_ratio) < limit: #float math
+            print('Bingo!', fraction, result, first_ratio, second_ratio)
+            results_list.append(fraction)
+
+    numerator_product = 1
+    denominator_product = 1
+    for (numerator, denominator) in results_list:
+        numerator_product *= numerator
+        denominator_product *= denominator
+    gcd = lpe.greatest_common_divisor(numerator_product, denominator_product)
+    result = int(denominator_product/gcd)
+    return ''.join([f'{results_list} are the false cancelling fractions.',
+                    f' {result} is the denominator of the product expressed',
+                    ' in simplest terms.'])
+
 
 def pe_34():
     """Return all numbers that are equal to the sum of the factorial of their

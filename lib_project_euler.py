@@ -568,35 +568,39 @@ def is_binary_palindrome(num):
     return num == num[::-1]
 
 def create_fraction_list():
-    """ Create a list of numerators and denominators. x/y > 0.
-    No zeros.
+    """ Create a list of numerators and denominators. x/y < 0.
+    No zeros. No 11, 22, 33, etc. In ref to PE 33
     """
-    output = []
+    fractions = []
     for numerator in range(10, 101):
         for denominator in range(10, 101):
-            temp = set(str(numerator) + str(denominator))
+            temp = set(str(numerator) +str(denominator))
             if len(temp) == 4:
                 continue
             if '0' in temp:
                 continue
+            if (numerator % 11) == 0:
+                continue
+            if (denominator % 11) == 0:
+                continue
             if numerator < denominator:
-                output.append((numerator, denominator))
-    return output
+                fractions.append((numerator, denominator))
+    return fractions
 
 def apply_false_cancel(numerator, denominator):
-    """Return fraction after canceling the matching numeral
-    in (numerator, denominator).
-    """
-    numerator = str(numerator)
-    denominator = str(denominator)
+    """Cancel the matching numeral in two two digit numbers and
+    return the result or return 1 if not possible."""
+    numerator = list(str(numerator))
+    denominator = list(str(denominator))
+
     for char_1 in numerator:
         for char_2 in denominator:
-            if numerator == denominator:
+            if char_1 == char_2:
                 numerator.remove(char_1)
                 denominator.remove(char_2)
-                cancelled_fraction = int(numerator)/int(denominator)
-                return cancelled_fraction
-    return 'Fraction cannot be false cancelled'
+                return(int(numerator[0]), int(denominator[0]))
+
+    return (1, 1)
 
 
 pytest.main(['-v'])
