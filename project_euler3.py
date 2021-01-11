@@ -402,7 +402,13 @@ def pe_32():
     return f'The sum of possible pandigital products is {result}.'
 
 def pe_33():
-    pass
+    """Return the denominator of the lowest common termed product all false
+    cancelling fractions of form xx/yy."""
+    fractions = lpe.create_fraction_list()
+    for (numerator, denominator) in fractions:
+        fraction = numerator/denominator
+        cancelled_fraction = lpe.apply_false_cancel(numerator, denominator)
+        print(fraction, cancelled_fraction)
 
 def pe_34():
     """Return all numbers that are equal to the sum of the factorial of their
