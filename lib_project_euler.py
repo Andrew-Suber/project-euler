@@ -6,8 +6,8 @@ import string
 import pytest
 
 
-GOLDEN_RATIO = (1 + 5**.05)/2
-GOLDEN_RATIO_CONJUGATE = (1 - 5**.05)/2
+GOLDEN_RATIO = (1 + 5**.5)/2
+GOLDEN_RATIO_CONJUGATE = (1 - 5**.5)/2
 LOWERCASE_ALPHABET = string.ascii_lowercase
 
 
@@ -234,7 +234,7 @@ def find_combinations(number, r_items):
     return int(result)
 
 def number_to_word(num):
-    """Translate a counting number 1 to 1000 to
+    """Translate a counting number 1 to 1,000 to
     UK English string (uses 'and'), i.e. 1 -> 'one'.
     Internal whitespace and hyphens are present. 152-> one hundred and fifty-two.
     """
@@ -244,11 +244,11 @@ def number_to_word(num):
                        12:"twelve", 13:"thirteen", 14:"fourteen", 15:"fifteen",
                        16:"sixteen", 17:"seventeen", 18:"eighteen", 19:"nineteen",
                        20:"twenty", 30:"thirty", 40:"forty", 50:"fifty", 60:"sixty",
-                       70:"seventy", 80:"eighty", 90:"ninety", 1000:"one thousand"
+                       70:"seventy", 80:"eighty", 90:"ninety", 1_000:"one thousand"
                       }
     validate_integers(num)
-    if num > 1000:
-        raise ValueError("Sorry. The module only works for integers <= 1000.")
+    if num > 1_000:
+        raise ValueError("Sorry. The module only works for integers <= 1,000.")
     if num < 1:
         raise ValueError("Sorry. The module only works for integers >= 1.")
     if num in numeral_to_word.keys():
@@ -530,7 +530,7 @@ def check_equations_for_primes(var_a, var_b, primes):
     """Return the number of consecutive primes that result for variable a and b for the formula:
         n**2 + an + b. Starting with zero"""
     counter = 0
-    for i in range(0, 1000):
+    for i in range(0, 1_000):
         temp = (i**2) + (i * var_a) + var_b
         if temp not in primes:
             break

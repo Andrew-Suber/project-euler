@@ -12,7 +12,7 @@ def test_validate_integers():
     pytest.raises(TypeError, lpe.validate_integers, 'abc', 22)
     pytest.raises(TypeError, lpe.validate_integers, 'abc', 'def', 'ghi')
     assert lpe.validate_integers(4) is None
-    assert lpe.validate_integers(8, 2001) is None
+    assert lpe.validate_integers(8, 2_001) is None
 
 def test_fibonacci():
     """Test fibonacci function."""
@@ -32,7 +32,7 @@ def test_find_prime_factors():
     assert lpe.find_prime_factors(24) == {2, 3}
     assert lpe.find_prime_factors(49) == {7}
     assert lpe.find_prime_factors(100) == {2, 5}
-    assert lpe.find_prime_factors(600851475143) == {1471, 6857, 839, 71}
+    assert lpe.find_prime_factors(600_851_475_143) == {1_471, 6_857, 839, 71}
     pytest.raises(ValueError, lpe.find_prime_factors, 0)
 
 def test_happy_step():
@@ -84,28 +84,28 @@ def test_is_happy():
     assert lpe.is_happy(129) is True
     assert lpe.is_happy(101) is False
     assert lpe.is_happy(498) is False
-    assert lpe.is_happy(3973) is False
+    assert lpe.is_happy(3_973) is False
 
 def test_is_pan_digital():
     """Test function is_pan_digital."""
     assert lpe.is_pan_digital(1) is True
     assert lpe.is_pan_digital(123) is True
-    assert lpe.is_pan_digital(1234) is True
-    assert lpe.is_pan_digital(54321) is True
-    assert lpe.is_pan_digital(615243) is True
+    assert lpe.is_pan_digital(1_234) is True
+    assert lpe.is_pan_digital(54_321) is True
+    assert lpe.is_pan_digital(615_243) is True
     assert lpe.is_pan_digital(987) is False
-    assert lpe.is_pan_digital(87654) is False
+    assert lpe.is_pan_digital(87_654) is False
 
 def test_find_combinations():
     """Test function find_combinations. Source of reference values: calculatorsoup.com"""
     assert lpe.find_combinations(4, 2) == 6
     assert lpe.find_combinations(8, 4) == 70
     assert lpe.find_combinations(10, 3) == 120
-    assert lpe.find_combinations(17, 11) == 12376
+    assert lpe.find_combinations(17, 11) == 12_376
 
 def test_number_to_word():
     """Test function number_to_word."""
-    pytest.raises(ValueError, lpe.number_to_word, 1001)
+    pytest.raises(ValueError, lpe.number_to_word, 1_001)
     pytest.raises(ValueError, lpe.number_to_word, 0)
     assert lpe.number_to_word(18) == "eighteen"
     assert lpe.number_to_word(52) == "fifty-two"
@@ -119,13 +119,13 @@ def test_greatest_common_divisor():
     assert lpe.greatest_common_divisor(20, 15) == 5
     assert lpe.greatest_common_divisor(4, 0) == 4
     assert lpe.greatest_common_divisor(7, 13) == 1
-    assert lpe.greatest_common_divisor(28851538, 1183019) == 17657
+    assert lpe.greatest_common_divisor(28_851_538, 1_183_019) == 17_657
 
 def test_lowest_common_multiple():
     """Test function lowest_common_multiple."""
     assert lpe.lowest_common_multiple(9, 12) == 36
-    assert lpe.lowest_common_multiple(98, 102) == 4998
-    assert lpe.lowest_common_multiple(48, 118) == 2832
+    assert lpe.lowest_common_multiple(98, 102) == 4_998
+    assert lpe.lowest_common_multiple(48, 118) == 2_832
     assert lpe.lowest_common_multiple(35, 95) == 665
 
 def test_create_nine_digit_product():
@@ -136,12 +136,12 @@ def test_create_nine_digit_product():
 def test_sum_of_digit_factorial():
     """Test function find_sum_of_digit_factorial."""
     assert lpe.find_sum_of_digit_factorial(123) == 9
-    assert lpe.find_sum_of_digit_factorial(292) == 362884
+    assert lpe.find_sum_of_digit_factorial(292) == 362_884
 
 def test_sum_fifth_power_of_digits():
     """Test function sum_fifth_power_of_digits."""
-    assert lpe.sum_fifth_power_of_digits(456) == 11925
-    assert lpe.sum_fifth_power_of_digits(789) == 108624
+    assert lpe.sum_fifth_power_of_digits(456) == 11_925
+    assert lpe.sum_fifth_power_of_digits(789) == 108_624
     assert lpe.sum_fifth_power_of_digits(123) == 276
 
 def test_find_proper_divisors():
@@ -169,8 +169,8 @@ def test_is_amicable():
     """Test function is_amicable."""
     assert lpe.is_amicable(220) is True
     assert lpe.is_amicable(284) is True
-    assert lpe.is_amicable(1184) is True
-    assert lpe.is_amicable(1210) is True
+    assert lpe.is_amicable(1_184) is True
+    assert lpe.is_amicable(1_210) is True
     assert lpe.is_amicable(123) is False
     assert lpe.is_amicable(456) is False
     pytest.raises(ValueError, lpe.is_amicable, 0)
@@ -209,7 +209,7 @@ def test_create_right_truncations():
     pytest.raises(TypeError, lpe.create_right_truncations, 'abc')
     assert lpe.create_right_truncations(123) == {123, 12, 1}
     assert lpe.create_right_truncations(0) == {0}
-    assert lpe.create_right_truncations(54321) == {54321, 5432, 543, 54, 5}
+    assert lpe.create_right_truncations(54_321) == {54_321, 5_432, 543, 54, 5}
     assert lpe.create_right_truncations(9) == {9}
 
 def test_create_left_truncations():
@@ -217,7 +217,7 @@ def test_create_left_truncations():
     pytest.raises(TypeError, lpe.create_left_truncations, 'abc')
     assert lpe.create_left_truncations(123) == {123, 23, 3}
     assert lpe.create_left_truncations(0) == {0}
-    assert lpe.create_left_truncations(54321) == {54321, 4321, 321, 21, 1}
+    assert lpe.create_left_truncations(54321) == {54_321, 4_321, 321, 21, 1}
     assert lpe.create_left_truncations(9) == {9}
 
 def test_get_permutations():

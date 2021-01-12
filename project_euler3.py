@@ -13,18 +13,18 @@ import lib_project_euler as lpe
 
 
 def pe_1():
-    """Return the sum of mod 5 and mod 3 integers under 1000."""
+    """Return the sum of mod 5 and mod 3 integers under 1,000."""
     result = 0
-    for i in range(1, 1000):
+    for i in range(1, 1_000):
         if i % 3 == 0 or i % 5 == 0:
             result += i
-    return f'The sum of mod 5 and mod 3 integers under 1000 is {result}.'
+    return f'The sum of mod 5 and mod 3 integers under 1,000 is {result}.'
 
 def pe_2():
     """Return the sum of all even fibonacci numbers under 4,000,000."""
     counter = 1
     result = 0
-    while lpe.fibonacci(counter) < 4000000:
+    while lpe.fibonacci(counter) < 4_000_000:
         if lpe.fibonacci(counter) % 2 == 0:
             result += lpe.fibonacci(counter)
         counter += 1
@@ -81,9 +81,9 @@ def pe_6():
 
 def pe_7():
     """Return the 10,001st prime number."""
-    primes = list(lpe.prime_sieve(200000))
+    primes = list(lpe.prime_sieve(2_000_00))
     primes.sort()
-    return f'The 10,001st prime number is {primes[10000]}.'
+    return f'The 10,001st prime number is {primes[10_000]}.'
 
 def pe_8():
     """Return largest product from multiplication of 13 adjacent
@@ -100,19 +100,19 @@ def pe_8():
     return f'{best_result} is the answer to project euler problem 8.'
 
 def pe_9():
-    """Return pythagorean triplet that sums to 1000."""
-    limit = 1000
+    """Return pythagorean triplet that sums to 1,000."""
+    limit = 1_000
     for hypotenuse_c in range(334, limit//2):
         for side_a in range(1, (limit - hypotenuse_c)//2):
             b_side = (limit -  hypotenuse_c) - side_a
             if lpe.is_pyth_triplet(side_a, b_side, hypotenuse_c):
-                return ''.join(['The pythagorean triplet that sums to 1000 is:',
+                return ''.join(['The pythagorean triplet that sums to 1,000 is:',
                                 f'{side_a, b_side, hypotenuse_c}'])
     return 'No triplet was found for sum limit {limit}.'
 
 def pe_10():
     """Return the sum of all primes below 2,000,000."""
-    primes = set(lpe.prime_sieve(2000000))
+    primes = set(lpe.prime_sieve(2_000_000))
     result = sum(primes)
     return f'The sum of all primes below 2,000,000 is {result}.'
 
@@ -172,7 +172,7 @@ def pe_13():
 
 def pe_14():
     """Return the number with the largest collatz stopping time."""
-    limit = 500000
+    limit = 500_000
     best_result = (0, 0)
     for integer in range(1, limit):
         length = lpe.find_collatz_stopping_time(integer)
@@ -188,8 +188,8 @@ def pe_15():
     return f'The number of possible paths in a lattice 20x20 is {result}.'
 
 def pe_16():
-    """Give the sum of the digits of 2**1000."""
-    num = str(2**1000)
+    """Give the sum of the digits of 2**1,000."""
+    num = str(2**1_000)
     total = 0
     for char in num:
         total += int(char)
@@ -232,7 +232,7 @@ def pe_20():
 def pe_21():
     """Return the sum of all amicable number pairs up to 10,000."""
     amicable_pairs = set()
-    for number in range(2, 10000):
+    for number in range(2, 10_000):
         if lpe.is_amicable(number):
             amicable_pairs.add(number)
             amicable_pairs.add(lpe.add_up_divisors(number))
@@ -288,28 +288,28 @@ def pe_24():
     return f'The millionth sorted permutation of 0123456789 is {result}.'
 
 def pe_25():
-    """Return the index of the first Fibonacci number with 1000 digits."""
+    """Return the index of the first Fibonacci number with 1,000 digits."""
     fib_index = 0
     current_fib = lpe.fibonacci(fib_index)
-    while len(str(current_fib)) < 1000:
+    while len(str(current_fib)) < 1_000:
         fib_index += 1
         current_fib = lpe.fibonacci(fib_index)
-    return f'The index of the first Fibonacci number with 1000 digits is {fib_index}.'
+    return f'The index of the first Fibonacci number with 1,000 digits is {fib_index}.'
 
 def pe_26():
-    """Return the 1/x fraction where x < 1000 that leads to the fraction with
+    """Return the 1/x fraction where x < 1,000 that leads to the fraction with
     the longest repeating recurring cycle in the decimal portion.
     """
-    decimal.getcontext().prec = 5000
+    decimal.getcontext().prec = 5_000
     numerator = decimal.Decimal(1)
     best_result = 0
-    for denominator in range(1, 1001):
+    for denominator in range(1, 1_001):
         denominator = decimal.Decimal(denominator)
         fraction = decimal.Decimal(numerator/denominator)
         pattern_length = lpe.check_for_pattern(str(fraction)[10:-5])
         if pattern_length > best_result:
             best_result = denominator
-    return ''.join(('The denominator under 1000 that produces the longest ',
+    return ''.join(('The denominator under 1,000 that produces the longest ',
                     f'recurring cycle in the decimal portion is {best_result}.'))
 def pe_27():
     """Return the values that generate the most consecutive prime numbers in the
@@ -317,8 +317,8 @@ def pe_27():
     at 0. a and b can be subtracted as well as added.
     """
     best_result = 0
-    primes = set(lpe.prime_sieve(2001000))
-    # According to the problem statement, 1000**2 + 1000*1000 + 1000
+    primes = set(lpe.prime_sieve(2_001_000))
+    # According to the problem statement, 1,000**2 + 1,000*1,000 + 1,000
     # is the largest number that could have to be checked.
 
     integers = {i for i in range(-1001, 1001)}
@@ -391,8 +391,8 @@ def pe_32():
     pandigital e.g. 123456789.
     """
     pan_digit_products = set()
-    for multiplicand in range(2, 2000):
-        for multiplier in range(2, 2000):
+    for multiplicand in range(2, 2_000):
+        for multiplier in range(2, 2_000):
             product = multiplicand * multiplier
             joined_string = str(multiplicand) + str(multiplier) + str(product)
             if len(str(joined_string)) == 9:
@@ -402,8 +402,7 @@ def pe_32():
     return f'The sum of possible pandigital products is {result}.'
 
 def pe_33():
-    """Return the denominator of the lowest common termed product all false
-    cancelling fractions of form xx/yy."""
+    """Return all false cancelling fractions of form xx/yy."""
     limit = .001
     results_list = []
     fraction_list = lpe.create_fraction_list()
@@ -424,7 +423,7 @@ def pe_33():
     gcd = lpe.greatest_common_divisor(numerator_product, denominator_product)
     result = int(denominator_product/gcd)
     return ''.join([f'{results_list} are the false cancelling fractions.',
-                    f' {result} is the denominator of the product expressed',
+                    f' {result} is the denominator of their product expressed',
                     ' in simplest terms.'])
 
 
@@ -445,30 +444,30 @@ def pe_35():
     rotation is a prime.
     """
     rotational_primes = set()
-    primes = lpe.prime_sieve(1000000)
+    primes = lpe.prime_sieve(1_000_000)
     for prime in primes:
         rotations = lpe.get_rotations(str(prime))
         if rotations.issubset(primes):
             rotational_primes.add(prime)
-    return f'There are {(len(rotational_primes))} rotational primes under 1000000.'
+    return f'There are {(len(rotational_primes))} rotational primes under 1,000,000.'
 
 def pe_36():
-    """Return the sum of all numbers under 1000000 that are palindromic in
+    """Return the sum of all numbers under 1,000,000 that are palindromic in
     decimal and binary representation.
     """
     result = 0
-    for num in range(1, 1000000):
+    for num in range(1, 1_000_000):
         if lpe.is_palindrome(num):
             if lpe.is_binary_palindrome(num):
                 result += num
-    return f'The sum of n < 1000000 both palindromic in decimal and binary is {result}.'
+    return f'The sum of n < 1,000,000 both palindromic in decimal and binary is {result}.'
 
 def pe_37():
     """Return all two-sided primes i.e. primes that are truncatable both left
     and right and result in primes at each truncation.
     """
     two_sided_primes = set()
-    primes = lpe.prime_sieve(1000000)
+    primes = lpe.prime_sieve(1_000_000)
     # The highest such prime is 739397. Adding any digit to it will not result
     # in another truncatable prime, ergo, it is the highest one possible.
     for prime in primes:
@@ -498,11 +497,11 @@ def pe_40():
     """
     digit_string = ''
     counter = 1
-    limit = 1000000
+    limit = 1_000_000
     while counter <= limit:
         digit_string = digit_string + str(counter)
         counter += 1
-    indices = [0, 9, 99, 999, 9999, 99999, 999999]
+    indices = [0, 9, 99, 999, 9_999, 99_999, 999_999]
     result = 1
     for index in indices:
         result *= int(digit_string[index])
@@ -511,7 +510,7 @@ def pe_40():
 def pe_41():
     """Return the largest pandigital prime possible."""
     pan_digit_primes = set()
-    primes = lpe.prime_sieve(10000000)
+    primes = lpe.prime_sieve(10_000_000)
     for prime in primes:
         if  lpe.is_pan_digital(prime):
             pan_digit_primes.add(prime)
@@ -527,7 +526,7 @@ def pe_42():
     word_list = word_list[0]
     word_list = word_list.replace('"', '') #replace double quote with no character
     word_list = word_list.split(',')
-    triangles = lpe.create_triangle_numbers(1000) #equivalent to a word with 38 Zs
+    triangles = lpe.create_triangle_numbers(1_000) #equivalent to a word with 38 Zs
     triangle_word_counter = 0
     for word in word_list:
         word_value = lpe.word_score(word)
@@ -541,7 +540,7 @@ def pe_44():
     another pentagonal number, specifically, the pair with the smallest
     possible difference.
     """
-    pentagons_a = lpe.create_pentagon_numbers(4000)
+    pentagons_a = lpe.create_pentagon_numbers(4_000)
     pentagons_b = pentagons_a.copy()
     for pent_a in pentagons_a:
         for pent_b in pentagons_b:
@@ -555,7 +554,7 @@ def pe_45():
     """Return the second triangle number that is also a pentagon number and a
     hexagon number.
     """
-    limit = 1600000000
+    limit = 1_600_000_000
     triangles = lpe.create_triangle_numbers(limit)
     pentagons = lpe.create_pentagon_numbers(limit)
     hexagons = lpe.create_hexagon_numbers(limit)
@@ -571,7 +570,7 @@ def pe_46():
 
     Return the first integer that disproves this proposal.
     """
-    limit = 10000
+    limit = 10_000
     # The limit was found empirically by running the function with larger limits
     composites = lpe.find_composites(limit)
     odd_composites = set(filter(lambda x: x % 2 != 0, composites))
@@ -582,10 +581,10 @@ def pe_46():
 
 def pe_48():
     """Return the last ten digits of the sum of the 'self powers', i.e. n ** n
-    from 1 to 1000.
+    from 1 to 1,000.
     """
     result = 0
-    limit = 1000
+    limit = 1_000
     for number in range(1, limit + 1):
         result += number ** number
     result = str(result)[-10::]
@@ -593,7 +592,7 @@ def pe_48():
 
 def pe_92():
     """Return all the 'sad' numbers under 10,000,000."""
-    limit = 10000000
+    limit = 10_000_000
     happy_count = 0
 
     for integer in range(1, limit + 1):
