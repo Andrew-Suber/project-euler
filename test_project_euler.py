@@ -280,5 +280,4 @@ def test_is_binary_palindrome():
     assert lpe.is_binary_palindrome(99) is True
 
 
-
 pytest.main(['-v'])
