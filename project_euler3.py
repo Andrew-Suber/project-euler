@@ -34,7 +34,7 @@ def pe_3():
     """Return the largest prime factor of the test number."""
     test_number = 600851475143
     result = max(lpe.find_prime_factors(test_number))
-    return f'The largest prime factor of 600851475143 is {result}'
+    return f'The largest prime factor of 600,851,475,143 is {result}'
 
 def pe_4():
     """Return the largest palindromic product of two three- digit
@@ -589,6 +589,27 @@ def pe_48():
         result += number ** number
     result = str(result)[-10::]
     return f'The last ten digits of the sum of the self powers is {result}.'
+
+def pe_50():
+    """Return the largest prime under a million that is composed of a sum of
+    consecutive primes.
+    """
+    primes_1 = lpe.prime_sieve(1_000_000)
+    line_segment_length = 550
+    length_limit = 2
+    best_result = 2
+
+    while line_segment_length > length_limit:
+        primes_2 = sorted(list(primes_1))
+        while primes_2:
+            line_segment = primes_2[:line_segment_length]
+            total = sum(line_segment)
+            if total in primes_1:
+                if len(line_segment) > best_result:
+                    return f'{total} is the sum of {line_segment}, it is {len(line_segment)} long'
+
+            primes_2.pop(0)
+        line_segment_length -= 1
 
 def pe_92():
     """Return all the 'sad' numbers under 10,000,000."""
