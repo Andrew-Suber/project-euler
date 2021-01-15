@@ -143,7 +143,7 @@ def pe_11():
         high_value = max(value, high_value)
         value = lpe.right_diagonal_value(point_x, point_y, grid_2)
         high_value = max(value, high_value)
-    return f'The highest product in the given grid is {high_value}'
+    return f'The highest product in the given grid is {high_value:,}'
 
 def pe_12():
     """Return first triangle number with over 500 divisors."""
@@ -384,7 +384,7 @@ def pe_30():
         if number == lpe.sum_fifth_power_of_digits(number):
             result += number
     return ''.join(('The sum of all numbers equal to the sum',
-        f' of the fifth power of their digits is {result:,}.'))
+                    f' of the fifth power of their digits is {result:,}.'))
 
 def pe_32():
     """Return multiplicand, multiplier and product strings that are
@@ -536,6 +536,9 @@ def pe_42():
     return f'The number of triangle words in the file is {triangle_word_counter}.'
 
 def pe_43():
+    """Find a pandigital numeral where successive substrings are divisible
+    by successive primes.
+    """
     result = 0
     pandigitals = lpe.get_permutations('0123456789')
     pandigitals = set(filter(lambda x: x[0] != '0', pandigitals))
@@ -587,7 +590,7 @@ def pe_46():
     goldbach_numbers = lpe.find_goldbach_numbers(limit)
     result = min(odd_composites.difference(goldbach_numbers))
     return ''.join(['The first odd composite that is not the sum of',
-        f' a doubled square and a prime is {result:,}.'])
+                    f' a doubled square and a prime is {result:,}.'])
 
 def pe_48():
     """Return the last ten digits of the sum of the 'self powers', i.e. n ** n
@@ -599,6 +602,18 @@ def pe_48():
         result += number ** number
     result = str(result)[-10::]
     return f'The last ten digits of the sum of the self powers is {result}.'
+
+def pe_49():
+    """Return 4-digit prime that has 4 prime permutations and is an
+    arithmetic sequence.
+    """
+    primes = lpe.prime_sieve(10_000)
+    candidates = set(filter(lambda x: len(str(x)) < 4, primes))
+    for prime in candidates:
+        permutations = lpe.get_permutations(str(prime))
+        
+        if lpe.is_sequence(prime_permutations):
+            print('bingo', prime_permutations)
 
 def pe_50():
     """Return the largest prime under a million that is composed of a sum of

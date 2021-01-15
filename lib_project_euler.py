@@ -616,5 +616,22 @@ def is_substring_divisible(num):
                               int(num[7:10]) % 17 == 0)
     return divisibility_condition
 
+def is_sequence(nums):
+    """Return True if a set of numbers is sequential i.e. 8, 11, 14, 17."""
+    nums = sorted(list(nums))
+    if len(nums) < 3:
+        return False
+
+    while nums:
+        first_difference = nums[1] - nums[0]
+        second_difference = nums[2] - nums[1]
+        if first_difference != second_difference:
+            return False
+
+        if len(nums) < 4:
+            break
+        nums.pop(0)
+    return True
+
 
 pytest.main(['-v'])
