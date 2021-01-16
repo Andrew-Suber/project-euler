@@ -281,8 +281,8 @@ def test_is_binary_palindrome():
 
 def test_is_sequence():
     """Test function is_sequence."""
-    assert lpe.is_sequence([8, 11, 14, 17]) == True
-    assert lpe.is_sequence([2,3]) == False
-    
+    assert lpe.is_sequence([8, 11, 14, 17]) is True
+    assert lpe.is_sequence([2, 3]) is False
+
 
 pytest.main(['-v'])

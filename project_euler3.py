@@ -604,16 +604,23 @@ def pe_48():
     return f'The last ten digits of the sum of the self powers is {result}.'
 
 def pe_49():
-    """Return 4-digit prime that has 4 prime permutations and is an
+    """Return 4-digit prime that has 3 prime permutations in an
     arithmetic sequence.
     """
     primes = lpe.prime_sieve(10_000)
-    candidates = set(filter(lambda x: len(str(x)) < 4, primes))
-    for prime in candidates:
-        permutations = lpe.get_permutations(str(prime))
-        
-        if lpe.is_sequence(prime_permutations):
-            print('bingo', prime_permutations)
+    four_digit_primes = set(filter(lambda x: len(str(x)) == 4, primes))
+    prime_permutations = []
+    for prime in four_digit_primes:
+        prime_permutation = set(lpe.get_permutations(str(prime)))
+        prime_permutation = [int(x) for x in prime_permutation if int(x) in primes]
+        prime_permutation.sort()
+        prime_permutations.append(prime_permutation)
+    for group in prime_permutations:
+        while group:
+            if lpe.is_sequence(group):
+                return f'The sequence of permuted primes is {group}.'
+
+            group.pop(0)
 
 def pe_50():
     """Return the largest prime under a million that is composed of a sum of
