@@ -633,5 +633,21 @@ def is_sequence(nums):
         nums.pop(0)
     return True
 
+def get_armstrong_value(num):
+    """Return Armstrong value of a number, this is the sum of n**k for each digit, where
+    k is the length of the numeral. I.e 54 -> 5**2 + 4**2 -> 41.
+    Related to narcisstic numbers and pluperfect digital invariants.
+    """
+    num = str(num)
+    length = len(num)
+    armstrong_value = 0
+    for char in num:
+        armstrong_value += int(char)**length
+    return armstrong_value
+
+def is_armstrong(num):
+    "Return True if number is Armstrong number."""
+    return num == get_armstrong_value(num)
+
 
 pytest.main(['-v'])

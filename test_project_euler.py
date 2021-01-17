@@ -284,5 +284,13 @@ def test_is_sequence():
     assert lpe.is_sequence([8, 11, 14, 17]) is True
     assert lpe.is_sequence([2, 3]) is False
 
+def test_is_armstrong():
+    """Test function is_armstrong."""
+    assert lpe.is_armstrong(370) is True
+    assert lpe.is_armstrong(153) is True
+    assert lpe.is_armstrong(407) is True
+    assert lpe.is_armstrong(1001) is False
+    assert lpe.is_armstrong(55) is False
+
 
 pytest.main(['-v'])
