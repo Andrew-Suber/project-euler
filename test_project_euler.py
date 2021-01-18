@@ -292,5 +292,14 @@ def test_is_armstrong():
     assert lpe.is_armstrong(1001) is False
     assert lpe.is_armstrong(55) is False
 
+def test_is_permutation():
+    """Test function is_permutation."""
+    assert lpe.is_permutation(['abc', 'cba']) is True
+    assert lpe.is_permutation(['3214', '1234']) is True
+    assert lpe.is_permutation(['3215', '1234']) is False
+    assert lpe.is_permutation(['33124', '1234']) is False
+    assert lpe.is_permutation(['abc', 'cba', 'bac']) is True
+    assert lpe.is_permutation(['122', '112']) is False
+
 
 pytest.main(['-v'])

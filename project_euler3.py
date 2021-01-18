@@ -645,6 +645,18 @@ def pe_50():
             primes_2.pop(0)
         line_segment_length -= 1
 
+def pe_51():
+    """Return the first x so that 2x, 3x, 4x, 5x and 6x are
+    permutations of each other.
+    """
+    counter = 1
+    while True:
+        multiples = [counter*2, counter*3, counter*4, counter*5, counter*6]
+        if lpe.is_permutation(multiples):
+            return f'{counter:,} is the first integer with multiples that are permutations.'
+
+        counter += 1
+
 def pe_92():
     """Return all the 'sad' numbers under 10,000,000."""
     limit = 10_000_000

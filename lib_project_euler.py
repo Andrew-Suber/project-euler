@@ -649,5 +649,20 @@ def is_armstrong(num):
     "Return True if number is Armstrong number."""
     return num == get_armstrong_value(num)
 
+def is_permutation(inputs):
+    """Return True if strings in list are permutations of each other."""
+    if len(inputs) < 2:
+        return False
+
+    identity_of_inputs = set()
+    for item in inputs:
+        item = str(item)
+        if len(item) < 2:
+            return False
+
+        item = sorted(list(item))
+        identity_of_inputs.add(str(item))
+    return len(identity_of_inputs) == 1
+
 
 pytest.main(['-v'])
