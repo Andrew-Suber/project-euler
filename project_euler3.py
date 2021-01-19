@@ -657,6 +657,20 @@ def pe_51():
 
         counter += 1
 
+def pe_53():
+    """Find the number of possible permutation counts over 1,000,000 for
+    n choose r where n <= 100.
+    """
+    item_number = 1
+    permutation_count = 0
+    while item_number < 101:
+        for choice_number in range(1, item_number + 1):
+            number_of_permutations = lpe.find_combinations(item_number, choice_number)
+            if number_of_permutations > 1_000_000:
+                permutation_count += 1
+        item_number += 1
+    print(permutation_count)
+
 def pe_92():
     """Return all the 'sad' numbers under 10,000,000."""
     limit = 10_000_000
