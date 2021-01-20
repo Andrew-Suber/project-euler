@@ -664,5 +664,13 @@ def is_permutation(inputs):
         identity_of_inputs.add(str(item))
     return len(identity_of_inputs) == 1
 
+def find_digit_sum(num):
+    """Return the sum of digits in num."""
+    num = str(num)
+    digit_sum = 0
+    for char in num:
+        digit_sum += int(char)
+    return digit_sum
+
 
 pytest.main(['-v'])

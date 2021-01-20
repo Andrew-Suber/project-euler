@@ -301,5 +301,9 @@ def test_is_permutation():
     assert lpe.is_permutation(['abc', 'cba', 'bac']) is True
     assert lpe.is_permutation(['122', '112']) is False
 
+def test_find_digit_sum():
+    """Test function find_digit_sum."""
+    assert lpe.find_digit_sum(812) == 11
+
 
 pytest.main(['-v'])

@@ -669,7 +669,19 @@ def pe_53():
             if number_of_permutations > 1_000_000:
                 permutation_count += 1
         item_number += 1
-    print(permutation_count)
+    return ''.join([f'{permutation_count} is the number of permutation counts over 1,000,000',
+                    'for n choose r where n <=100.'])
+
+def pe_56():
+    """Find the expression of a**b where a,b < 100 with the maximal digit sum."""
+    best_result = 0
+    for base in range(1, 100):
+        for exponent in range(1, 100):
+            result = base**exponent
+            digit_sum = lpe.find_digit_sum(result)
+            if digit_sum > best_result:
+                best_result = digit_sum
+    return f'{best_result} is the largest digit sum for a**b where a,b < 100.'
 
 def pe_92():
     """Return all the 'sad' numbers under 10,000,000."""
