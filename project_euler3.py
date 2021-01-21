@@ -683,6 +683,18 @@ def pe_56():
                 best_result = digit_sum
     return f'{best_result} is the largest digit sum for a**b where a,b < 100.'
 
+def pe_63():
+    """Find the number of powers that have as many digits as the value of the
+    exponent. I.e 7**5 is a five digit number.
+    """
+    digit_power_count = 0
+    for base in range(1, 100):
+        for exponent in range(1, 100):
+            result = base**exponent
+            if len(str(result)) == exponent:
+                digit_power_count += 1
+    return f'{digit_power_count} are the number of powers that have a length equal to the exponent.'
+
 def pe_92():
     """Return all the 'sad' numbers under 10,000,000."""
     limit = 10_000_000
