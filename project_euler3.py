@@ -705,3 +705,12 @@ def pe_92():
             happy_count += 1
     sad_count = limit - happy_count
     return f'There are {sad_count:,} numbers from 1 to {limit:,} that are sad.'
+
+def pe_97():
+    """Find the last digits of a very large non-Mersenne prime."""
+    base = 2
+    for i in range(7_830_456):
+        base = (base * 2) % 10_000_000_000
+    result = base * 28_433 + 1
+    result = str(result)[-10:]
+    return f'The last ten digits of the very large prime are {result}.'

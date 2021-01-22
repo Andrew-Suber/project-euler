@@ -672,5 +672,16 @@ def find_digit_sum(num):
         digit_sum += int(char)
     return digit_sum
 
+def find_last_digits_power(base, exponent, digit_length):
+    """Return the last digits of a very large power."""
+    counter = 1
+    result = base
+    while counter < exponent:
+        result = result * base
+        result = str(result)[0:digit_length]
+        result = int(result)
+        counter += 1
+    return result
+
 
 pytest.main(['-v'])
