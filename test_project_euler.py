@@ -305,5 +305,14 @@ def test_find_digit_sum():
     """Test function find_digit_sum."""
     assert lpe.find_digit_sum(812) == 11
 
+def test_check_wordlist_for_word():
+    assert lpe.is_in_wordlist('dog') is True
+    assert lpe.is_in_wordlist('xyz') is False
+
+def test_text_to_ascii():
+    assert lpe.text_to_ascii('abcdefg') == [97, 98, 99, 100, 101, 102, 103]
+    assert lpe.text_to_ascii('test') == [116, 101, 115, 116]
+    assert lpe.text_to_ascii('message') == [109, 101, 115, 115, 97, 103, 101]
+
 
 pytest.main(['-v'])

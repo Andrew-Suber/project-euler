@@ -683,5 +683,53 @@ def find_last_digits_power(base, exponent, digit_length):
         counter += 1
     return result
 
+def encrypt_with_xor(message, key):
+    """Encrypt message using xor cipher with key. The ascii code for each
+    character of message is returned after the xor function is applied to each
+    bit of the character with the ascii code of the cycling key.
+    The algorithim is symmetric, the same process with the same key will both
+    encrypt and decrypt.
+    """
+    from itertools import cycle
+
+
+    coded_message = ''
+    for (message_char, key_char) in zip(message, cycle(key)):
+        coded_char = chr(ord(message_char) ^ ord(key_char))
+        coded_message += coded_char
+    return coded_message
+
+def is_in_wordlist(word):
+    """Return True if word is in Linux wordlist at
+    /usr/share/dict/american-english.
+    """
+    wordlist = load_text_file('/usr/share/dict/american-english')
+    return word in wordlist
+
+def text_to_ascii(text):
+    """Return list of integers corresponding to the ascii codes of the characters
+    of the text.
+    """
+    output = []
+    for char in text:
+        output.append(ord(char))
+    return output
+
+def ascii_to_text(list_of_ascii_codes):
+    """Return string corresponding to the list of ascii codes input."""
+    output = ''
+    for num in list_of_ascii_codes:
+        output += chr(num)
+    return output
+
+def generate_key_guesses():
+    """Return list of every possible three undercase letter combination."""
+    output = []
+    for char_1 in LOWERCASE_ALPHABET:
+        for char_2 in LOWERCASE_ALPHABET:
+            for char_3 in LOWERCASE_ALPHABET:
+                output.append(char_1 + char_2 + char_3)
+    return output
+
 
 pytest.main(['-v'])

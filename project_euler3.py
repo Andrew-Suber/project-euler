@@ -683,6 +683,27 @@ def pe_56():
                 best_result = digit_sum
     return f'{best_result} is the largest digit sum for a**b where a,b < 100.'
 
+def pe_59():
+    """Decrypt an XOR encrypted message. Key is three random lowercase letters.
+    Check against wordlist.
+    """
+    coded_message = load_text_file(filename)
+    coded_message = coded_message.split(',')
+    coded_message = str(map(lambda x: ord(x), coded_message))
+    key_guesses = lpe.generate_key_guesses
+    best_result = 0
+    best_decryption = ''
+    for guess in key_guesses:
+        word_count = 0
+        unencrypted = encrypt_with_xor(coded_message, guess)
+        words = unencrypted.split()
+        for word in words:
+            if lpe.is_in_wordlist(word):
+                word_count += 1
+        if word_count > best_result:
+            best_result = word_count
+            best_decryption = unencrypted
+
 def pe_63():
     """Find the number of powers that have as many digits as the value of the
     exponent. I.e 7**5 is a five digit number.
