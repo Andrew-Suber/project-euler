@@ -1,4 +1,3 @@
-
 """Refactoring, organization of completed Project Euler problems.
 Each Project Euler problem uses a function named pe_foo.
 To perform a computation, invoke a function from the command line, like so:
@@ -687,22 +686,27 @@ def pe_59():
     """Decrypt an XOR encrypted message. Key is three random lowercase letters.
     Check against wordlist.
     """
-    coded_message = load_text_file(filename)
+    wordlist = lpe.load_text_file('/usr/share/dict/american-english')
+    wordlist = set(wordlist)
+    current_file = 'files/p059_cipher.txt'
+    coded_message = lpe.load_text_file(current_file)
+    coded_message = coded_message[0]
     coded_message = coded_message.split(',')
-    coded_message = str(map(lambda x: ord(x), coded_message))
-    key_guesses = lpe.generate_key_guesses
-    best_result = 0
+    coded_message = [chr(int(i)) for i in coded_message]
+    key_guesses = lpe.generate_key_guesses()
+    best_result = 1
     best_decryption = ''
     for guess in key_guesses:
         word_count = 0
-        unencrypted = encrypt_with_xor(coded_message, guess)
+        unencrypted = lpe.encrypt_with_xor(coded_message, guess)
         words = unencrypted.split()
         for word in words:
-            if lpe.is_in_wordlist(word):
+            if word in wordlist:
                 word_count += 1
         if word_count > best_result:
             best_result = word_count
             best_decryption = unencrypted
+            print(guess, best_decryption, word_count, '\n')
 
 def pe_63():
     """Find the number of powers that have as many digits as the value of the
@@ -730,7 +734,7 @@ def pe_92():
 def pe_97():
     """Find the last digits of a very large non-Mersenne prime."""
     base = 2
-    for i in range(7_830_456):
+    for _ in range(7_830_456):
         base = (base * 2) % 10_000_000_000
     result = base * 28_433 + 1
     result = str(result)[-10:]

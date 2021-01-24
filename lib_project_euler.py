@@ -704,6 +704,7 @@ def is_in_wordlist(word):
     /usr/share/dict/american-english.
     """
     wordlist = load_text_file('/usr/share/dict/american-english')
+    wordlist = set(wordlist)
     return word in wordlist
 
 def text_to_ascii(text):
