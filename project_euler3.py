@@ -692,7 +692,7 @@ def pe_59():
     coded_message = lpe.load_text_file(current_file)
     coded_message = coded_message[0]
     coded_message = coded_message.split(',')
-    coded_message = [chr(int(i)) for i in coded_message]
+    coded_message = [chr(int(char)) for char in coded_message]
     key_guesses = lpe.generate_key_guesses()
     best_result = 1
     best_decryption = ''
@@ -706,7 +706,11 @@ def pe_59():
         if word_count > best_result:
             best_result = word_count
             best_decryption = unencrypted
-            print(guess, best_decryption, word_count, '\n')
+            print('key =', guess, '\n', best_decryption, 'viable words =', word_count, '\n')
+    ascii_sum = 0
+    for char in best_decryption:
+        ascii_sum += ord(char)
+    return f'The sum of the ascii codes of the properly decrypted message is {ascii_sum:,}.'
 
 def pe_63():
     """Find the number of powers that have as many digits as the value of the
