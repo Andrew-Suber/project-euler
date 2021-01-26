@@ -51,7 +51,8 @@ def pe_4():
             if product_string == product_string[::-1]:
                 solutions.add((product))
     solution = max(solutions)
-    return f'The largest palindromic product of two three-digit numbers is {solution:,}.'
+    return ('The largest palindromic product'
+            f' of two three-digit numbers is {solution:,}.')
 
 
 def pe_5():
@@ -69,7 +70,8 @@ def pe_5():
         factors.append(num)
     for num in factors:
         product *= num
-    return f'The smallest number divisible by all factors from 1 to 20 is {product:,}.'
+    return ('The smallest number divisible by all'
+            f'factors from 1 to 20 is {product:,}.')
 
 
 def pe_6():
@@ -114,8 +116,9 @@ def pe_9():
         for side_a in range(1, (limit - hypotenuse_c)//2):
             b_side = (limit - hypotenuse_c) - side_a
             if lpe.is_pyth_triplet(side_a, b_side, hypotenuse_c):
-                return ''.join(['The pythagorean triplet that sums to 1,000 is:',
-                                f'{side_a, b_side, hypotenuse_c}'])
+                return ('The pythagorean triplet that sums to 1,000 is:',
+                        f'{side_a, b_side, hypotenuse_c}')
+
     return 'No triplet was found for sum limit {limit}.'
 
 
@@ -191,13 +194,15 @@ def pe_14():
         length = lpe.find_collatz_stopping_time(integer)
         if best_result[1] < length:
             best_result = (integer, length)
-    result = ''.join((f'{best_result[0]:,} is the number with the highest Collatz ',
-                      f'stopping time under {limit}: {best_result[1]} iterations.'))
+    result = (f'{best_result[0]:,} is the number with the highest Collatz '
+              f'stopping time under {limit}: {best_result[1]} iterations.')
     return result
 
 
 def pe_15():
-    """Return the number of possible distinct paths in a square lattice 20x20."""
+    """Return the number of possible distinct paths
+    in a square lattice 20x20.
+    """
     result = lpe.find_combinations(40, 20)
     return f'The number of possible paths in a lattice 20x20 is {result:,}.'
 
@@ -237,7 +242,8 @@ def pe_19():
         for month in range(1, 13):
             if datetime.datetime(year, month, 1).weekday() == 6:
                 number_of_sundays += 1
-    return f'{number_of_sundays:,} Sundays fell on the 1st in the 20th century.'
+    return (f'{number_of_sundays:,} Sundays'
+            ' fell on the 1st in the 20th century.')
 
 
 def pe_20():
@@ -270,7 +276,8 @@ def pe_22():
     names = names[0]
     names = names.split(",")
     for word in names:
-        new_word = word.replace('"', '')  # Replace double quote with no character
+        new_word = word.replace('"', '')
+        # Replace double quote with no character
         new_names.append(new_word)
     new_names = sorted(new_names)
     for word in new_names:
@@ -281,7 +288,8 @@ def pe_22():
 
 
 def pe_23():
-    """Return the sum of all numbers that are not the sum of two abundant numbers
+    """Return the sum of all numbers that
+    are not the sum of two abundant numbers
      at the mathematically proven limit 28,123.
     """
     abundant_numbers_a = []
@@ -299,11 +307,14 @@ def pe_23():
     integers = {number for number in range(1, limit + 1)}
     non_abundant_sums = integers.difference(abundant_sums)
     result = sum(non_abundant_sums)
-    return f'The sum of all numbers that are not the sum of two abundant numbers is {result:,}.'
+    return ('The sum of all numbers that are '
+            'not the sum of two abundant numbers is {result:,}.')
 
 
 def pe_24():
-    """Return the millionth lexicographically sorted permutation of 0123456789"""
+    """Return the millionth lexicographically
+    sorted permutation of 0123456789.
+    """
     permutations = lpe.get_permutations("0123456789")
     permutations = sorted(permutations)
     result = permutations[999999]
@@ -317,7 +328,8 @@ def pe_25():
     while len(str(current_fib)) < 1_000:
         fib_index += 1
         current_fib = lpe.fibonacci(fib_index)
-    return f'The index of the first Fibonacci number with 1,000 digits is {fib_index}.'
+    return ('The index of the first Fibonacci '
+            'number with 1,000 digits is {fib_index}.')
 
 
 def pe_26():
@@ -333,12 +345,13 @@ def pe_26():
         pattern_length = lpe.check_for_pattern(str(fraction)[10:-5])
         if pattern_length > best_result:
             best_result = denominator
-    return ''.join(('The denominator under 1,000 that produces the longest ',
-                    f'recurring cycle in the decimal portion is {best_result}.'))
+    return ('The denominator under 1,000 that produces the longest '
+            f'recurring cycle in the decimal portion is {best_result}.')
 
 
 def pe_27():
-    """Return the values that generate the most consecutive prime numbers in the
+    """Return the values that generate the most
+    consecutive prime numbers in the
     equation of the form n**2 + n*a + b where n is a range of values starting
     at 0. a and b can be subtracted as well as added.
     """
@@ -346,19 +359,19 @@ def pe_27():
     primes = set(lpe.prime_sieve(2_001_000))
     # According to the problem statement, 1,000**2 + 1,000*1,000 + 1,000
     # is the largest number that could have to be checked.
-
     integers = {i for i in range(-1001, 1001)}
     potential_values_a = integers.copy()
     potential_values_a.discard(0)
-
     integers = set(filter(lambda x: abs(x) in primes, integers))
-    # B must have a prime value. Otherwise when N is 0, the result wouldn't be prime.
+    # B must have a prime value. Otherwise when N is 0,
+    # the result wouldn't be prime.
     potential_values_b = integers.copy()
     potential_values_b.discard(0)
 
     for term_a in potential_values_a:
         for term_b in potential_values_b:
-            primes_count = lpe.check_equations_for_primes(term_a, term_b, primes)
+            primes_count = lpe.check_equations_for_primes(term_a,
+                                                          term_b, primes)
             if primes_count > best_result:
                 best_result = primes_count
                 result = term_a * term_b
@@ -385,7 +398,8 @@ def pe_28():
             counter += 1
         addition_increment += 2
     result = sum(corner_numbers)
-    return f'The sum of the diagonals in an integer square 1001 * 1001 = {result:,}.'
+    return ('The sum of the diagonals in an '
+            f'integer square 1001 * 1001 = {result:,}.')
 
 
 def pe_29():
@@ -397,8 +411,8 @@ def pe_29():
         for term_b in range(2, 101):
             result = term_a**term_b
             distinct_powers.add(result)
-    return ''.join([f'There are {len(distinct_powers)} distinct powers for a**b ',
-                    'where 2 <= a <= 100 and 2 <= b <= 100.'])
+    return (f'There are {len(distinct_powers)} distinct powers for a**b '
+            'where 2 <= a <= 100 and 2 <= b <= 100.')
 
 
 def pe_30():
@@ -406,14 +420,14 @@ def pe_30():
     the fifth power of their digits.
     """
     limit = 999999
-    # It is impossible for this condition to be met below this  limit because
+    # It is impossible for this condition to be met below this limit because
     # 354294 < 999999
     result = 0
     for number in range(10, limit):
         if number == lpe.sum_fifth_power_of_digits(number):
             result += number
-    return ''.join(('The sum of all numbers equal to the sum',
-                    f' of the fifth power of their digits is {result:,}.'))
+    return ('The sum of all numbers equal to the sum'
+            f' of the fifth power of their digits is {result:,}.')
 
 
 def pe_32():
@@ -493,7 +507,8 @@ def pe_36():
         if lpe.is_palindrome(num):
             if lpe.is_binary_palindrome(num):
                 result += num
-    return f'The sum of n < 1,000,000 both palindromic in decimal and binary is {result}.'
+    return ('The sum of n < 1,000,000 both palindromic '
+            f'in decimal and binary is {result}.')
 
 
 def pe_37():
