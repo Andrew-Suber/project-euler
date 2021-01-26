@@ -226,7 +226,8 @@ def pe_17():
         number_word = number_word.replace('-', '')
         number_word = number_word.replace(' ', '')
         total += len(number_word)
-    return f'The sum of characters in the number words from 1 to 1,000 is {total:,}.'
+    return ('The sum of characters in the number'
+            ' words from 1 to 1,000 is {total:,}.')
 
 
 def pe_18():
@@ -306,9 +307,9 @@ def pe_23():
                 abundant_sums.add(abundant_sum)
     integers = {number for number in range(1, limit + 1)}
     non_abundant_sums = integers.difference(abundant_sums)
-    result = sum(non_abundant_sums)
+    _ = sum(non_abundant_sums)
     return ('The sum of all numbers that are '
-            'not the sum of two abundant numbers is {result:,}.')
+            'not the sum of two abundant numbers is {_:,}.')
 
 
 def pe_24():
@@ -495,7 +496,8 @@ def pe_35():
         rotations = lpe.get_rotations(prime)
         if rotations.issubset(primes):
             rotational_primes.add(prime)
-    return f'There are {(len(rotational_primes))} rotational primes under 1,000,000.'
+    return (f'There are {(len(rotational_primes))} '
+            'rotational primes under 1,000,000.')
 
 
 def pe_36():
@@ -577,16 +579,18 @@ def pe_42():
     current_file = 'files/pe_42_words.txt'
     word_list = lpe.load_text_file(current_file)
     word_list = word_list[0]
-    word_list = word_list.replace('"', '')  # Replace double quote with no character
+    word_list = word_list.replace('"', '')  # Remove double quote
     word_list = word_list.split(',')
-    triangles = lpe.create_triangle_numbers(1_000)  # Equivalent to a word with 38 Zs
+    triangles = lpe.create_triangle_numbers(1_000)
+    # Equivalent to a word with 38 Zs
     triangle_word_counter = 0
     for word in word_list:
         word_value = lpe.word_score(word)
         if word_value in triangles:
             triangle_word_counter += 1
             print(f'{word} has a triangle number for its word value.')
-    return f'The number of triangle words in the file is {triangle_word_counter}.'
+    return ('The number of triangle words in the'
+            f' file is {triangle_word_counter}.')
 
 
 def pe_43():
@@ -631,7 +635,8 @@ def pe_45():
     for number in triangles:
         if number in pentagons and number in hexagons:
             results.add(number)
-    return f'The numbers that are triagonal, hexagonal and pentgonal below 2 billion are {results}.'
+    return ('The numbers that are triagonal, hexagonal'
+            f' and pentgonal below 2 billion are {results}.')
 
 
 def pe_46():
@@ -641,7 +646,7 @@ def pe_46():
     Return the first integer that disproves this proposal.
     """
     limit = 10_000
-    # The limit was found empirically by running the function with larger limits
+    # The limit was found by running the function with larger limits
     composites = lpe.find_composites(limit)
     odd_composites = set(filter(lambda x: x % 2 != 0, composites))
     goldbach_numbers = lpe.find_goldbach_numbers(limit)
@@ -671,7 +676,8 @@ def pe_49():
     prime_permutations = []
     for prime in four_digit_primes:
         prime_permutation = set(lpe.get_permutations(str(prime)))
-        prime_permutation = [int(x) for x in prime_permutation if int(x) in primes]
+        prime_permutation = [int(x) for x in prime_permutation
+                             if int(x) in primes]
         prime_permutation.sort()
         prime_permutations.append(prime_permutation)
     for group in prime_permutations:
@@ -698,9 +704,10 @@ def pe_50():
             total = sum(line_segment)
             if total in primes_1:
                 if len(line_segment) > best_result:
-                    return ''.join([f'{total:,} is the sum of the sequence of primes ',
-                                    f'from {line_segment[0]} to {line_segment[-1]}, ',
-                                    f'that sequence is {len(line_segment)} primes long.'])
+                    return (f'{total:,} is the sum of the sequence of primes '
+                            f'from {line_segment[0]} to {line_segment[-1]}, '
+                            f'that sequence is {len(line_segment)}'
+                            ' primes long.')
 
             primes_2.pop(0)
         line_segment_length -= 1
@@ -714,7 +721,8 @@ def pe_51():
     while True:
         multiples = [counter*2, counter*3, counter*4, counter*5, counter*6]
         if lpe.is_permutation(multiples):
-            return f'{counter:,} is the first integer with multiples that are permutations.'
+            return (f'{counter:,} is the first integer'
+                    ' with multiples that are permutations.')
 
         counter += 1
 
@@ -727,16 +735,20 @@ def pe_53():
     permutation_count = 0
     while item_number < 101:
         for choice_number in range(1, item_number + 1):
-            number_of_permutations = lpe.find_combinations(item_number, choice_number)
+            number_of_permutations = lpe.find_combinations(item_number,
+                                                           choice_number)
             if number_of_permutations > 1_000_000:
                 permutation_count += 1
         item_number += 1
-    return ''.join([f'{permutation_count} is the number of permutation counts over 1,000,000',
-                    'for n choose r where n <=100.'])
+    return (f'{permutation_count} is the number of '
+            'permutation counts over 1,000,000'
+            'for n choose r where n <=100.')
 
 
 def pe_56():
-    """Find the expression of a**b where a,b < 100 with the maximal digit sum."""
+    """Find the expression of a**b where a,b < 100
+    with the maximal digit sum.
+    """
     best_result = 0
     for base in range(1, 100):
         for exponent in range(1, 100):
@@ -771,11 +783,13 @@ def pe_59():
         if word_count > best_result:
             best_result = word_count
             best_decryption = unencrypted
-            print('key =', guess, '\n', best_decryption, 'viable words =', word_count, '\n')
+            print('key =', guess, '\n', best_decryption,
+                  'viable words =', word_count, '\n')
     ascii_sum = 0
     for char in best_decryption:
         ascii_sum += ord(char)
-    return f'The sum of the ascii codes of the properly decrypted message is {ascii_sum:,}.'
+    return ('The sum of the ascii codes of the'
+            f' properly decrypted message is {ascii_sum:,}.')
 
 
 def pe_63():
@@ -788,7 +802,8 @@ def pe_63():
             result = base**exponent
             if len(str(result)) == exponent:
                 digit_power_count += 1
-    return f'{digit_power_count} are the number of powers that have a length equal to the exponent.'
+    return (f'{digit_power_count} are the number of powers'
+            ' that have a length equal to the exponent.')
 
 
 def pe_92():

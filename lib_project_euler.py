@@ -17,6 +17,7 @@ def validate_integers(*nums):
         if not isinstance(num, int):
             raise TypeError("Sorry. The function only works with integers.")
 
+
 def zero_divisors_error(number):
     """Throw value error when listing divisors of zero. Zero has all numbers
     as proper divisors, so it is a special case.
@@ -24,11 +25,12 @@ def zero_divisors_error(number):
     if number == 0:
         raise ValueError("Zero is a special case.")
 
+
 def fibonacci(index, cache=None):
     """ Return the Fibbonacci number of n index. Cache results."""
     validate_integers(index)
     if cache is None:
-        cache = {0:0, 1:1, 2:1, 3:2,}
+        cache = {0: 0, 1: 1, 2: 1, 3: 2}
     try:
         return cache[index]
 
@@ -39,6 +41,7 @@ def fibonacci(index, cache=None):
         cache[counter] = cache[counter - 1] + cache[counter - 2]
         counter += 1
     return cache[index]
+
 
 def prime_sieve(limit):
     """Return the set of primes up to the limit."""
@@ -58,6 +61,7 @@ def prime_sieve(limit):
             counter += 1
         potential_factors.discard(factor)
     return integers
+
 
 def find_composites(limit):
     """Return the set of composite numbers to the limit."""
@@ -80,6 +84,7 @@ def find_composites(limit):
         potential_factors.discard(factor)
     return composites
 
+
 def find_prime_factors(num):
     """Return prime factors of num."""
     validate_integers(num)
@@ -94,29 +99,35 @@ def find_prime_factors(num):
             potential_factor += 1
     return prime_factors
 
+
 def find_product(num):
-    """Return the product of a string of digit characters, i.e, '23' produces 6"""
+    """Return the product of a string of digit characters,
+    i.e, '23' produces 6.
+    """
     num = list(num)
     product = 1
     for digit in num:
         product = product * int(digit)
     return product
 
+
 def is_pyth_triplet(side_a, side_b, hypotenuse_c):
     """Return True if a, b, c compose a Pythagorean triplet."""
     validate_integers(side_a, side_b, hypotenuse_c)
     return (side_a**2) + (side_b**2) == (hypotenuse_c**2)
+
 
 def find_factors(num):
     """Return factors of num, i.e. 6 returns {1, 2, 3, 6}"""
     validate_integers(num)
     zero_divisors_error(num)
     factors = set()
-    for potential_factor in range(1, int(num**.5)+ 1):
+    for potential_factor in range(1, int(num**.5) + 1):
         if num % potential_factor == 0:
             factors.add(potential_factor)
             factors.add(int(num/potential_factor))
     return factors
+
 
 def find_proper_divisors(number):
     """Return a set of proper divisors for number."""
@@ -125,11 +136,13 @@ def find_proper_divisors(number):
     results.discard(number)
     return results
 
+
 def add_up_divisors(num):
     """Return sum of proper divisors of num, i.e. 6 returns 1+2+3."""
     validate_integers(num)
     divisors = find_proper_divisors(num)
     return sum(divisors)
+
 
 def num_and_sum_of_div(number):
     """Return a set consisting of the number and the sum of its
@@ -140,6 +153,7 @@ def num_and_sum_of_div(number):
     result.add(add_up_divisors(number))
     return result
 
+
 def is_perfect(number):
     """Return true if number is a perfect number i.e. sum of proper
     divisors is equal to number.
@@ -149,6 +163,7 @@ def is_perfect(number):
         return False
 
     return len(num_and_sum_of_div(number)) == 1
+
 
 def is_amicable(number):
     """Return True if number is in an amicable pair, i.e. sum of proper
@@ -164,11 +179,13 @@ def is_amicable(number):
     set_b = num_and_sum_of_div(potential_friend)
     return set_a == set_b
 
+
 def is_abundant(number):
     """Return True if the sum of proper divisors is greater than number. I.e,
     24 < 1 + 2 + 3 + 4 + 6 + 8 + 12.
     """
     return number < add_up_divisors(number)
+
 
 def find_collatz_stopping_time(num):
     """Return the length of the Collatz chain for num.
@@ -184,6 +201,7 @@ def find_collatz_stopping_time(num):
         chain_length += 1
     return chain_length
 
+
 def happy_step(num):
     """Return product of one incrmental step to determine if num is happy/sad.
     i. e., returns the perfect digital invariant of base ten numeral.
@@ -197,6 +215,7 @@ def happy_step(num):
         total = total + digit
     return total
 
+
 def is_happy(num):
     """Determine if num is happy or sad."""
     validate_integers(num)
@@ -209,6 +228,7 @@ def is_happy(num):
 
         num = happy_step(num)
 
+
 def is_pan_digital(num):
     """Return True if num is pan digital, i.e. 123 or 4,123."""
     comparison = '123456789'
@@ -219,6 +239,7 @@ def is_pan_digital(num):
     num = set(num)
     comparison = set(comparison[0:len(num):1])
     return num == comparison
+
 
 def find_combinations(number, r_items):
     """Return total combinations of n choose r.
@@ -233,19 +254,22 @@ def find_combinations(number, r_items):
     result = n_fact/(r_fact*n_minus_r_fact)
     return int(result)
 
+
 def number_to_word(num):
     """Translate a counting number 1 to 1,000 to
     UK English string (uses 'and'), i.e. 1 -> 'one'.
-    Internal whitespace and hyphens are present. 152-> one hundred and fifty-two.
+    Internal whitespace and hyphens are present.
+    152-> one hundred and fifty-two.
     """
 
-    numeral_to_word = {0:"", 1:"one", 2:"two", 3:"three", 4: "four", 5:"five",
-                       6:"six", 7:"seven", 8:"eight", 9:"nine", 10:"ten", 11:"eleven",
-                       12:"twelve", 13:"thirteen", 14:"fourteen", 15:"fifteen",
-                       16:"sixteen", 17:"seventeen", 18:"eighteen", 19:"nineteen",
-                       20:"twenty", 30:"thirty", 40:"forty", 50:"fifty", 60:"sixty",
-                       70:"seventy", 80:"eighty", 90:"ninety", 1_000:"one thousand"
-                      }
+    numeral_to_word = {0: "", 1: "one", 2: "two", 3: "three", 4: "four",
+                       5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine",
+                       10: "ten", 11: "eleven", 12: "twelve", 13: "thirteen",
+                       14: "fourteen", 15: "fifteen", 16: "sixteen",
+                       17: "seventeen", 18: "eighteen", 19: "nineteen",
+                       20: "twenty", 30: "thirty", 40: "forty", 50: "fifty",
+                       60: "sixty", 70: "seventy", 80: "eighty", 90: "ninety",
+                       1_000: "one thousand"}
     validate_integers(num)
     if num > 1_000:
         raise ValueError("Sorry. The module only works for integers <= 1,000.")
@@ -259,12 +283,13 @@ def number_to_word(num):
         ones = num % 10
         return numeral_to_word[tens] + '-' + numeral_to_word[ones]
 
-    hundreds = numeral_to_word[num//100] +' ' + 'hundred'
+    hundreds = numeral_to_word[num//100] + ' ' + 'hundred'
     if num % 100 == 0:
         return hundreds
 
     two_digits = number_to_word(num % 100)
     return hundreds + ' and ' + two_digits
+
 
 def greatest_common_divisor(num_a, num_b):
     """Return greatest common divisor of num_a
@@ -277,6 +302,7 @@ def greatest_common_divisor(num_a, num_b):
         num_a, num_b = num_b, num_a % num_b
     return num_a
 
+
 def lowest_common_multiple(num_a, num_b):
     """Return lowest common multiple. It is the product of num_a
     and num_b divided by the greatest common divisor.
@@ -286,15 +312,18 @@ def lowest_common_multiple(num_a, num_b):
     result = (num_a * num_b) / gcd_result
     return int(result)
 
+
 def load_text_file(filename):
     """ Returns a list of sequences separated by carriage returns in the file.
-    Words are strings of characters. Whitespace is stripped. Capital letters removed.
+    Words are strings of characters. Whitespace is stripped.
+    Capital letters removed.
     """
     in_file = open(filename, 'r')
     wordlist = []
     for line in in_file:
         wordlist.append(line.strip().lower())
     return wordlist
+
 
 def horiz_value(coord_x, coord_y, grid):
     """Return the product of 4 adjacent cells in a dictionary."""
@@ -306,6 +335,7 @@ def horiz_value(coord_x, coord_y, grid):
 
     return product
 
+
 def vertical_value(coord_x, coord_y, grid):
     """Return the product of 4 vertically adjacent cells in a dictionary."""
     try:
@@ -316,25 +346,36 @@ def vertical_value(coord_x, coord_y, grid):
 
     return product
 
+
 def right_diagonal_value(coord_x, coord_y, grid):
-    """Return the product of 4 right diagonally adjacent cells in a dictionary."""
+    """Return the product of 4 right diagonally
+    adjacent cells in a dictionary.
+    """
     try:
-        product = (grid[(coord_x, coord_y)] * grid[(coord_x + 1, coord_y + 1)] *
-                   grid[(coord_x + 2, coord_y + 2)] * grid[(coord_x + 3, coord_y + 3)])
+        product = (grid[(coord_x, coord_y)] *
+                   grid[(coord_x + 1, coord_y + 1)] *
+                   grid[(coord_x + 2, coord_y + 2)] *
+                   grid[(coord_x + 3, coord_y + 3)])
     except KeyError:
         return 0
 
     return product
+
 
 def left_diagonal_value(coord_x, coord_y, grid):
-    """Return the product of 4 left diagonally adjacent cells in a dictionary."""
+    """Return the product of 4 left diagonally
+    adjacent cells in a dictionary.
+    """
     try:
-        product = (grid[(coord_x, coord_y)] * grid[(coord_x - 1, coord_y + 1)] *
-                   grid[(coord_x - 2, coord_y + 2)] * grid[(coord_x - 3, coord_y + 3)])
+        product = (grid[(coord_x, coord_y)] *
+                   grid[(coord_x - 1, coord_y + 1)] *
+                   grid[(coord_x - 2, coord_y + 2)] *
+                   grid[(coord_x - 3, coord_y + 3)])
     except KeyError:
         return 0
 
     return product
+
 
 def create_nine_digit_product(num):
     """ Create a nine digit string resulting from the concatenation of
@@ -351,24 +392,27 @@ def create_nine_digit_product(num):
         result = 0
     return result
 
+
 def find_sum_of_digit_factorial(number):
     """Return the sum of the factorial value of the digits of a number."""
-    factorials = {0:1, 1:1, 2:2, 3:6, 4:24, 5:120,
-                  6:720, 7:5040, 8:40320, 9:362880}
+    factorials = {0: 1, 1: 1, 2: 2, 3: 6, 4: 24, 5: 120,
+                  6: 720, 7: 5040, 8: 40320, 9: 362880}
     number = str(number)
     result = 0
     for char in number:
         result += factorials[int(char)]
     return result
 
+
 def sum_fifth_power_of_digits(number):
     """Return the sum of the fifth power of each digit of number."""
-    fifth_powers = {0:0, 1: 1, 2: 32, 3: 243, 4: 1024, 5: 3125, 6: 7776,
+    fifth_powers = {0: 0, 1: 1, 2: 32, 3: 243, 4: 1024, 5: 3125, 6: 7776,
                     7: 16807, 8: 32768, 9: 59049}
     result = 0
     for char in str(number):
         result += fifth_powers[int(char)]
     return result
+
 
 def create_triangle_numbers(limit):
     """Return set of triangle numbers below limit."""
@@ -383,6 +427,7 @@ def create_triangle_numbers(limit):
         triangles.add(value)
     return triangles
 
+
 def create_pentagon_numbers(limit):
     """Return a set of pentagon numbers up to limit."""
     pentagons = {0}
@@ -395,6 +440,7 @@ def create_pentagon_numbers(limit):
             break
         pentagons.add(value)
     return pentagons
+
 
 def create_hexagon_numbers(limit):
     """Return a set of hexagon numbers up to limit."""
@@ -409,6 +455,7 @@ def create_hexagon_numbers(limit):
         hexagons.add(value)
     return hexagons
 
+
 def add_digits(number):
     """Return the sum of digits in a numeral."""
     validate_integers(number)
@@ -417,6 +464,7 @@ def add_digits(number):
     for char in number:
         result += int(char)
     return result
+
 
 def create_right_truncations(number):
     """Return a set of right truncations of a number: 123 -> {123, 12, 1}"""
@@ -430,6 +478,7 @@ def create_right_truncations(number):
         result.add(int(number))
     return result
 
+
 def create_left_truncations(number):
     """Return a set of left truncations of a number: 123 -> {123, 23, 3}"""
     validate_integers(number)
@@ -441,6 +490,7 @@ def create_left_truncations(number):
             break
         result.add(int(number))
     return result
+
 
 def get_permutations(input_string):
     """Return all permutations of a given string."""
@@ -456,12 +506,14 @@ def get_permutations(input_string):
     for sequence in working_list:
         counter_1 = 0
         while counter_1 < len(sequence):
-            new_permutation = sequence[:counter_1] + last_char + sequence[counter_1:]
+            new_permutation = (sequence[:counter_1] +
+                               last_char + sequence[counter_1:])
             perms.append(new_permutation)
             counter_1 += 1
         new_permutation = sequence + last_char
         perms.append(new_permutation)
     return perms
+
 
 def word_score(word):
     """Return an integer corresponding to the sum of the
@@ -469,13 +521,15 @@ def word_score(word):
     """
     result = 0
     for char in word:
-        result = result + LOWERCASE_ALPHABET.index(char) +1
+        result = result + LOWERCASE_ALPHABET.index(char) + 1
     return result
+
 
 def find_goldbach_numbers(limit):
     """Return set of Goldbach numbers to limit. Goldbach proposed each odd
     composite is the sum of a square doubled and a prime number. Function
-    returns numbers meeting second definition, including primes and even numbers.
+    returns numbers meeting second definition, including primes
+    and even numbers.
     """
     goldbach_numbers = set()
     primes = prime_sieve(limit)
@@ -486,6 +540,7 @@ def find_goldbach_numbers(limit):
             if goldbach_number < limit:
                 goldbach_numbers.add(goldbach_number)
     return goldbach_numbers
+
 
 def equal_division(input_string, length_of_division):
     """ Divide a string up into a list of strings, each string as long
@@ -501,14 +556,15 @@ def equal_division(input_string, length_of_division):
         input_string = input_string[length_of_division:]
     return divisions
 
+
 def check_for_pattern(input_string):
     """ Check a string for a recurring pattern. If no pattern,
         return False. If pattern present, return smallest integer
         length of pattern.
         Warning: equal_divisions discards the remainder, so if it doesn't
         fit the pattern, you will get a false postive.
-        The specific use is to check recurring decimal patterns, so it doesn't matter
-        for that use.
+        The specific use is to check recurring decimal patterns, so it doesn't
+        matter for that use.
     """
     if len(input_string) < 2:
         return False
@@ -526,9 +582,11 @@ def check_for_pattern(input_string):
             length_of_division += 1
     return False
 
+
 def check_equations_for_primes(var_a, var_b, primes):
-    """Return the number of consecutive primes that result for variable a and b for the formula:
-        n**2 + an + b. Starting with zero"""
+    """Return the number of consecutive primes that result for variable
+    a and b for the formula: n**2 + an + b. Starting with zero.
+    """
     counter = 0
     for i in range(0, 1_000):
         temp = (i**2) + (i * var_a) + var_b
@@ -536,6 +594,7 @@ def check_equations_for_primes(var_a, var_b, primes):
             break
         counter += 1
     return counter
+
 
 def get_rotations(num):
     """Return set of rotations of a number. Output is an integer.
@@ -553,6 +612,7 @@ def get_rotations(num):
         rotations.add(int(new_rotation))
     return rotations
 
+
 def is_palindrome(num):
     """Return True if num is palindromic."""
     num = str(num)
@@ -561,11 +621,13 @@ def is_palindrome(num):
 
     return num == num[::-1]
 
+
 def is_binary_palindrome(num):
     """Return True if num is binary palindromic."""
     num = bin(num)
     num = num[2:]
     return num == num[::-1]
+
 
 def create_fraction_list():
     """ Create a list of numerators and denominators. x/y < 0.
@@ -574,7 +636,7 @@ def create_fraction_list():
     fractions = []
     for numerator in range(10, 101):
         for denominator in range(10, 101):
-            temp = set(str(numerator) +str(denominator))
+            temp = set(str(numerator) + str(denominator))
             if len(temp) == 4:
                 continue
             if '0' in temp:
@@ -587,9 +649,11 @@ def create_fraction_list():
                 fractions.append((numerator, denominator))
     return fractions
 
+
 def apply_false_cancel(numerator, denominator):
     """Cancel the matching numeral in two two digit numbers and
-    return the result or return 1 if not possible."""
+    return the result or return 1 if not possible.
+    """
     numerator = list(str(numerator))
     denominator = list(str(denominator))
 
@@ -601,6 +665,7 @@ def apply_false_cancel(numerator, denominator):
                 return(int(numerator[0]), int(denominator[0]))
 
     return (1, 1)
+
 
 def is_substring_divisible(num):
     """Return True if a 10 digit numeral has substrings divisible by sequential
@@ -615,6 +680,7 @@ def is_substring_divisible(num):
                               int(num[6:9]) % 13 == 0 and
                               int(num[7:10]) % 17 == 0)
     return divisibility_condition
+
 
 def is_sequence(nums):
     """Return True if a set of numbers is sequential i.e. 8, 11, 14, 17."""
@@ -633,9 +699,11 @@ def is_sequence(nums):
         nums.pop(0)
     return True
 
+
 def get_armstrong_value(num):
-    """Return Armstrong value of a number, this is the sum of n**k for each digit, where
-    k is the length of the numeral. I.e 54 -> 5**2 + 4**2 -> 41.
+    """Return Armstrong value of a number, this is the sum of n**k
+    for each digit, where k is the length of the numeral.
+    I.e 54 -> 5**2 + 4**2 -> 41.
     Related to narcisstic numbers and pluperfect digital invariants.
     """
     num = str(num)
@@ -645,9 +713,11 @@ def get_armstrong_value(num):
         armstrong_value += int(char)**length
     return armstrong_value
 
+
 def is_armstrong(num):
     "Return True if number is Armstrong number."""
     return num == get_armstrong_value(num)
+
 
 def is_permutation(inputs):
     """Return True if strings in list are permutations of each other."""
@@ -664,6 +734,7 @@ def is_permutation(inputs):
         identity_of_inputs.add(str(item))
     return len(identity_of_inputs) == 1
 
+
 def find_digit_sum(num):
     """Return the sum of digits in num."""
     num = str(num)
@@ -671,6 +742,7 @@ def find_digit_sum(num):
     for char in num:
         digit_sum += int(char)
     return digit_sum
+
 
 def find_last_digits_power(base, exponent, digit_length):
     """Return the last digits of a very large power."""
@@ -683,6 +755,7 @@ def find_last_digits_power(base, exponent, digit_length):
         counter += 1
     return result
 
+
 def encrypt_with_xor(message, key):
     """Encrypt message using xor cipher with key. The ascii code for each
     character of message is returned after the xor function is applied to each
@@ -692,12 +765,12 @@ def encrypt_with_xor(message, key):
     """
     from itertools import cycle
 
-
     coded_message = ''
     for (message_char, key_char) in zip(message, cycle(key)):
         coded_char = chr(ord(message_char) ^ ord(key_char))
         coded_message += coded_char
     return coded_message
+
 
 def is_in_wordlist(word):
     """Return True if word is in Linux wordlist at
@@ -707,14 +780,16 @@ def is_in_wordlist(word):
     wordlist = set(wordlist)
     return word in wordlist
 
+
 def text_to_ascii(text):
-    """Return list of integers corresponding to the ascii codes of the characters
-    of the text.
+    """Return list of integers corresponding to the ascii codes of
+    the characters of the text.
     """
     output = []
     for char in text:
         output.append(ord(char))
     return output
+
 
 def ascii_to_text(list_of_ascii_codes):
     """Return string corresponding to the list of ascii codes input."""
@@ -722,6 +797,7 @@ def ascii_to_text(list_of_ascii_codes):
     for num in list_of_ascii_codes:
         output += chr(num)
     return output
+
 
 def generate_key_guesses():
     """Return list of every possible three undercase letter combination."""
