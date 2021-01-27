@@ -71,7 +71,7 @@ def pe_5():
     for num in factors:
         product *= num
     return ('The smallest number divisible by all'
-            f'factors from 1 to 20 is {product:,}.')
+            f' factors from 1 to 20 is {product:,}.')
 
 
 def pe_6():
@@ -116,7 +116,7 @@ def pe_9():
         for side_a in range(1, (limit - hypotenuse_c)//2):
             b_side = (limit - hypotenuse_c) - side_a
             if lpe.is_pyth_triplet(side_a, b_side, hypotenuse_c):
-                return ('The pythagorean triplet that sums to 1,000 is:',
+                return ('The pythagorean triplet that sums to 1,000 is:'
                         f'{side_a, b_side, hypotenuse_c}')
 
     return 'No triplet was found for sum limit {limit}.'
@@ -227,7 +227,7 @@ def pe_17():
         number_word = number_word.replace(' ', '')
         total += len(number_word)
     return ('The sum of characters in the number'
-            ' words from 1 to 1,000 is {total:,}.')
+            f' words from 1 to 1,000 is {total:,}.')
 
 
 def pe_18():
@@ -309,7 +309,7 @@ def pe_23():
     non_abundant_sums = integers.difference(abundant_sums)
     _ = sum(non_abundant_sums)
     return ('The sum of all numbers that are '
-            'not the sum of two abundant numbers is {_:,}.')
+            f'not the sum of two abundant numbers is {_:,}.')
 
 
 def pe_24():
@@ -330,7 +330,7 @@ def pe_25():
         fib_index += 1
         current_fib = lpe.fibonacci(fib_index)
     return ('The index of the first Fibonacci '
-            'number with 1,000 digits is {fib_index}.')
+            f'number with 1,000 digits is {fib_index}.')
 
 
 def pe_26():
@@ -742,7 +742,7 @@ def pe_53():
         item_number += 1
     return (f'{permutation_count} is the number of '
             'permutation counts over 1,000,000'
-            'for n choose r where n <=100.')
+            ' for n choose r where n <=100.')
 
 
 def pe_56():
