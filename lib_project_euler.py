@@ -3,12 +3,49 @@
 
 import math
 import string
+import collections
+from random import choice
 import pytest
 
 
 GOLDEN_RATIO = (1 + 5**.5)/2
 GOLDEN_RATIO_CONJUGATE = (1 - 5**.5)/2
 LOWERCASE_ALPHABET = string.ascii_lowercase
+
+
+Card = collections.namedtuple('Card', ['rank', 'suit'])
+
+
+class FrenchDeck:
+    """Represent the French deck of cards."""
+    ranks = [str(n) for n in range(2, 11)] + list('JQKA')
+    suits = 'spades diamonds clubs hearts'.split()
+
+    def __init__(self):
+        self._cards = [Card(rank, suit) for suit in self.suits
+                       for rank in self.ranks]
+
+    def __len__(self):
+        return len(self._cards)
+
+    def __getitem__(self, position):
+        return self._cards[position]
+
+    def random_card(self, num):
+        """Return a random card."""
+        output = [choice(self) for _ in range(num)]
+        return output
+
+    def poker_hand(self):
+        """Return a five card random hand."""
+        return FrenchDeck.random_card(self, 5)
+
+
+def spades_high(card):
+    """Return numeric value for each card in FrenchDeck."""
+    suit_values = dict(spades=3, hearts=2, diamonds=1, clubs=0)
+    rank_value = FrenchDeck.ranks.index(card.rank)
+    return rank_value * len(suit_values) + suit_values[card.suit]
 
 
 def validate_integers(*nums):
