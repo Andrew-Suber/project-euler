@@ -41,6 +41,25 @@ class FrenchDeck:
         return FrenchDeck.random_card(self, 5)
 
 
+class IterationLimit():
+    """Iteration limit that raises in response to
+    value of the longest finite thread, pe_55."""
+
+    def __init__(self, value=51):
+        """First value is 51."""
+        self.value = value
+
+    def set_value(self, num):
+        """Set value."""
+        if num > self.value:
+            print('limit', self.value, 'changes to', num)
+            self.value = num
+
+    def get_value(self):
+        """Get value."""
+        return self.value
+
+
 def spades_high(card):
     """Return numeric value for each card in FrenchDeck."""
     suit_values = dict(spades=3, hearts=2, diamonds=1, clubs=0)
@@ -844,6 +863,42 @@ def generate_key_guesses():
             for char_3 in LOWERCASE_ALPHABET:
                 output.append(char_1 + char_2 + char_3)
     return output
+
+def reverse_int(num):
+    """Return the integer that is the reverse of num."""
+    return int(str(num)[::-1])
+
+
+def reverse_and_add(num):
+    """Add num to its reverse. Basic step in 196-algorithim."""
+    next_step = num + reverse_int(num)
+    return next_step
+
+
+def find_thread_length(num):
+    """Return length of thread of num."""
+    thread_length = 1
+    temp = num
+
+    while thread_length < iteration_limit_a.get_value():
+        temp = reverse_and_add(temp)
+
+        if is_palindrome(temp):
+            return thread_length
+
+        thread_length += 1
+    return thread_length
+
+def find_lychrel_numbers(limit):
+    """Find Lychrel numbers up to limit."""
+    lychrel_numbers = []
+
+    for num in range(1, limit):
+            lychrel_numbers.append(counter)
+
+
+    print(f'There were {len(lychrel_numbers)} Lychrel numbers from 1 to {limit}:')
+    return lychrel_numbers
 
 
 pytest.main(['-v'])

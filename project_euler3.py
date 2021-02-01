@@ -745,6 +745,13 @@ def pe_53():
             ' for n choose r where n <=100.')
 
 
+def pe_55():
+    """Find the number of Lychrel numbers under 10_000."""
+    from ple import IterationLimit
+    iteration_limit_a = IterationLimit()
+    limit = 10_000
+
+
 def pe_56():
     """Find the expression of a**b where a,b < 100
     with the maximal digit sum.
